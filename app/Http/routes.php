@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('/admin/layout/layout');
 });
+
+
+//用户管理的资源控制器
+Route::resource('/admin/user', 'Admin\UsersController');
