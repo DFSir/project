@@ -21,7 +21,8 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'homeusers';
+    protected $primaryKey = 'uid';
 
     /**
      * The attributes that are mass assignable.

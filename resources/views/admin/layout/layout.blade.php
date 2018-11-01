@@ -17,6 +17,12 @@
 	<link rel="stylesheet" type="text/css" href="/admin/lib/Hui-iconfont/1.0.8/iconfont.css" />
 	<link rel="stylesheet" type="text/css" href="/admin/static/h-ui.admin/skin/default/skin.css" id="skin" />
 	<link rel="stylesheet" type="text/css" href="/admin/static/h-ui.admin/css/style.css" />
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/app.css">
+    <script src="https://cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
 	<!--[if IE 6]>
 	<script type="text/javascript" src="/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 	<script>DD_belatedPNG.fix('*');</script>
@@ -64,8 +70,8 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a data-href="/admin/user" data-title="管理员列表" href="/admin/user">管理员列表</a></li>
-						<li><a data-href="/admin/user/create" data-title="添加管理员" href="/admin/user/create">添加管理员</a></li>
+						<li><a data-href="/admin/auser" data-title="管理员列表" href="/admin/auser">管理员列表</a></li>
+						<li><a data-href="/admin/auser/create" data-title="添加管理员" href="/admin/auser/create">添加管理员</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -78,8 +84,8 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a href="#">用户列表</a></li>
-						<li><a href="#">添加用户</a></li>
+						<li><a data-href="/admin/huser" data-title="用户列表" href="/admin/huser">用户列表</a></li>
+						<li><a data-href="/admin/huser/create" data-title="添加用户" href="/admin/huser/create">添加用户</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -179,6 +185,20 @@
 
 	<!-- 内容区begin -->
 	<section class="Hui-article-box"  style=" overflow-y:auto; overflow-x:auto;">
+
+		<!-- 显示提示消息 -->
+		@if(session('success'))
+		<div class="hint" style="width: 80%;height: 50px;margin: 10px auto;background: #dff0d8;line-height: 50px;border-radius: 30px;">
+			<p style="margin-left: 50px;font-size: 20px;color: #555;"><i class="Hui-iconfont">&#xe615;</i>&nbsp&nbsp&nbsp{{session('success')}}</p>
+		</div>
+		@endif
+		<!-- 显示提示消息 -->
+		@if(session('error'))
+		<div class="hint" style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">
+			<p style="margin-left: 50px;font-size: 20px;color: #555;"><i class="Hui-iconfont">&#xe631;</i>&nbsp&nbsp&nbsp{{session('error')}}</p>
+		</div>
+		@endif
+		
 		@section('container')
 			
 		<div class="page-container">
@@ -314,7 +334,10 @@
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript" src="/admin/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
 	<script type="text/javascript">
-
+		
+		$('.hint').click(function(){
+			$('.hint').hide();
+		});
 	</script> 
 
 

@@ -16,5 +16,46 @@ Route::get('/', function () {
 });
 
 
-//用户管理的资源控制器
-Route::resource('/admin/user', 'Admin\UsersController');
+// 后台管理员的资源控制器
+// 前台用户管理
+Route::resource('/admin/huser', 'Admin\UsersController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 杜娴最后一行
