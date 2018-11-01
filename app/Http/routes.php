@@ -16,88 +16,8 @@ Route::get('/', function () {
 });
 
 
-
-//用户管理的资源控制器
-Route::resource('/admin/user', 'Admin\UsersController');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 前台用户管理
+Route::resource('/admin/huser', 'Admin\UsersController');
 
 // 文章类别的资源管理器
 Route::resource('/admin/cates', 'Admin\CatesController');
@@ -105,6 +25,6 @@ Route::resource('/admin/cates', 'Admin\CatesController');
 Route::resource('/admin/articles', 'Admin\ArticlesController');
 
 
-
 // 心情随笔(日记)资源控制器
 Route::resource('/admin/diary','Admin\DiaryController');
+
