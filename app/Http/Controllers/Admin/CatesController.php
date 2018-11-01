@@ -19,7 +19,7 @@ class CatesController extends Controller
     public function index()
     {
         //
-        $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
+        $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->paginate(10);;
         return view('admin.create.index',['cates'=>$cates]);
     }
 
@@ -30,6 +30,7 @@ class CatesController extends Controller
      */
     public function create()
     {
+        // 根据paths排序返回数据
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
         // 跳转到文章类别添加页面
         return view('admin.create.create',['cates'=>$cates]);
@@ -44,6 +45,13 @@ class CatesController extends Controller
     public function store(Request $request)
     {
         // 
+        $cate = Cates::all();
+        $cname = $request->input('cname');
+        foreach($cate as $k=>$v){
+            if($v->cname == $cname){
+                return back()->with('error','添加类别失败,类别名称重复');
+            }
+        }
         $cpid = $request->input('cpid','');
         if($cpid == 0){
             $cpath = 0;
@@ -89,7 +97,7 @@ class CatesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 根据指定的id更新数据
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -116,6 +124,12 @@ class CatesController extends Controller
     public function destroy($id)
     {
         // 
+        $cates = Cates::all();
+        foreach ($cates as $k => $v) {
+            if($v->cpid == $id){
+                return back()->with('error','该类下面有子分类不能删除');
+            }
+        }
         $res = Cates::where('cid','=',$id)->delete();
         if($res){
             return back()->with('success','删除成功');

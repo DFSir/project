@@ -43,6 +43,9 @@
 			@endforeach
 		</tbody>
 	</table>
+	<div>
+		{!! $cates->render() !!}
+	</div>
 </div>
 
 @endsection
