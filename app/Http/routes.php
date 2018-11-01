@@ -16,5 +16,91 @@ Route::get('/', function () {
 });
 
 
-//用户管理的资源控制器
+// 用户管理的资源控制器
 Route::resource('/admin/user', 'Admin\UsersController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 文章类别的资源管理器
+Route::resource('/admin/cates', 'Admin\CatesController');
+// 文章详情的资源管理器
+Route::resource('/admin/articles', 'Admin\ArticlesController');
+
+

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
@@ -64,8 +64,8 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a data-href="/admin/user" data-title="管理员列表" href="/admin/user">管理员列表</a></li>
-						<li><a data-href="/admin/user/create" data-title="添加管理员" href="/admin/user/create">添加管理员</a></li>
+						<li><a data-href="/admin/auser" data-title="管理员列表" href="/admin/auser">管理员列表</a></li>
+						<li><a data-href="/admin/auser/create" data-title="添加管理员" href="/admin/auser/create">添加管理员</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -78,8 +78,8 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a href="#">用户列表</a></li>
-						<li><a href="#">添加用户</a></li>
+						<li><a href="/admin/huser">用户列表</a></li>
+						<li><a href="/admin/huser/create">添加用户</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -90,8 +90,8 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a href="#">类别列表</a></li>
-						<li><a href="#">添加类别</a></li>
+						<li><a data-href="/admin/cates" data-title="类别列表" href="/admin/cates">类别列表</a></li>
+						<li><a data-href="/admin/cates/create" data-title="添加类别" href="/admin/cates/create">添加类别</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -102,8 +102,8 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a href="#">文章列表</a></li>
-						<li><a href="#">添加文章</a></li>
+						<li><a data-href="/admin/articles" data-title="类别列表" href="/admin/articles">文章列表</a></li>
+						<li><a data-href="/admin/articles/create" data-title="添加类别" href="/admin/articles/create">添加文章</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -133,7 +133,7 @@
 			</dl>
 			<dl id="menu-admin">
 				<dt>
-					<i class="Hui-iconfont">&#xe63a;</i> 友情链接管理
+					<i class="Hui-iconfont">&#xe666;</i> 友情链接管理
 					<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
@@ -179,6 +179,19 @@
 
 	<!-- 内容区begin -->
 	<section class="Hui-article-box"  style=" overflow-y:auto; overflow-x:auto;">
+		<!-- 显示提示消息 -->
+		@if(session('success'))
+		<div class="hint" style="width: 80%;height: 50px;margin: 10px auto;background: #dff0d8;line-height: 50px;border-radius: 30px;">
+			<p style="margin-left: 50px;font-size: 20px;color: #555;"><i class="Hui-iconfont">&#xe615;</i>&nbsp&nbsp&nbsp{{session('success')}}</p>
+		</div>
+		@endif
+		<!-- 显示提示消息 -->
+		@if(session('error'))
+		<div class="hint" style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">
+			<p style="margin-left: 50px;font-size: 20px;color: #555;"><i class="Hui-iconfont">&#xe631;</i>&nbsp&nbsp&nbsp{{session('error')}}</p>
+		</div>
+		@endif
+
 		@section('container')
 			
 		<div class="page-container">
@@ -314,7 +327,9 @@
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript" src="/admin/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
 	<script type="text/javascript">
-
+		$('.hint').click(function(){
+			$('.hint').hide();
+		});
 	</script> 
 
 
