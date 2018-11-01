@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 
 
-// 用户管理的资源控制器
+
+//用户管理的资源控制器
 Route::resource('/admin/user', 'Admin\UsersController');
 
 
@@ -104,3 +105,6 @@ Route::resource('/admin/cates', 'Admin\CatesController');
 Route::resource('/admin/articles', 'Admin\ArticlesController');
 
 
+
+// 心情随笔(日记)资源控制器
+Route::resource('/admin/diary','Admin\DiaryController');

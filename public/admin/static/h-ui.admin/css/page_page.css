@@ -1,0 +1,64 @@
+*{
+	word-wrap: break-word;
+}
+
+.page_page{
+	float: right;
+}
+
+.page_page li{
+	    float: left;
+    padding-top: 10px;
+    text-align: left;
+}
+
+.disabled {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #666;
+    height: 26px;
+    line-height: 26px;
+    text-decoration: none;
+    font-size: 14px;
+
+}
+
+.active span{
+	    background: #5a98de;
+    	color: #fff;
+	    
+}
+
+.pagination li span{
+	border: 1px solid #ccc;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 2px;
+    text-align: center;
+    text-decoration: none;
+    height: 26px;
+    line-height: 26px;
+    text-decoration: none;
+    margin: 0 0 6px 6px;
+    padding: 0 10px;
+    font-size: 14px;
+
+}
+
+.pagination li a{
+	    border: 1px solid #ccc;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 2px;
+    text-align: center;
+    text-decoration: none;
+    color: #666;
+    height: 26px;
+    line-height: 26px;
+    text-decoration: none;
+    margin: 0 0 6px 6px;
+    padding: 0 10px;
+    font-size: 14px;
+}
