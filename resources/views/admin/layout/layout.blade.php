@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="/admin/lib/Hui-iconfont/1.0.8/iconfont.css" />
 	<link rel="stylesheet" type="text/css" href="/admin/static/h-ui.admin/skin/default/skin.css" id="skin" />
 	<link rel="stylesheet" type="text/css" href="/admin/static/h-ui.admin/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/admin/static/h-ui.admin/css/page_page.css" />
 	<!--[if IE 6]>
 	<script type="text/javascript" src="/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 	<script>DD_belatedPNG.fix('*');</script>
@@ -114,8 +115,8 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a href="#">日记列表</a></li>
-						<li><a href="#">添加日记</a></li>
+						<li><a data-href="/admin/diary/" data-title="日记列表" href="/admin/diary/">日记列表</a></li>
+						<li><a data-href="/admin/diary/create" data-title="添加日记" href="/admin/diary/create">添加日记</a></li>
 					</ul>
 				</dd>
 			</dl>
