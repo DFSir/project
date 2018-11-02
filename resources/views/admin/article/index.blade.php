@@ -3,6 +3,7 @@
 @section('container')
 
 <div class="page-container">
+	<h1>{{ $title or '' }}</h1>
 	<div class="text-c">
 		<input type="text" class="input-text" style="width:250px" placeholder="输入文章关键字" id="" name="">
 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont"></i> 搜文章</button>

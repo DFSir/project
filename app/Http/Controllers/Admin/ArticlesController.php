@@ -21,7 +21,7 @@ class ArticlesController extends Controller
     {
         //
         $articles = Articles::paginate(10);
-        return view('admin.article.index',['articles'=>$articles]);
+        return view('admin.article.index',['title'=>'文章列表','articles'=>$articles]);
     }
 
     /**
@@ -34,7 +34,7 @@ class ArticlesController extends Controller
         // 根据paths排序返回数据
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
         // 跳转到文章详情添加页面
-        return view('admin.article.create',['cates'=>$cates]);
+        return view('admin.article.create',['title'=>'文章添加','cates'=>$cates]);
     }
 
     /**

@@ -41,7 +41,7 @@ class DiaryController extends Controller
     {
         //
 
-        return view('admin.diary.create');
+        return view('admin.diary.create',['title'=>'日记添加']);
     }
 
     /**

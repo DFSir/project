@@ -27,7 +27,7 @@ class UsersStoreRequest extends Request
         return [
             'uname' => 'required|unique:homeusers|regex:/^[a-zA-Z]{1}[\w]{7,15}$/',
             'uaccnum' => 'required|unique:homeusers|regex:/^[\d]{6,8}$/',
-            'upasswd' => 'required|regex:/^[\w]{6,8}$/'
+            'upasswd' => 'required|regex:/^[\S]{6,8}$/'
         ];
     }
 
@@ -39,6 +39,7 @@ class UsersStoreRequest extends Request
      */
     public function messages()
     {
+        //
         return [
             'uname.required' => '用户名不能为空',
             'uname.regex' => '用户名格式错误',

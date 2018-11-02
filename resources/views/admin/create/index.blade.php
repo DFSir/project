@@ -3,11 +3,10 @@
 @section('container')
 
 <div class="page-container">
+	<h1>{{ $title or '' }}</h1>
 	<table class="table table-border table-bordered table-hover table-bg">
 		<thead>
-			<tr>
-				<th scope="col" colspan="6">文章类别管理</th>
-			</tr>
+			
 			<tr class="text-c">
 				<th width="200px">ID</th>
 				<th width="400px">类别名称</th>

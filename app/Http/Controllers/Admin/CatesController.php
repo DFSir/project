@@ -20,7 +20,7 @@ class CatesController extends Controller
     {
         //
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->paginate(10);;
-        return view('admin.create.index',['cates'=>$cates]);
+        return view('admin.create.index',['title'=>'文章分类列表','cates'=>$cates]);
     }
 
     /**
@@ -33,7 +33,7 @@ class CatesController extends Controller
         // 根据paths排序返回数据
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
         // 跳转到文章类别添加页面
-        return view('admin.create.create',['cates'=>$cates]);
+        return view('admin.create.create',['title'=>'文章分类添加','cates'=>$cates]);
     }
 
     /**

@@ -3,6 +3,7 @@
 @section('container')
 
 <article class="page-container" style="">
+	<h1>{{ $title or '' }}</h1>
 	<form class="form form-horizontal" id="form-article-add" novalidate="novalidate" action="/admin/articles" method="post">
 		{{ csrf_field() }}
 		<div class="row cl">
