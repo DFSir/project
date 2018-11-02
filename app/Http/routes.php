@@ -35,7 +35,6 @@ Route::get('/admin/articles/switchdown/{id}', 'Admin\ArticlesController@switchdo
 Route::get('/admin/articles/comment/{id}', 'Admin\ArticlesController@comment');
 
 
-
 // 心情随笔(日记)资源控制器
 Route::resource('/admin/diary','Admin\DiaryController');
 

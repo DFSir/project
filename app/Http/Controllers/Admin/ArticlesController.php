@@ -20,7 +20,6 @@ class ArticlesController extends Controller
      */
     public function index(Request $request)
     {
-<<<<<<< HEAD
         // 根据条件搜索及获取分页
         $showCount = $request->input('showCount',10);
         // 文章标题搜索条件
@@ -34,11 +33,6 @@ class ArticlesController extends Controller
         // 从数据库拿出数据并且每页显示10条
         $articles = Articles::where('title','like','%'.$search.'%')->where('author','like','%'.$author.'%')->where('astate','like','%'.$astate.'%')->paginate($showCount );
         return view('admin.article.index',['articles'=>$articles,'req'=>$req,'title'=>'文章列表']);
-=======
-        //
-        $articles = Articles::paginate(10);
-        return view('admin.article.index',['title'=>'文章列表','articles'=>$articles]);
->>>>>>> 00fca5512dcb1adc68536e8240f80e1728d37473
     }
 
     /**
@@ -51,11 +45,7 @@ class ArticlesController extends Controller
         // 查询类别数据根据paths排序返回数据
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
         // 跳转到文章详情添加页面
-<<<<<<< HEAD
-        return view('admin.article.create',['cates'=>$cates,'title'=>'文章添加']);
-=======
         return view('admin.article.create',['title'=>'文章添加','cates'=>$cates]);
->>>>>>> 00fca5512dcb1adc68536e8240f80e1728d37473
     }
 
     /**
@@ -208,6 +198,7 @@ class ArticlesController extends Controller
      */
     public function comment($id)
     {
+        // 根据获取的id删除指定的评论
         $res = Comments::where('id','=',$id)->delete();
         if($res){
             return back()->with('success','删除评论成功');

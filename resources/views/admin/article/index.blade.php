@@ -4,14 +4,12 @@
 
 <div class="page-container">
 	<h1>{{ $title or '' }}</h1>
-<<<<<<< HEAD
-=======
+
 	<div class="text-c">
 		<input type="text" class="input-text" style="width:250px" placeholder="输入文章关键字" id="" name="">
 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont"></i> 搜文章</button>
 	</div>
 
->>>>>>> 00fca5512dcb1adc68536e8240f80e1728d37473
 	<div class="mt-20">
 		<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
 
