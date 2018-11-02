@@ -116,6 +116,20 @@
 					</ul>
 				</dd>
 			</dl>
+
+			<dl id="menu-admin">
+				<dt>
+					<i class="Hui-iconfont">&#xe616;</i> 标签管理
+					<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+				</dt>
+				<dd>
+					<ul>
+						<li><a data-href="/admin/tag" data-title="标签列表" href="/admin/tag">标签列表</a></li>
+						<li><a data-href="/admin/tag/create" data-title="添加标签" href="/admin/tag/create">添加标签</a></li>
+					</ul>
+				</dd>
+			</dl>
+
 			<dl id="menu-admin">
 				<dt>
 					<i class="Hui-iconfont">&#xe610;</i> 日记管理

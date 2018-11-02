@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UsersStoreRequest;
-use App\Models\User;
+use App\Models\Huser;
 use Hash;
 
 class UsersController extends Controller
@@ -23,10 +23,8 @@ class UsersController extends Controller
         $showCount = $request->input('showCount',5);
         $search = $request->input('search','');
         $req = $request->all();
-        $huser = User::where('uname','like','%'.$search.'%')->paginate($showCount);
+        $huser = Huser::where('uname','like','%'.$search.'%')->paginate($showCount);
 
-        
-        
         // 加载列表
         return view('admin.huser.index',['title'=>'用户列表','huser'=>$huser,'req'=>$req]);
     }
@@ -52,7 +50,7 @@ class UsersController extends Controller
     public function store(UsersStoreRequest $request)
     {
         // 获取数据
-        $huser = new User;
+        $huser = new Huser;
         $huser->uname = $request->input('uname');
         $huser->uaccnum = $request->input('uaccnum');
         $huser->upasswd = Hash::make($request->input('upasswd'));
@@ -84,7 +82,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
-        $a = User::where('uid','=',$id)->firstOrFail();
+        $a = Huser::where('uid','=',$id)->firstOrFail();
         
         return view('admin.huser.edit',['a'=>$a,'id'=>$id]);
     }
@@ -100,7 +98,7 @@ class UsersController extends Controller
     {
         //
          // 获取数据
-        $huser = User::where('uid','=',$id)->firstOrFail();
+        $huser = Huser::where('uid','=',$id)->firstOrFail();
         $huser->uname = $request->input('uname');
         $huser->uaccnum = $request->input('uaccnum');
          if ($huser->save()) {

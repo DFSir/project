@@ -6,26 +6,27 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Diary;
-use DB;
+use App\Models\Tag;
 
-class DiaryController extends Controller
+class TagController extends Controller
 {
     /**
-     * 后台日记浏览页面
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        //
-        $showCount = $request->input('showCount',5);
+        //加载标签浏览
+        $showCount = $request->input('showCount',3);
         $search = $request->input('search','');
         $req = $request->all();
 
-        $diary = Diary::where('dtitle','like','%'.$search.'%')->paginate($showCount);
+        $tags = Tag::where('name','like','%'.$search.'%')->paginate($showCount);
 
-        return view('admin.diary.index',['diary'=>$diary, 'title'=>'日记浏览','req'=>$req]);
+
+
+        return view('admin.tag.index',['tags'=>$tags, 'title'=>'标签浏览','req'=>$req]);
     }
 
     /**
@@ -35,11 +36,13 @@ class DiaryController extends Controller
      */
     public function create()
     {
-        return view('admin.diary.create',['title'=>'日记添加']);
+        //加载标签添加界面
+        return view('admin.tag.create',['title'=>'添加标签']);
+
     }
 
     /**
-     * 添加日记
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -47,12 +50,11 @@ class DiaryController extends Controller
     public function store(Request $request)
     {
         //
-        $diary = new Diary;
-        $diary->dtitle = $request->dtitle;
-        $diary->dcontent = $request->dcontent;
+        $tags = new Tag;
+        $tags->name = $request->name;
 
-        if($diary -> save()){
-            return redirect('/admin/diary')->with('success','添加成功');
+        if($tags -> save()){
+            return redirect('/admin/tag')->with('success','添加成功');
         }else{
             return back()->with('error','添加失败');
         }
@@ -77,9 +79,9 @@ class DiaryController extends Controller
      */
     public function edit($id)
     {
-        //
-        $diary = Diary::where('did',$id)->firstOrFail();
-        return view('admin.diary.edit',['diary'=>$diary,'id'=>$id,'title'=>'日记修改']);
+        //标签修改
+        $tags = Tag::firstOrFail();
+        return view('admin.tag.edit',['tags'=>$tags,'id'=>$id,'title'=>'标签修改']);
     }
 
     /**
@@ -92,11 +94,10 @@ class DiaryController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $diary = Diary::where('did','=',$id)->firstOrFail();
-        $diary->dtitle = $request->dtitle;
-        $diary->dcontent = $request->dcontent;
-        if($diary -> save()){
-            return redirect('/admin/diary')->with('success','修改成功');
+        $tags = Tag::firstOrFail();
+        $tags->name = $request->name;
+        if($tags -> save()){
+            return redirect('/admin/tag')->with('success','修改成功');
         }else{
             return back()->with('error','修改失败');
         }
@@ -110,14 +111,13 @@ class DiaryController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $data = Diary::where('did',$id)->delete();
+        //标题删除
+        $tags = Tag::destroy($id);
 
-        if($data){
+        if($tags){
             return back()->with('success','删除成功');
         }else{
             return back()->with('error','删除失败');
         }
-
     }
 }

@@ -10,6 +10,7 @@ use App\Models\Cates;
 use DB;
 use App\Models\Articles;
 use App\Models\Comments;
+use App\Models\Tag;
 
 class ArticlesController extends Controller
 {
@@ -42,10 +43,11 @@ class ArticlesController extends Controller
      */
     public function create()
     {
+        $tags = Tag::all();
         // 查询类别数据根据paths排序返回数据
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
         // 跳转到文章详情添加页面
-        return view('admin.article.create',['title'=>'文章添加','cates'=>$cates]);
+        return view('admin.article.create',['title'=>'文章添加','cates'=>$cates,'tags'=>$tags]);
     }
 
     /**
@@ -65,6 +67,13 @@ class ArticlesController extends Controller
         $article->acontent = $request->input('acontent');
         // 判断数据是否存储成功
         if($article->save()){
+            //处理标签
+            try{
+                $res = $article->tags()->sync($request->tag_id);
+            }catch(\Exception $e){
+                return back()->with('error','添加文章失败11');
+            }
+
             return back()->with('success','添加文章成功');
         }else{
             return back()->with('error','添加文章失败');

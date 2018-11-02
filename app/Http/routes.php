@@ -43,3 +43,6 @@ Route::resource('/admin/blogroll','Admin\BlogrollsController');
 
 // 广告管理资源控制器
 Route::resource('/admin/advert','Admin\AdvertsController');
+
+// 标签资源控制器
+Route::resource('/admin/tag','Admin\TagController');

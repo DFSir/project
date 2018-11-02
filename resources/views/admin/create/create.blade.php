@@ -2,10 +2,6 @@
 <!-- 文章类别添加页面 -->
 @section('container')
 <div class="page-container">
-<<<<<<< HEAD
-=======
-
->>>>>>> 00fca5512dcb1adc68536e8240f80e1728d37473
 	<h1>{{ $title or '' }}</h1>
 	<form class="form form-horizontal" id="form-article-add" action="/admin/cates" method="post">
 		{{ csrf_field() }}

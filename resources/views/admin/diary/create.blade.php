@@ -1,13 +1,9 @@
 @extends('admin.layout.layout')
 @section('container')
 
-<<<<<<< HEAD
+
 <article class="page-container">
 	<h1>{{ $title or '' }}</h1>
-=======
-	<article class="page-container">
-		<h1>{{ $title or '' }}</h1>
->>>>>>> 00fca5512dcb1adc68536e8240f80e1728d37473
 	<form action="/admin/diary" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate">
 		{{ csrf_field() }}
 		<div class="row cl">

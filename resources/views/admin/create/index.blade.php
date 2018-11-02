@@ -4,7 +4,6 @@
 
 <div class="page-container">
 	<h1>{{ $title or '' }}</h1>
-<<<<<<< HEAD
 	<form action="/admin/cates" method="get">
 		<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
 			<div class="dataTables_length" id="DataTables_Table_0_length">
@@ -23,8 +22,6 @@
 		</div>
 	</form>	
 	<div id="DataTables_Table_0_filter" class="dataTables_filter"></div>
-=======
->>>>>>> 00fca5512dcb1adc68536e8240f80e1728d37473
 	<table class="table table-border table-bordered table-hover table-bg">
 		<thead>
 			

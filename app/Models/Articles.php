@@ -30,4 +30,10 @@ class Articles extends Model
         return $this->hasMany('App\Models\Comments','aid');
     }
 
+    //与标签表建立多对多关系
+    public function tags()
+    {
+      return $this->belongsToMany('App\Models\Tag');
+    }
+
 }

@@ -24,6 +24,16 @@
 				</span>
 			</div>
 		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标签：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				@foreach($tags as $k => $v)
+				<label style="font-size: 14px;font-weight: normal;margin-right: 10px;"><input type="checkbox" name="tag_id[]" value="{{$v->id}}">{{$v->name}}</label>
+				@endforeach
+			</div>
+		</div>
+
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
