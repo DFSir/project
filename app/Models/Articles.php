@@ -18,5 +18,11 @@ class Articles extends Model
    		return $this->hasOne('App\Models\Cates','cid','cid');
    	}
 
+    //与标签表建立多对多关系
+    public function tags()
+    {
+      return $this->belongsToMany('App\Models\Tag');
+    }
+
    	
 }

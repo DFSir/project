@@ -3,10 +3,12 @@
 @section('container')
 
 <div class="page-container">
+	<h1>{{ $title or '' }}</h1>
 	<div class="text-c">
 		<input type="text" class="input-text" style="width:250px" placeholder="输入文章关键字" id="" name="">
 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont"></i> 搜文章</button>
 	</div>
+
 
 	<div class="mt-20">
 		<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
@@ -37,11 +39,11 @@
 					</tr>
 				</thead>
 			<tbody>
-				@foreach ($articles as $k=>$v)
-				<tr class="text-c odd" role="row">
+				@foreach($articles as $k=>$v)
+					<tr class="text-c odd" role="row">
 					<td><input type="checkbox" value="1" name=""></td>
 					<td>{{ $v->aid }}</td>
-					<td>{{ $v->catesinfo->cname }}</td>
+					<td>{{ $v->catesinfo->cname }}</td>	
 					<td>{{ $v->title}}</td>
 					<td>{{ $v->uid }}</td>
 					<td>{{ $v->author}}</td>
@@ -60,8 +62,8 @@
 					<td>
 						<button>修改</button>
 						<button>删除</button>
-					</td>
-				</tr>
+					</td>					
+					</tr>
 				@endforeach
 
 			</tbody>

@@ -1,6 +1,6 @@
 @extends('admin.layout.layout')
 @section('container')
-
+	<h1>{{ $title }}</h1>
 	<article class="page-container">
 	<form action="/admin/diary/{{$id}}" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate">
 		{{ csrf_field() }}

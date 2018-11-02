@@ -28,3 +28,39 @@ Route::resource('/admin/articles', 'Admin\ArticlesController');
 // 心情随笔(日记)资源控制器
 Route::resource('/admin/diary','Admin\DiaryController');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 标签资源控制器
+Route::resource('/admin/tag','Admin\TagController');
