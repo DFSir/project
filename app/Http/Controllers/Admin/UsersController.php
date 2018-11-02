@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UsersStoreRequest;
-use App\User;
+use App\Models\User;
 use Hash;
 class UsersController extends Controller
 {
@@ -98,7 +98,7 @@ class UsersController extends Controller
     {
         //
          // 获取数据
-       $huser = User::where('uid','=',$id)->firstOrFail();
+        $huser = User::where('uid','=',$id)->firstOrFail();
         $huser->uname = $request->input('uname');
         $huser->uaccnum = $request->input('uaccnum');
          if ($huser->save()) {

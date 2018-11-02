@@ -9,19 +9,30 @@ use App\Http\Controllers\Controller;
 use App\Models\Cates;
 use DB;
 use App\Models\Articles;
+use App\Models\Comments;
 
 class ArticlesController extends Controller
 {
     /**
-     * 显示文章类别页面
+     * 显示文章列表页面
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $articles = Articles::paginate(10);
-        return view('admin.article.index',['articles'=>$articles]);
+        // 根据条件搜索及获取分页
+        $showCount = $request->input('showCount',10);
+        // 文章标题搜索条件
+        $search = $request->input('search','');
+        // 文章作者搜索条件
+        $author = $request->input('author','');
+        // 文章审核搜索条件
+        $astate = $request->input('astate','1');
+        // 把分页和搜索条件存储起来提交回去
+        $req = $request->all();
+        // 从数据库拿出数据并且每页显示10条
+        $articles = Articles::where('title','like','%'.$search.'%')->where('author','like','%'.$author.'%')->where('astate','like','%'.$astate.'%')->paginate($showCount );
+        return view('admin.article.index',['articles'=>$articles,'req'=>$req,'title'=>'文章列表']);
     }
 
     /**
@@ -31,10 +42,10 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        // 根据paths排序返回数据
+        // 查询类别数据根据paths排序返回数据
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
         // 跳转到文章详情添加页面
-        return view('admin.article.create',['cates'=>$cates]);
+        return view('admin.article.create',['cates'=>$cates,'title'=>'文章添加']);
     }
 
     /**
@@ -45,14 +56,14 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 把提交过来的数据放进数据库
         $article = new Articles;
         $article->cid = $request->input('cid');
         $article->uid = $request->input('uid');
         $article->title = $request->input('title');
         $article->author = $request->input('author');
         $article->acontent = $request->input('acontent');
-
+        // 判断数据是否存储成功
         if($article->save()){
             return back()->with('success','添加文章成功');
         }else{
@@ -61,29 +72,83 @@ class ArticlesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 显示审核的文章详情 
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function astate($id)
+    {
+        $article = Articles::find($id);
+        return view('admin.article.astate',['title'=>'文章审核','article'=>$article]);
+    }
+
+    /**
+     * 指定文章过审 
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function audit($id)
+    {
+        $article = Articles::where('aid','=',$id)->update(['astate'=>'11']);
+        return back()->with('success','文章已过审');
+    }
+
+    /**
+     * 指定文章推荐 
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response 
+     */
+    public function switchup($id)
+    {
+        $article = Articles::where('aid','=',$id)->update(['state'=>'1']);
+        return back();
+    }
+
+    /**
+     * 指定文章下架
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response 
+     */
+    public function switchdown($id)
+    {
+        $article = Articles::where('aid','=',$id)->update(['state'=>'0']);
+        return back();
+    }
+
+    /**
+     * 查看指定id的文章详情
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        // 获取指定id的文章数据
+        $article = Articles::find($id);
+        return view('admin.article.show',['title'=>'文章详情','article'=>$article]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 显示文章详情修改页面
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        // 获取指定id的文章数据
+        $article = Articles::find($id);
+        // 查询类别数据根据paths排序返回数据
+        $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
+        return view('admin.article.edit',['title'=>'文章修改','article'=>$article,'cates'=>$cates]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * 获取提交过来的数据,根据id修改数据
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -91,17 +156,54 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 把获取的数据放进数据库
+        $article = new Articles;
+        $cid = $request->input('cid');
+        $title = $request->input('title');
+        $author = $request->input('author');
+        $acontent = $request->input('acontent');
+
+        // 把提交过来的数据放进指定数据表
+        $res = Articles::where('aid','=',$id)->update(['cid'=>$cid,'title'=>$title,'author'=>$author,'acontent'=>$acontent]);
+        if($res){
+            $article = Articles::find($id);
+            return view('admin.article.show',['title'=>'文章详情','article'=>$article])->with('success','修改成功');
+        }else{
+            return back()->with('error','修改失败');
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 根据提交的id删除指定文章
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        // 删除指定的文章
+        $res = Articles::where('aid','=',$id)->delete();
+        if($res){
+            return back()->with('success','删除文章成功');
+        }else{
+            return back()->with('error','删除文章失败');
+        }
     }
+
+    /**
+     * 根据提交的id删除指定评论
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function comment($id)
+    {
+        $res = Comments::where('id','=',$id)->delete();
+        if($res){
+            return back()->with('success','删除评论成功');
+        }else{
+            return back()->with('error','删除评论失败');
+        }
+    }
+
 }

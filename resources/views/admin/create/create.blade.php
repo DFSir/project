@@ -2,6 +2,7 @@
 <!-- 文章类别添加页面 -->
 @section('container')
 <div class="page-container">
+	<h1>{{ $title or '' }}</h1>
 	<form class="form form-horizontal" id="form-article-add" action="/admin/cates" method="post">
 		{{ csrf_field() }}
 		<div class="row cl">

@@ -16,11 +16,16 @@ class CatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->paginate(10);;
-        return view('admin.create.index',['cates'=>$cates]);
+        // 根据条件搜索及获取分页
+        $showCount = $request->input('showCount',5);
+        $search = $request->input('search','');
+        // 把分页和搜索条件存储起来提交回去
+        $req = $request->all();
+        // 根据paths排序返回数据,并且分页每页10条
+        $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->where('cname','like','%'.$search.'%')->paginate($showCount);;
+        return view('admin.create.index',['cates'=>$cates,'req'=>$req,'title'=>'文章类别']);
     }
 
     /**
@@ -33,7 +38,7 @@ class CatesController extends Controller
         // 根据paths排序返回数据
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
         // 跳转到文章类别添加页面
-        return view('admin.create.create',['cates'=>$cates]);
+        return view('admin.create.create',['cates'=>$cates,'title'=>'文章类别添加']);
     }
 
     /**
@@ -44,14 +49,16 @@ class CatesController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        // 获取类别的所有名称
         $cate = Cates::all();
         $cname = $request->input('cname');
+        // 判断提交过来的类别名称是否和已有类别名称重复
         foreach($cate as $k=>$v){
             if($v->cname == $cname){
                 return back()->with('error','添加类别失败,类别名称重复');
             }
         }
+        // 获取父级的路径,顶级为0
         $cpid = $request->input('cpid','');
         if($cpid == 0){
             $cpath = 0;
@@ -93,7 +100,7 @@ class CatesController extends Controller
     {
         // 获取指定id的类别数据
         $cate = Cates::where('cid','=',$id)->first();
-        return view('admin.create.edit',['cate'=>$cate]);
+        return view('admin.create.edit',['cate'=>$cate,'title'=>'文章类别名称修改']);
     }
 
     /**
@@ -105,8 +112,16 @@ class CatesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 获取提交过来的类别名称
         $cname = $request->input('cname');
+        $cate = Cates::all();
+        // 判断提交过来的类别名称是否和已有类别名称重复
+        foreach($cate as $k=>$v){
+            if($v->cname == $cname){
+                return back()->with('error','添加类别失败,类别名称重复');
+            }
+        }
+        // 把提交过来的数据放进指定数据表
         $res = Cates::where('cid','=',$id)->update(['cname'=>$cname]);
         if($res){
             return back()->with('success','修改成功');
@@ -123,13 +138,14 @@ class CatesController extends Controller
      */
     public function destroy($id)
     {
-        // 
+        // 判断指定的类别下是否有子类,有就不能删除
         $cates = Cates::all();
         foreach ($cates as $k => $v) {
             if($v->cpid == $id){
                 return back()->with('error','该类下面有子分类不能删除');
             }
         }
+        // 删除指定的类别
         $res = Cates::where('cid','=',$id)->delete();
         if($res){
             return back()->with('success','删除成功');

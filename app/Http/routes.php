@@ -23,6 +23,17 @@ Route::resource('/admin/huser', 'Admin\UsersController');
 Route::resource('/admin/cates', 'Admin\CatesController');
 // 文章详情的资源管理器
 Route::resource('/admin/articles', 'Admin\ArticlesController');
+// 文章审核页面
+Route::get('/admin/articles/astate/{id}', 'Admin\ArticlesController@astate');
+// 文章确定过审
+Route::get('/admin/articles/audit/{id}', 'Admin\ArticlesController@audit');
+// 文章推荐位上架
+Route::get('/admin/articles/switchup/{id}', 'Admin\ArticlesController@switchup');
+// 文章推荐位上架
+Route::get('/admin/articles/switchdown/{id}', 'Admin\ArticlesController@switchdown');
+// 文章评论删除
+Route::get('/admin/articles/comment/{id}', 'Admin\ArticlesController@comment');
+
 
 
 // 心情随笔(日记)资源控制器

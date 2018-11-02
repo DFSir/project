@@ -3,6 +3,7 @@
 @section('container')
 
 <div class="page-container">
+	<h1>{{ $title or '' }}</h1>
 	<form class="form form-horizontal" id="form-article-add" action="/admin/cates/{{ $cate->cid }}" method="post">
 		{{ csrf_field() }}
 		{{ method_field('PUT') }}

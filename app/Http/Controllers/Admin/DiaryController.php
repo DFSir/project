@@ -19,17 +19,14 @@ class DiaryController extends Controller
     public function index(Request $request)
     {
         //
-        $showCount = $request->input('showCount',3);
+        $showCount = $request->input('showCount',5);
         $search = $request->input('search','');
-        // dump($search);
-        // dd();
+
+        $req = $request->all();
 
         $diary = Diary::where('dtitle','like','%'.$search.'%')->paginate($showCount);
 
-        // $diary = Diary::paginate(3);
-
-
-        return view('admin.diary.index',['diary'=>$diary, 'title'=>'日记浏览','request'=>$request]);
+        return view('admin.diary.index',['diary'=>$diary, 'title'=>'日记浏览','req'=>$req]);
     }
 
     /**
@@ -41,7 +38,7 @@ class DiaryController extends Controller
     {
         //
 
-        return view('admin.diary.create');
+        return view('admin.diary.create',['title'=>'日记添加']);
     }
 
     /**
@@ -85,7 +82,7 @@ class DiaryController extends Controller
     {
         //
         $diary = Diary::where('did',$id)->firstOrFail();
-        return view('admin.diary.edit',['diary'=>$diary,'id'=>$id]);
+        return view('admin.diary.edit',['diary'=>$diary,'id'=>$id,'title'=>'日记修改']);
     }
 
     /**
