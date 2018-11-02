@@ -147,8 +147,20 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a href="#">友情链接列表</a></li>
-						<li><a href="#">添加友情链接</a></li>
+						<li><a data-href="/admin/blogroll" data-title="友情列表" href="/admin/blogroll">友情链接列表</a></li>
+						<li><a data-href="/admin/blogroll/create" data-title="友情链接" href="/admin/blogroll/create">添加友情链接</a></li>
+					</ul>
+				</dd>
+			</dl>
+			<dl id="menu-admin">
+				<dt>
+					<i class="Hui-iconfont">&#xe666;</i> 广告管理
+					<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+				</dt>
+				<dd>
+					<ul>
+						<li><a data-href="/admin/advert" data-title="广告列表" href="/admin/advert">广告列表</a></li>
+						<li><a data-href="/admin/advert/create" data-title="广告链接" href="/admin/advert/create">广告添加</a></li>
 					</ul>
 				</dd>
 			</dl>

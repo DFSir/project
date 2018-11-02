@@ -6,59 +6,52 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UsersStoreRequest;
-use App\Models\User;
-use Hash;
-
-class UsersController extends Controller
+use App\Models\Advert;
+class AdvertsController extends Controller
 {
     /**
-     * 用户列表
+     * 广告列表
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        // dump($request->all());
+        //分页搜索
         $showCount = $request->input('showCount',5);
         $search = $request->input('search','');
         $req = $request->all();
-        $huser = User::where('uname','like','%'.$search.'%')->paginate($showCount);
+        $advert = Advert::where('url','like','%'.$search.'%')->paginate($showCount);
 
-        
-        
         // 加载列表
-        return view('admin.huser.index',['title'=>'用户列表','huser'=>$huser,'req'=>$req]);
+        return view('admin.advert.index',['title'=>'广告列表','advert'=>$advert,'req'=>$req]);
     }
 
     /**
-     * 用户添加
+     * 广告添加
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        // 
-        return view('admin.huser.create',['title'=>'用户添加']);
-
+        //
+        return view('admin.advert.create',['title'=>'广告添加']);
     }
- 
+
     /**
-     * 用户执行添加
+     * 执行添加
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsersStoreRequest $request)
+    public function store(Request $request)
     {
-        // 获取数据
-        $huser = new User;
-        $huser->uname = $request->input('uname');
-        $huser->uaccnum = $request->input('uaccnum');
-        $huser->upasswd = Hash::make($request->input('upasswd'));
-        $res = $huser->save();
-        if ($res) {
-            return redirect('admin/huser')->with('success','添加成功');
+        //
+        // dd( $request->all());
+        $advert = new Advert;
+        $advert->url = $request->input('url');
+        $advert->state = $request->input('state');
+        if($advert -> save()){
+            return redirect('/admin/advert')->with('success','添加成功');
         }else{
             return back()->with('error','添加失败');
         }
@@ -76,7 +69,7 @@ class UsersController extends Controller
     }
 
     /**
-     * 显示用户修改
+     * 修改
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -84,9 +77,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
-        $a = User::where('uid','=',$id)->firstOrFail();
+        $a = Advert::where('id','=',$id)->firstOrFail();
         
-        return view('admin.huser.edit',['a'=>$a,'id'=>$id]);
+        return view('admin.advert.edit',['a'=>$a,'id'=>$id]);
     }
 
     /**
@@ -99,19 +92,19 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
-         // 获取数据
-        $huser = User::where('uid','=',$id)->firstOrFail();
-        $huser->uname = $request->input('uname');
-        $huser->uaccnum = $request->input('uaccnum');
-         if ($huser->save()) {
-            return redirect('admin/huser')->with('success','修改成功');
+        // 获取数据
+        $advert = Advert::where('id','=',$id)->firstOrFail();
+        $advert->url = $request->input('url');
+        $advert->state = $request->input('state');
+         if ($advert->save()) {
+            return redirect('admin/advert')->with('success','修改成功');
         }else{
             return back()->with('error','修改失败');
         }
     }
 
     /**
-     * 删除用户.
+     * 删除广告
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -119,9 +112,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
-        User::destroy($id);
-        return redirect('admin/huser');
-
-       
+        Advert::destroy($id);
+        return redirect('admin/advert');
     }
 }

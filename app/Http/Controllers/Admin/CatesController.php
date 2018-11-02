@@ -18,6 +18,7 @@ class CatesController extends Controller
      */
     public function index(Request $request)
     {
+<<<<<<< HEAD
         // 根据条件搜索及获取分页
         $showCount = $request->input('showCount',5);
         $search = $request->input('search','');
@@ -26,6 +27,11 @@ class CatesController extends Controller
         // 根据paths排序返回数据,并且分页每页10条
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->where('cname','like','%'.$search.'%')->paginate($showCount);;
         return view('admin.create.index',['cates'=>$cates,'req'=>$req,'title'=>'文章类别']);
+=======
+        //
+        $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->paginate(10);;
+        return view('admin.create.index',['title'=>'文章分类列表','cates'=>$cates]);
+>>>>>>> 00fca5512dcb1adc68536e8240f80e1728d37473
     }
 
     /**
@@ -38,7 +44,11 @@ class CatesController extends Controller
         // 根据paths排序返回数据
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
         // 跳转到文章类别添加页面
+<<<<<<< HEAD
         return view('admin.create.create',['cates'=>$cates,'title'=>'文章类别添加']);
+=======
+        return view('admin.create.create',['title'=>'文章分类添加','cates'=>$cates]);
+>>>>>>> 00fca5512dcb1adc68536e8240f80e1728d37473
     }
 
     /**

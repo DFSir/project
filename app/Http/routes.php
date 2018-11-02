@@ -39,3 +39,8 @@ Route::get('/admin/articles/comment/{id}', 'Admin\ArticlesController@comment');
 // 心情随笔(日记)资源控制器
 Route::resource('/admin/diary','Admin\DiaryController');
 
+// 友情链接资源控制器
+Route::resource('/admin/blogroll','Admin\BlogrollsController');
+
+// 广告管理资源控制器
+Route::resource('/admin/advert','Admin\AdvertsController');

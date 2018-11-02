@@ -6,59 +6,56 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UsersStoreRequest;
-use App\Models\User;
-use Hash;
+use App\Models\Blogroll;
 
-class UsersController extends Controller
+class BlogrollsController extends Controller
 {
     /**
-     * 用户列表
+     * 友情链接列表
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        // dump($request->all());
+        //
+
         $showCount = $request->input('showCount',5);
         $search = $request->input('search','');
         $req = $request->all();
-        $huser = User::where('uname','like','%'.$search.'%')->paginate($showCount);
+        $blogroll = Blogroll::where('name','like','%'.$search.'%')->paginate($showCount);
 
-        
-        
         // 加载列表
-        return view('admin.huser.index',['title'=>'用户列表','huser'=>$huser,'req'=>$req]);
+        return view('admin.blogroll.index',['title'=>'友情链接列表','blogroll'=>$blogroll,'req'=>$req]);
+       
     }
 
     /**
-     * 用户添加
+     * 友情链接添加
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        // 
-        return view('admin.huser.create',['title'=>'用户添加']);
-
+        //
+        return view('admin.blogroll.create',['title'=>'友情链接添加']);
     }
- 
+
     /**
-     * 用户执行添加
+     * 友情链接执行添加
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsersStoreRequest $request)
+    public function store(Request $request)
     {
-        // 获取数据
-        $huser = new User;
-        $huser->uname = $request->input('uname');
-        $huser->uaccnum = $request->input('uaccnum');
-        $huser->upasswd = Hash::make($request->input('upasswd'));
-        $res = $huser->save();
-        if ($res) {
-            return redirect('admin/huser')->with('success','添加成功');
+       // 获取数据
+
+       // dd( $request->all());
+        $blogroll = new Blogroll;
+        $blogroll->name = $request->input('name');
+        $blogroll->url = $request->input('url');
+        if($blogroll -> save()){
+            return redirect('/admin/blogroll')->with('success','添加成功');
         }else{
             return back()->with('error','添加失败');
         }
@@ -76,7 +73,7 @@ class UsersController extends Controller
     }
 
     /**
-     * 显示用户修改
+     * 修改友情链接
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -84,9 +81,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
-        $a = User::where('uid','=',$id)->firstOrFail();
+        $a = Blogroll::where('id','=',$id)->firstOrFail();
         
-        return view('admin.huser.edit',['a'=>$a,'id'=>$id]);
+        return view('admin.blogroll.edit',['a'=>$a,'id'=>$id]);
     }
 
     /**
@@ -99,19 +96,20 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
-         // 获取数据
-        $huser = User::where('uid','=',$id)->firstOrFail();
-        $huser->uname = $request->input('uname');
-        $huser->uaccnum = $request->input('uaccnum');
-         if ($huser->save()) {
-            return redirect('admin/huser')->with('success','修改成功');
+
+          // 获取数据
+        $blogroll = Blogroll::where('id','=',$id)->firstOrFail();
+        $blogroll->name = $request->input('name');
+        $blogroll->url = $request->input('url');
+         if ($blogroll->save()) {
+            return redirect('admin/blogroll')->with('success','修改成功');
         }else{
             return back()->with('error','修改失败');
         }
     }
 
     /**
-     * 删除用户.
+     * 删除链接
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -119,9 +117,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
-        User::destroy($id);
-        return redirect('admin/huser');
-
-       
+        Blogroll::destroy($id);
+        return redirect('admin/blogroll');
     }
 }
