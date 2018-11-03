@@ -137,10 +137,9 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        $tags = Tag::all();
         // 获取指定id的文章数据
         $article = Articles::find($id);
-        return view('admin.article.show',['title'=>'文章详情','article'=>$article,'tags'=>$tags]);
+        return view('admin.article.show',['title'=>'文章详情','article'=>$article]);
     }
 
     /**
@@ -178,13 +177,14 @@ class ArticlesController extends Controller
         // 把提交过来的数据放进指定数据表
         $res = Articles::where('aid','=',$id)->update(['cid'=>$cid,'title'=>$title,'author'=>$author,'acontent'=>$acontent]);
         if($res){
-             //处理标签
-            try{
+            $article = Articles::find($id);
+
+             try{
                 $res = $article->tags()->sync($request->tag_id);
             }catch(\Exception $e){
-                return back()->with('error','修改文章失败');
+                return back()->with('error','添加文章失败');
             }
-            $article = Articles::find($id);
+
             return view('admin.article.show',['title'=>'文章详情','article'=>$article])->with('success','修改成功');
         }else{
             return back()->with('error','修改失败');

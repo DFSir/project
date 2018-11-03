@@ -43,7 +43,12 @@
 			<label class="form-label col-xs-4 col-sm-2">文章标签：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				@foreach($tags as $k => $v)
-				<label style="font-size: 14px;font-weight: normal;margin-right: 10px;"><input type="checkbox" name="tag_id[]" value="{{$v->id}}">{{$v->name}}</label>
+				<label style="font-size: 14px;font-weight: normal;margin-right: 10px;">
+					<input type="checkbox" name="tag_id[]" value="{{$v->id}}"
+					@if(in_array($v->id, $article->tags()->lists('id')->toArray()))
+					checked 
+					@endif
+					>{{$v->name}}</label>
 				@endforeach
 			</div>
 		</div>

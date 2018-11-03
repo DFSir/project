@@ -26,7 +26,7 @@
 			<tr>
 				<td>文章标签</td>
 				<td>
-					@foreach($tags as $k => $v)
+					@foreach($article->tags as $k => $v)
 					<label style="font-size: 14px;font-weight: normal;margin-right: 10px;">{{$v->name}}</label>
 					@endforeach
 				</td>
