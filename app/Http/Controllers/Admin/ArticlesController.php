@@ -71,7 +71,7 @@ class ArticlesController extends Controller
             try{
                 $res = $article->tags()->sync($request->tag_id);
             }catch(\Exception $e){
-                return back()->with('error','添加文章失败11');
+                return back()->with('error','添加文章失败');
             }
 
             return back()->with('success','添加文章成功');
