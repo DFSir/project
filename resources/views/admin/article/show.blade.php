@@ -24,6 +24,14 @@
 				<td>{{ $article->catesinfo->cname}}</td>
 			</tr>
 			<tr>
+				<td>文章标签</td>
+				<td>
+					@foreach($tags as $k => $v)
+					<label style="font-size: 14px;font-weight: normal;margin-right: 10px;">{{$v->name}}</label>
+					@endforeach
+				</td>
+			</tr>
+			<tr>
 				<td>发布人</td>
 				@if ($article->uid == 0)
 				<td>管理员</td>
@@ -44,7 +52,7 @@
 				<td>{{ $article->like }}次</td>
 			</tr>
 			<tr>
-				<td>点赞次数</td>
+				<td>用户评论</td>
 				<td>
 					<table>
 						<thead>

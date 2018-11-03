@@ -24,6 +24,14 @@
 				<td>{{ $article->catesinfo->cname}}</td>
 			</tr>
 			<tr>
+				<td>文章标签</td>
+				<td>
+					@foreach($tags as $k => $v)
+					<label style="font-size: 14px;font-weight: normal;margin-right: 10px;"><input type="checkbox" name="tag_id[]" value="{{$v->id}}">{{$v->name}}</label>
+					@endforeach
+				</td>
+			</tr>
+			<tr>
 				<td>发布人</td>
 				@if ($article->uid == 0)
 				<td>管理员</td>
