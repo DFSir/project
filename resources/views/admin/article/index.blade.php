@@ -27,7 +27,7 @@
 					<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont"></i> 搜文章</button>
 				</div>
 			</form>
-
+			<a href="/admin/articles/create" style="margin-left: 20px;"><button class="btn btn-success radius">添加文章</button></a>
 
 			<table class="table table-border table-bordered table-hover table-bg table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
 				<thead>

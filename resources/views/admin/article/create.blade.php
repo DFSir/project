@@ -4,6 +4,7 @@
 
 <article class="page-container" style="">
 	<h1>{{ $title or '' }}</h1>
+	<a href="/admin/articles" style="margin-left: 20px;"><button class="btn btn-success radius" style="width: 120px;">文章列表</button></a>
 	<form class="form form-horizontal" id="form-article-add" novalidate="novalidate" action="/admin/articles" method="post">
 		{{ csrf_field() }}
 		<div class="row cl">

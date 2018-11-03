@@ -37,5 +37,11 @@
 			</div>
 		</div>
 	</form>
+	<br>
+	<div class="row cl">
+		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+			<a href="/admin/cates"><button class="btn btn-secondary radius" type="button" >类别列表</button></a>
+		</div>
+	</div>
 </div>
 @endsection

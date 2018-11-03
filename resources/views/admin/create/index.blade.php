@@ -14,6 +14,7 @@
 					<option value="30" @if((isset($req['showCount']) && !empty($req['showCount'])) && $req['showCount'] == 30) selected @endif >30</option>
 					</select> 条</label>
 				<input type="submit" class="btn btn-success radius" value="分页">
+
 			</div>
 			<div class="text-c" style="float:right;">
 				<input type="text" class="input-text" style="width:250px" placeholder="关键字" id="" name="search" value="{{ $req['search'] or '' }}">
@@ -21,6 +22,7 @@
 			</div>
 		</div>
 	</form>	
+	<a href="/admin/cates/create" style="margin-left: 20px;"><button class="btn btn-success radius">添加类别</button></a>
 	<div id="DataTables_Table_0_filter" class="dataTables_filter"></div>
 	<table class="table table-border table-bordered table-hover table-bg">
 		<thead>

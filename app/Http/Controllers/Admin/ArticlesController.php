@@ -71,7 +71,7 @@ class ArticlesController extends Controller
             try{
                 $res = $article->tags()->sync($request->tag_id);
             }catch(\Exception $e){
-                return back()->with('error','添加文章失败11');
+                return back()->with('error','添加文章失败');
             }
 
             return back()->with('success','添加文章成功');
@@ -88,8 +88,9 @@ class ArticlesController extends Controller
      */
     public function astate($id)
     {
+        $tags = Tag::all();
         $article = Articles::find($id);
-        return view('admin.article.astate',['title'=>'文章审核','article'=>$article]);
+        return view('admin.article.astate',['title'=>'文章审核','article'=>$article,'tags'=>$tags]);
     }
 
     /**
@@ -136,9 +137,10 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
+        $tags = Tag::all();
         // 获取指定id的文章数据
         $article = Articles::find($id);
-        return view('admin.article.show',['title'=>'文章详情','article'=>$article]);
+        return view('admin.article.show',['title'=>'文章详情','article'=>$article,'tags'=>$tags]);
     }
 
     /**
@@ -149,11 +151,12 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
+        $tags = Tag::all();
         // 获取指定id的文章数据
         $article = Articles::find($id);
         // 查询类别数据根据paths排序返回数据
         $cates = Cates::select('*',DB::raw("concat(cpath,',',cid) as paths"))->orderBy('paths','asc')->get();
-        return view('admin.article.edit',['title'=>'文章修改','article'=>$article,'cates'=>$cates]);
+        return view('admin.article.edit',['title'=>'文章修改','article'=>$article,'cates'=>$cates,'tags'=>$tags]);
     }
 
     /**
@@ -175,6 +178,12 @@ class ArticlesController extends Controller
         // 把提交过来的数据放进指定数据表
         $res = Articles::where('aid','=',$id)->update(['cid'=>$cid,'title'=>$title,'author'=>$author,'acontent'=>$acontent]);
         if($res){
+             //处理标签
+            try{
+                $res = $article->tags()->sync($request->tag_id);
+            }catch(\Exception $e){
+                return back()->with('error','修改文章失败');
+            }
             $article = Articles::find($id);
             return view('admin.article.show',['title'=>'文章详情','article'=>$article])->with('success','修改成功');
         }else{

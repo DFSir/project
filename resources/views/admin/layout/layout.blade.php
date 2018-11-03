@@ -178,17 +178,7 @@
 					</ul>
 				</dd>
 			</dl>
-			<dl id="menu-admin">
-				<dt>
-					<i class="Hui-iconfont">&#xe622;</i> 评论管理
-					<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
-				</dt>
-				<dd>
-					<ul>
-						<li><a href="#">文章评论列表</a></li>
-					</ul>
-				</dd>
-			</dl>
+
 			<dl id="menu-admin">
 				<dt>
 					<i class="Hui-iconfont">&#xe63b;</i> 
