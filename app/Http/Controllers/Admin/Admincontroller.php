@@ -57,6 +57,8 @@ class Admincontroller extends Controller
             $dir_name = './uploads/'.date('Ymd',time());
             $res = $portrait -> move($dir_name,$file_name);
             $portrait_path = ltrim($dir_name.'/'.$file_name,'.');
+        }else{
+            $portrait_path = '/uploads/20181105/Tx2xIC7znYWXIL3KqZQY1541389322.jpg';
         }
 
         $auser = new Auser;
@@ -114,6 +116,9 @@ class Admincontroller extends Controller
             $dir_name = './uploads/'.date('Ymd',time());
             $res = $portrait -> move($dir_name,$file_name);
             $portrait_path = ltrim($dir_name.'/'.$file_name,'.');
+        }else {
+           $a = Auser::find($id);
+           $portrait_path = $a->portrait;
         }
 
         $auser = Auser::findOrFail($id);
