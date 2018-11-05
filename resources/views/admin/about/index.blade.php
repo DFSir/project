@@ -14,28 +14,28 @@
 			<tr>
 				<td width="15%" style="text-align: center; font-size: 20px;">头像</td>
 				<td style="text-align: center; font-size: 20px;">
-					<img src="{{ $about->portrait }}" alt="" style="width: 200px;height: 200px;">
+					<img src="{{ $about->portrait or '/uploads/20181105/Tx2xIC7znYWXIL3KqZQY1541389322.jpg' }}" alt="" style="width: 200px;height: 200px;">
 				</td>
 			</tr>
 			<tr>
 				<td style="text-align: center; font-size: 20px;">姓名</td>
-				<td style="text-align: center; font-size: 20px;">{{ $about->name }}</td>
+				<td style="text-align: center; font-size: 20px;">{{ $about->name or '' }}</td>
 			</tr>
 			<tr>
 				<td style="text-align: center; font-size: 20px;">职业</td>
-				<td style="text-align: center; font-size: 20px;">{{ $about->profession }}</td>
+				<td style="text-align: center; font-size: 20px;">{{ $about->profession or '' }}</td>
 			</tr>
 			<tr>
 				<td style="text-align: center; font-size: 20px;">QQ</td>
-				<td style="text-align: center; font-size: 20px;">{{ $about->qq }}</td>
+				<td style="text-align: center; font-size: 20px;">{{ $about->qq or '' }}</td>
 			</tr>
 			<tr>
 				<td style="text-align: center; font-size: 20px;">邮箱</td>
-				<td style="text-align: center; font-size: 20px;">{{ $about->email }}</td>
+				<td style="text-align: center; font-size: 20px;">{{ $about->email or '' }}</td>
 			</tr>
 			<tr>
 				<td style="text-align: center; font-size: 20px;">关于我</td>
-				<td style="font-size: 20px;">{!! $about->aboutme !!}</td>
+				<td style="font-size: 20px;">{!! $about->aboutme or '' !!}</td>
 			</tr>
 			
 			<tr>

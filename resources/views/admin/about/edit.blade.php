@@ -18,37 +18,38 @@
 					<td width="15%" style="text-align: center; font-size: 20px;">头像</td>
 					<td style="text-align: center; font-size: 20px;">
 						<input type="file" name="portrait">
+						<img src="{{ $about->portrait }}" alt="">
 					</td>
 				</tr>
 				<tr>
 					<td style="text-align: center; font-size: 20px;">姓名</td>
 					<td style="text-align: center; font-size: 20px;">
-						<input class="input-text" type="text" name="name" value="{{ $about->name }}">
+						<input class="input-text" type="text" name="name" value="{{ $about->name or '暂无' }}">
 					</td>
 				</tr>
 				<tr>
 					<td style="text-align: center; font-size: 20px;">职业</td>
 					<td style="text-align: center; font-size: 20px;">
-						<input class="input-text" type="text" name="profession" value="{{ $about->profession }}">
+						<input class="input-text" type="text" name="profession" value="{{ $about->profession or '暂无' }}">
 					</td>
 				</tr>
 				<tr>
 					<td style="text-align: center; font-size: 20px;">QQ</td>
 					<td style="text-align: center; font-size: 20px;">
-						<input class="input-text" type="text" name="qq" value="{{ $about->qq }}">
+						<input class="input-text" type="text" name="qq" value="{{ $about->qq or '暂无' }}">
 					</td>
 				</tr>
 				<tr>
 					<td style="text-align: center; font-size: 20px;">邮箱</td>
 					<td style="text-align: center; font-size: 20px;">
-						<input class="input-text" type="text" name="email" value="{{ $about->email }}">
+						<input class="input-text" type="text" name="email" value="{{ $about->email or '暂无' }}">
 					</td>
 				</tr>
 				<tr>
 					<td style="text-align: center; font-size: 20px;">关于我</td>
 					<td style="font-size: 20px;">
 						<script id="container" name="aboutme" type="text/plain" style="width: 100%;height: 400px;">
-					        {{ $about->aboutme }}
+					        {!! $about->aboutme or '暂无' !!}
 					    </script>
 					</td>
 				</tr>
