@@ -45,13 +45,23 @@ class AdvertsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // dd( $request->all());
         $advert = new Advert;
+        // 上传图片
+
+        // 获取数据
+        // $advert = new Advert;
+        $advert->name = $request->input('name');
         $advert->url = $request->input('url');
+        // $advert->apic = $request->input('apic');
+        // dd($advert);
         $advert->state = $request->input('state');
+
+        if ($request->hasFile('apic')) {
+            $advert->apic = '/'.$request->apic->store('uploads/'.date('Ymd'));
+        }
         if($advert -> save()){
             return redirect('/admin/advert')->with('success','添加成功');
+
         }else{
             return back()->with('error','添加失败');
         }
