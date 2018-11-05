@@ -76,6 +76,7 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         //处理表单提交信息
         if($request -> hasFile('portrait')){
             $portrait = $request -> file('portrait');
@@ -84,6 +85,8 @@ class AboutController extends Controller
             $dir_name = './uploads/'.date('Ymd',time());
             $res = $portrait -> move($dir_name,$file_name);
             $portrait_path = ltrim($dir_name.'/'.$file_name,'.');
+        }else{
+            $portrait_path = '/uploads/20181105/Tx2xIC7znYWXIL3KqZQY1541389322.jpg';
         }
 
         // 获取表单提交来的数据
@@ -91,13 +94,13 @@ class AboutController extends Controller
         $profession = $request->input('profession');
         $qq = $request->input('qq');
         $email = $request->input('email');
-        $about = $request->input('aboutme');
-
-        $res = About::where('id','=',$id)->update(['name'=>$name,'portrait'=>$portrait_path,'profession'=>$profession,'qq'=>$qq,'email'=>$email,'aboutme'=>$about]);
+        $aboutme = $request->input('aboutme');
+        
+        $res = About::where('id','=',$id)->update(['name'=>$name,'portrait'=>$portrait_path,'profession'=>$profession,'qq'=>$qq,'email'=>$email,'aboutme'=>$aboutme]);
         if ($res) {
-            return redirect('admin/about')->with('success','添加成功');
+            return redirect('admin/about')->with('success','修改成功');
         }else{
-            return back()->with('error','添加失败');
+            return back()->with('error','修改失败');
         }
 
 

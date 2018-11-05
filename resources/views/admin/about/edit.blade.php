@@ -4,6 +4,9 @@
 
 <div class="page-container">
 	<h1>{{ $title or '' }}</h1>
+	<form action="/admin/about/{{ $about->id }}" method="post" enctype="multipart/form-data">
+	{{ csrf_field() }}
+	{{ method_field('PUT') }}
 	<table class="table table-border table-bordered table-bg mt-20">
 		<thead>
 			<tr>
@@ -11,9 +14,6 @@
 			</tr>
 		</thead>
 		<tbody>
-			<form action="/admin/about/{{ $about->id }}" method="post" enctype="multipart/form-data">
-				{{ csrf_field() }}
-				{{ method_field('PUT') }}
 				<tr>
 					<td width="15%" style="text-align: center; font-size: 20px;">头像</td>
 					<td style="text-align: center; font-size: 20px;">
@@ -46,10 +46,9 @@
 				</tr>
 				<tr>
 					<td style="text-align: center; font-size: 20px;">关于我</td>
-					<td style="text-align: center; font-size: 20px;">
-						<!-- 加载编辑器的容器 -->
-					    <script id="container" name="aboutme" type="text/plain" class="formControls col-xs-8 col-sm-9" style="height: 380px;">
-							{!! $about->aboutme !!}
+					<td style="font-size: 20px;">
+						<script id="container" name="aboutme" type="text/plain" style="width: 100%;height: 400px;">
+					        {{ $about->aboutme }}
 					    </script>
 					</td>
 				</tr>
@@ -57,13 +56,12 @@
 				<tr>
 					<td></td>
 					<td>
-						<button class="btn btn-success radius" type="submit">修改</button>
+						<button class="btn btn-success radius" type="submit">确定修改</button>
 					</td>
 				</tr>
-
-			</form>
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+	</form>	
 </div>
 
 <!-- 配置文件 -->
