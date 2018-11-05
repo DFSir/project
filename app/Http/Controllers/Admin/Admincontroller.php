@@ -143,5 +143,7 @@ class Admincontroller extends Controller
     public function destroy($id)
     {
         //
+        Auser::destroy($id);
+        return redirect('admin/auser');
     }
 }
