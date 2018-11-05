@@ -43,6 +43,9 @@ Route::resource('/admin/tag','Admin\TagController');
 Route::resource('/admin/about','Admin\AboutController');
 
 
+//后台管理员资源控制器
+Route::resource('/admin/auser','Admin\AdminController' );
+
 
 
 
@@ -51,4 +54,8 @@ Route::resource('/admin/about','Admin\AboutController');
 Route::get('/', function () {
     return view('/home/layout/layout');
 });
+
+
+
+
 
