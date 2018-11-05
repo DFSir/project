@@ -19,24 +19,18 @@
 
 	<article class="page-container">
 		<h1>{{ $title or '' }}</h1>
-		<form action="/admin/auser" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate" enctype="multipart/form-data">
+		<form action="/admin/auser/{{$id}}" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate" enctype="multipart/form-data">
 			{{ csrf_field() }}
+			{{ method_field('PUT') }}
+
 			
 				<div class="row cl">
 					<label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>管理员账号：</label>
 					<div class="formControls col-xs-4 col-sm-4">
-						<input type="text" class="input-text" value="" placeholder="请输入4-12位数字字母下划线组合,字母开头" id="name" name="name" value="{{ old('name') }}">
+						<input type="text" class="input-text" value="{{ $a->name }}" id="name" name="name">
 					</div>
 					<div class="col-xs-4 col-ms-4 spanll">
 						
-					</div>
-				</div>
-				<div class="row cl">
-					<label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>密码：</label>
-					<div class="formControls col-xs-4 col-sm-4">
-						<input type="password" class="input-text" value="" placeholder="请输入6-8位密码" id="passwd" name="passwd">
-					</div>
-					<div class="col-xs-4 col-ms-4 spanll">
 					</div>
 				</div>
 				
@@ -51,7 +45,7 @@
 				
 				<div class="row cl">
 					<div class="col-xs-4 col-sm-2  col-sm-offset-1">
-						<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;添加&nbsp;&nbsp;">
+						<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
 					</div>
 				</div>
 			

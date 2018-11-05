@@ -8,13 +8,13 @@
     <span class="l">
       <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">
         <i class="Hui-iconfont"></i>批量删除</a>
-      <a href="/admin/huser/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+      <a href="/admin/auser/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
         <i class="Hui-iconfont"></i>添加用户</a></span>
   </div>
   <div class="mt-20">
     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
 
-      <form action="/admin/huser" method="get">
+      <form action="/admin/auser" method="get">
 
         <div class="dataTables_length" id="DataTables_Table_0_length">
           <label>显示
