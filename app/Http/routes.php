@@ -11,14 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+// 登录后台
+Route::get('/admin/layout', function () {
     return view('/admin/layout/layout');
 });
-
-
 // 前台用户管理
 Route::resource('/admin/huser', 'Admin\UsersController');
-
 // 文章类别的资源管理器
 Route::resource('/admin/cates', 'Admin\CatesController');
 // 文章详情的资源管理器
@@ -33,16 +31,24 @@ Route::get('/admin/articles/switchup/{id}', 'Admin\ArticlesController@switchup')
 Route::get('/admin/articles/switchdown/{id}', 'Admin\ArticlesController@switchdown');
 // 文章评论删除
 Route::get('/admin/articles/comment/{id}', 'Admin\ArticlesController@comment');
-
-
 // 心情随笔(日记)资源控制器
 Route::resource('/admin/diary','Admin\DiaryController');
-
 // 友情链接资源控制器
 Route::resource('/admin/blogroll','Admin\BlogrollsController');
-
 // 广告管理资源控制器
 Route::resource('/admin/advert','Admin\AdvertsController');
-
 // 标签资源控制器
 Route::resource('/admin/tag','Admin\TagController');
+// 关于我资源控制器
+Route::resource('/admin/about','Admin\AboutController');
+
+
+
+
+
+
+// 前台首页
+Route::get('/', function () {
+    return view('/home/layout/layout');
+});
+

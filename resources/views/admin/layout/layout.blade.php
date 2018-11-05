@@ -182,7 +182,14 @@
 			<dl id="menu-admin">
 				<dt>
 					<i class="Hui-iconfont">&#xe63b;</i> 
-					<a data-title="收信箱" href="#">收信箱</a>
+					<a data-title="收信箱" href="#" style="text-decoration:none;">收信箱</a>
+				</dt>
+			</dl>
+
+			<dl id="menu-admin">
+				<dt>
+					<i class="Hui-iconfont">&#xe633;</i> 
+					<a data-href="/admin/about" data-title="关于我" href="/admin/about" style="text-decoration:none;">关于我</a>
 				</dt>
 			</dl>
 			<dl id="menu-admin">
