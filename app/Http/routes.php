@@ -51,9 +51,7 @@ Route::resource('/admin/auser','Admin\AdminController' );
 
 
 // 前台首页
-Route::get('/', function () {
-    return view('/home/layout/layout');
-});
+Route::get('/','Home\HomeController@index');
 
 
 

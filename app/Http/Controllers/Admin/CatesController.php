@@ -19,7 +19,7 @@ class CatesController extends Controller
     public function index(Request $request)
     {
         // 根据条件搜索及获取分页
-        $showCount = $request->input('showCount',5);
+        $showCount = $request->input('showCount',10);
         $search = $request->input('search','');
         // 把分页和搜索条件存储起来提交回去
         $req = $request->all();

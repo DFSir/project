@@ -25,33 +25,19 @@
                 <h1 class="logo"><a href="">杨青博客</a></h1>
                 <li><a href="">网站首页</a> </li>
                 <li><a href="">关于我</a> </li>
-                <li><a href="">模板分享</a>
+                @foreach ($cates as $k=>$v)
+                <li>@if ($v->cpid == 0)<a href="#">{{ $v->cname }}</a>@endif
                     <ul class="sub-nav">
-                        <li><a href="">个人博客模板</a></li>
-                        <li><a href="">国外Html5模板</a></li>
-                        <li><a href="">企业网站模板</a></li>
+                        @foreach ($cates as $ke=>$ve)
+                        @if ($v->cid == $ve->cpid)
+                        <li><a href="/home/list/{{ $ve->cid }}">{{ $ve->cname }}</a></li>
+                        @endif
+                        @endforeach
                     </ul>
                 </li>
-                <li><a href="">学无止境</a>
-                    <ul class="sub-nav">
-                        <li><a href="">心得笔记</a></li>
-                        <li><a href="">CSS3|Html5</a></li>
-                        <li><a href="">网站建设</a></li>
-                        <li><a href="">推荐工具</a></li>
-                        <li><a href="">JS实例索引</a></li>
-                    </ul>
-                </li>
-                <li><a href="">慢生活</a>
-                    <ul class="sub-nav">
-                        <li><a href="">日记</a></li>
-                        <li><a href="">欣赏</a></li>
-                        <li><a href="">程序人生</a></li>
-                        <li><a href="">经典语录</a></li>
-                    </ul>
-                </li>
+                @endforeach
                 <li><a href="">时间轴</a> </li>
                 <li><a href="">留言</a> </li>
-                <li><a href="">内容页</a> </li>
                 <!--search begin-->
                 <div id="search_bar" class="search_bar">
                     <form  id="searchform" action="" method="post" name="">
@@ -106,7 +92,7 @@
         </div>
         <!--mnav end--> 
     </header>
-    <article> 
+    <article>
       <!--banner begin-->
         <div class="picsbox"> 
             <div class="banner">
@@ -137,25 +123,29 @@
 
         <!--blogsbox begin-->
         <div class="blogsbox">
+            @foreach ($articles as $k=>$v)
             <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-                <h3 class="blogtitle"><a href="" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+                <h3 class="blogtitle"><a href="" target="_blank">{{ $v->title }}</a></h3>
                 <span class="blogpic"><a href="" title=""><img src="/home/images/toppic01.jpg" alt=""></a></span>
-                <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+                <div style="width: 460px;height: 110px;margin-left: 240px;overflow: hidden;">{!! $v->acontent !!}</div>
                 <div class="bloginfo">
                     <ul>
-                        <li class="author"><a href="/home//">杨青</a></li>
-                        <li class="lmname"><a href="/home//">学无止境</a></li>
-                        <li class="timer">2018-5-13</li>
+                        <li class="author"><a href="">{{ $v->author }}</a></li>
+                        <li class="lmname"><a href="">{{ $v->catesinfo->cname }}</a></li>
+                        <li class="timer">{{ $v->updated_at }}</li>
                         <li class="view"><span>34567</span>已阅读</li>
-                        <li class="like">9999</li>
+                        <li class="like">{{ $v->like }}</li>
                     </ul>
                 </div>
             </div>
+            @endforeach
         </div>
         <!--blogsbox end-->
 
 
         <div class="sidebar">
+
+            
             <div class="zhuanti">
                 <h2 class="hometitle">特别推荐</h2>
                 <ul>
@@ -170,6 +160,8 @@
                     </li>
                 </ul>
             </div>
+
+
             <div class="tuijian">
                 <h2 class="hometitle">推荐文章</h2>
                 <ul class="tjpic">

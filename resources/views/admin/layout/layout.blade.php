@@ -37,7 +37,7 @@
 <body>
 	<header class="navbar-wrapper">
 		<div class="navbar navbar-fixed-top">
-			<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/admin//aboutHui.shtml">H-ui.admin</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/admin//aboutHui.shtml">H-ui</a> 
+			<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/admin/layout">H-ui.admin</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/admin//aboutHui.shtml">H-ui</a> 
 				<span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.1</span> 
 				<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="/admin/javascript:;">&#xe667;</a>
 				
