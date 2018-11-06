@@ -12,7 +12,7 @@
 */
 
 // 登录后台
-Route::get('/admin/layout', function () {
+Route::get('/admins', function () {
     return view('/admin/layout/layout');
 });
 // 前台用户管理
@@ -41,6 +41,8 @@ Route::resource('/admin/advert','Admin\AdvertsController');
 Route::resource('/admin/tag','Admin\TagController');
 // 关于我资源控制器
 Route::resource('/admin/about','Admin\AboutController');
+// 轮播图资源控制器
+Route::resource('/admin/slide','Admin\SlideController');
 
 
 //后台管理员资源控制器

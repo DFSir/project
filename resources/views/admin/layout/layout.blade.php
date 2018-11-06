@@ -181,6 +181,18 @@
 
 			<dl id="menu-admin">
 				<dt>
+					<i class="Hui-iconfont">&#xe667;</i> 轮播图管理
+					<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+				</dt>
+				<dd>
+					<ul>
+						<li><a data-href="/admin/slide" data-title="轮播图列表" href="/admin/slide">轮播图列表</a></li>
+					</ul>
+				</dd>
+			</dl>
+
+			<dl id="menu-admin">
+				<dt>
 					<i class="Hui-iconfont">&#xe63b;</i> 
 					<a data-title="收信箱" href="#" style="text-decoration:none;">收信箱</a>
 				</dt>

@@ -168,7 +168,6 @@ class ArticlesController extends Controller
     public function update(Request $request, $id)
     {
         // 把获取的数据放进数据库
-        $article = new Articles;
         $cid = $request->input('cid');
         $title = $request->input('title');
         $author = $request->input('author');

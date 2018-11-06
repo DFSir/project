@@ -19,7 +19,7 @@
 </head>
 <body>
     <header> 
-      <!--menu begin-->
+        <!--menu begin-->
         <div class="menu">
             <nav class="nav" id="topnav">
                 <h1 class="logo"><a href="">杨青博客</a></h1>
@@ -53,53 +53,21 @@
             </nav>
         </div>
         <!--menu end--> 
-        <!--mnav begin-->
-        <div id="mnav">
-            <h2><a href="" class="mlogo">杨青博客</a><span class="navicon"></span></h2>
-            <dl class="list_dl">
-                <dt class="list_dt"> <a href="">网站首页</a> </dt>
-                <dt class="list_dt"> <a href="">关于我</a> </dt>
-                <dt class="list_dt"> <a href="">模板分享</a> </dt>
-                <dd class="list_dd">
-                    <ul>
-                        <li><a href="">个人博客模板</a></li>
-                        <li><a href="">国外Html5模板</a></li>
-                        <li><a href="">企业网站模板</a></li>
-                    </ul>
-                </dd>
-                <dt class="list_dt"> <a href="/home/#">学无止境</a> </dt>
-                <dd class="list_dd">
-                    <ul>
-                        <li><a href="">心得笔记</a></li>
-                        <li><a href="">CSS3|Html5</a></li>
-                        <li><a href="">网站建设</a></li>
-                        <li><a href="">推荐工具</a></li>
-                        <li><a href="">JS实例索引</a></li>
-                    </ul>
-                </dd>
-                <dt class="list_dt"> <a href="/home/#">慢生活</a> </dt>
-                <dd class="list_dd">
-                    <ul>
-                        <li><a href="">日记</a></li>
-                        <li><a href="">欣赏</a></li>
-                        <li><a href="">程序人生</a></li>
-                        <li><a href="">经典语录</a></li>
-                    </ul>
-                </dd>
-                <dt class="list_dt"> <a href="">时间轴</a> </dt>
-                <dt class="list_dt"> <a href="">留言</a> </dt>
-            </dl>
-        </div>
-        <!--mnav end--> 
+        
     </header>
     <article>
       <!--banner begin-->
         <div class="picsbox"> 
             <div class="banner">
                 <div id="banner" class="fader">
-                    <li class="slide" ><a href="" target="_blank"><img src="/home/images/banner01.jpg"><span class="imginfo">别让这些闹心的套路，毁了你的网页设计!</span></a></li>
-                    <li class="slide" ><a href="" target="_blank"><img src="/home/images/banner02.jpg"><span class="imginfo">网页中图片属性固定宽度，如何用js改变大小</span></a></li>
-                    <li class="slide" ><a href="" target="_blank"><img src="/home/images/banner03.jpg"><span class="imginfo">个人博客，属于我的小世界！</span></a></li>
+                    @foreach ($slides as $k=>$v)
+                    <li class="slide" >
+                        <a href="#" target="_blank">
+                            <img src="{{ $v->slide }}">
+                            <span class="imginfo">{{ $v->describe }}</span>
+                        </a>
+                    </li>
+                    @endforeach
                     <div class="fader_controls">
                         <div class="page prev" data-target="prev">&lsaquo;</div>
                         <div class="page next" data-target="next">&rsaquo;</div>
@@ -145,87 +113,70 @@
 
         <div class="sidebar">
 
-            
-            <div class="zhuanti">
-                <h2 class="hometitle">特别推荐</h2>
-                <ul>
-                    <li> <i><img src="/home/images/banner03.jpg"></i>
-                        <p>帝国cms调用方法 <span><a href="/home//">阅读</a></span> </p>
-                    </li>
-                    <li> <i><img src="/home/images/b04.jpg"></i>
-                        <p>5.20 我想对你说 <span><a href="/home//">阅读</a></span></p>
-                    </li>
-                    <li> <i><img src="/home/images/b05.jpg"></i>
-                        <p>个人博客，属于我的小世界！ <span><a href="/home//">阅读</a></span></p>
-                    </li>
-                </ul>
-            </div>
-
-
             <div class="tuijian">
                 <h2 class="hometitle">推荐文章</h2>
                 <ul class="tjpic">
                     <i><img src="/home/images/toppic01.jpg"></i>
-                    <p><a href="">别让这些闹心的套路，毁了你的网页设计</a></p>
+                    <p><a href="/">{{ $recommend[0]->title }}</a></p>
                 </ul>
                 <ul class="sidenews">
+                    @foreach ($recommend as $k=>$v)
+                    @if ($k > 0)
                     <li> <i><img src="/home/images/toppic01.jpg"></i>
-                        <p><a href="">别让这些闹心的套路，毁了你的网页设计</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="/home/images/toppic02.jpg"></i>
-                        <p><a href="">给我模板PSD源文件，我给你设计HTML！</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="/home/images/v1.jpg"></i>
-                        <p><a href="">别让这些闹心的套路，毁了你的网页设计</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="/home/images/v2.jpg"></i>
-                        <p><a href="">给我模板PSD源文件，我给你设计HTML！</a></p>
-                        <span>2018-05-13</span> </li>
+                        <p><a href="">{{ $v->title }}</a></p>
+                        <span>{{ $v->updated_at }}</span> </li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
+
+
             <div class="tuijian">
-                <h2 class="hometitle">点击排行</h2>
+                <h2 class="hometitle">点赞排行</h2>
                 <ul class="tjpic">
                     <i><img src="/home/images/toppic01.jpg"></i>
-                    <p><a href="">别让这些闹心的套路，毁了你的网页设计</a></p>
+                    <p><a href="/">{{ $like[0]->title }}</a></p>
                 </ul>
                 <ul class="sidenews">
-                    <li> <i><img src="/home/images/toppic01.jpg"></i>
-                        <p><a href="">别让这些闹心的套路</a></p>
-                        <span>2018-05-13</span> </li>
+                    @foreach ($like as $k=>$v)
+                    @if ($k > 0)
                     <li> <i><img src="/home/images/toppic02.jpg"></i>
-                        <p><a href="">给我模板PSD源文件，我给你设计HTML！</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="/home/images/v1.jpg"></i>
-                        <p><a href="">别让这些闹心的套路，毁了你的网页设计</a></p>
-                        <span>2018-05-13</span> </li>
-                    <li> <i><img src="/home/images/v2.jpg"></i>
-                        <p><a href="">给我模板PSD源文件，我给你设计HTML！</a></p>
-                        <span>2018-05-13</span> </li>
+                        <p><a href="">{{ $v->title }}</a></p>
+                        <span>{{ $v->updated_at }}</span> </li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
+
+
             <div class="cloud">
                 <h2 class="hometitle">标签云</h2>
                 <ul>
-                    <a href="">陌上花开</a> <a href="">校园生活</a> <a href="">html5</a> <a href="">SumSung</a> <a href="">青春</a> <a href="">温暖</a> <a href="">阳光</a> <a href="">三星</a><a href="">索尼</a> <a href="">华维荣耀</a> <a href="">三星</a> <a href="">索尼</a>
+                    @foreach ($tag as $k=>$v)
+                    <a href="">{{ $v->name }}</a> 
+                    @endforeach
                 </ul>
             </div>
+
+
             <div class="links">
                 <h2 class="hometitle">友情链接</h2>
                 <ul>
-                    <li><a href="" target="_blank">杨青博客</a></li>
-                    <li><a href="" target="_blank">D设计师博客</a></li>
-                    <li><a href="" target="_blank">优秀个人博客</a></li>
+                    @foreach ($blog as $k=>$v)
+                    <li><a href="https://{{ $v->url }}" target="_blank">{{ $v->name }}</a></li>
+                    @endforeach
                 </ul>
             </div>
+
+
             <div class="guanzhu" id="follow-us">
                 <h2 class="hometitle">关注我们 么么哒！</h2>
                 <ul>
-                    <li class="sina"><a href="/home//" target="_blank"><span>新浪微博</span>杨青博客</a></li>
-                    <li class="tencent"><a href="/home//" target="_blank"><span>腾讯微博</span>杨青博客</a></li>
-                    <li class="qq"><a href="/home//" target="_blank"><span>QQ号</span>476847113</a></li>
-                    <li class="email"><a href="/home//" target="_blank"><span>邮箱帐号</span>dancesmiling@qq.com</a></li>
-                    <li class="wxgzh"><a href="/home//" target="_blank"><span>微信号</span>yangqq_1987</a></li>
+                    <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>杨青博客</a></li>
+                    <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span>杨青博客</a></li>
+                    <li class="qq"><a href="/" target="_blank"><span>QQ号</span>476847113</a></li>
+                    <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span>dancesmiling@qq.com</a></li>
+                    <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>yangqq_1987</a></li>
                     <li class="wx"><img src="/home/images/wx.jpg"></li>
                 </ul>
             </div>
