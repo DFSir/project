@@ -43,8 +43,6 @@ Route::resource('/admin/tag','Admin\TagController');
 Route::resource('/admin/about','Admin\AboutController');
 // 轮播图资源控制器
 Route::resource('/admin/slide','Admin\SlideController');
-
-
 //后台管理员资源控制器
 Route::resource('/admin/auser','Admin\AdminController' );
 
@@ -52,9 +50,12 @@ Route::resource('/admin/auser','Admin\AdminController' );
 
 
 
+
+
 // 前台首页
 Route::get('/','Home\HomeController@index');
-
+// 前台首页
+Route::get('/home/list/{id}','Home\HomeController@list');
 
 
 

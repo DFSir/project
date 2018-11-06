@@ -19,7 +19,7 @@ class BlogrollsController extends Controller
     {
         //
 
-        $showCount = $request->input('showCount',5);
+        $showCount = $request->input('showCount',10);
         $search = $request->input('search','');
         $req = $request->all();
         $blogroll = Blogroll::where('name','like','%'.$search.'%')->paginate($showCount);

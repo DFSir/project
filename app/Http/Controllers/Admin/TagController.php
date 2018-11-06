@@ -18,7 +18,7 @@ class TagController extends Controller
     public function index(Request $request)
     {
         //加载标签浏览
-        $showCount = $request->input('showCount',3);
+        $showCount = $request->input('showCount',10);
         $search = $request->input('search','');
         $req = $request->all();
 

@@ -19,7 +19,7 @@ class DiaryController extends Controller
     public function index(Request $request)
     {
         //
-        $showCount = $request->input('showCount',5);
+        $showCount = $request->input('showCount',10);
         $search = $request->input('search','');
         $req = $request->all();
 

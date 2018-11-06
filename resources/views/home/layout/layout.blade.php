@@ -36,7 +36,7 @@
                     </ul>
                 </li>
                 @endforeach
-                <li><a href="">时间轴</a> </li>
+                <li><a href="">日记</a> </li>
                 <li><a href="">留言</a> </li>
                 <!--search begin-->
                 <div id="search_bar" class="search_bar">
@@ -56,7 +56,8 @@
         
     </header>
     <article>
-      <!--banner begin-->
+        @section('picsbox')
+        <!--banner begin-->
         <div class="picsbox"> 
             <div class="banner">
                 <div id="banner" class="fader">
@@ -76,7 +77,7 @@
                     </div>
                 </div>
             </div>
-          <!--banner end-->
+
             <div class="toppic">
                 <li> <a href="" target="_blank"> <i><img src="/home/images/toppic01.jpg"></i>
                     <h2>别让这些闹心的套路，毁了你的网页设计!</h2>
@@ -86,9 +87,13 @@
                     <span>学无止境</span> </a> </li>
             </div>
         </div>
+        <!--banner end-->
+        @show
+
+        
         <div class="blank"></div>
 
-
+        @section('container')
         <!--blogsbox begin-->
         <div class="blogsbox">
             @foreach ($articles as $k=>$v)
@@ -109,7 +114,7 @@
             @endforeach
         </div>
         <!--blogsbox end-->
-
+        @show
 
         <div class="sidebar">
 
@@ -181,6 +186,7 @@
                 </ul>
             </div>
         </div>
+
     </article>
     <footer>
       <p>Design by <a href="http://www.yangqq.com" target="_blank">杨青个人博客</a> <a href="">蜀ICP备11002373号-1</a></p>
