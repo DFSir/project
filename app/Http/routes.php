@@ -60,5 +60,7 @@ Route::get('/home/list/{id}','Home\HomeController@list');
 Route::get('/home/detail/{id}','Home\HomeController@detail');
 // 前台文章详情点赞
 Route::get('/home/like/{id}','Home\HomeController@like');
+// 前台关于我
+Route::get('/home/aboutme','Home\HomeController@aboutme');
 
 

@@ -1,5 +1,5 @@
 @extends('home.layout.layout')
-<!-- 关于我修改页面 -->
+<!-- 文章列表页面 -->
 @section('head')
 <div class="pagebg sh" style="margin-bottom: -60px;"></div>
 @endsection
@@ -23,7 +23,7 @@
                 <li class="author"><a href="/home/detail/{{ $v->aid }}">{{ $v->author }}</a></li>
                 <li class="lmname"><a href="/home/list/{{ $v->aid }}">{{ $v->catesinfo->cname }}</a></li>
                 <li class="timer">{{ $v->created_at }}</li>
-                <li class="view"><span>34567</span>已阅读</li>
+                <li class="view"><span>{{ $v->click }}</span>已阅读</li>
                 <li class="like">{{ $v->like }}</li>
             </ul>
         </div>

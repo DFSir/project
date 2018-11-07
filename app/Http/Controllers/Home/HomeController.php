@@ -9,8 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cates;
 use App\Models\Articles;
 use App\Models\Slides;
-use App\Models\Tag;
-use App\Models\Blogroll;
+use App\Models\About;
 
 class HomeController extends Controller
 {
@@ -75,6 +74,15 @@ class HomeController extends Controller
         Articles::where('aid','=',$id)->update(['like'=>$like]);
 
         return back();
+    }
+
+    /**
+     * 关于我页面跳转
+     */
+    public function aboutme()
+    {
+        $about = About::find(1);
+        return view('home.about.aboutme',['about'=>$about]);
     }
 
 

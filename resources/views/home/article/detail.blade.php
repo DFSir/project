@@ -1,5 +1,5 @@
 @extends('home.layout.layout')
-<!-- 关于我修改页面 -->
+<!-- 文章详情页面 -->
 @section('head')
 <div class="pagebg timer" style="margin-bottom: -60px;"> </div>
 @endsection
@@ -83,7 +83,7 @@
 	    <h2>文章评论</h2>
 	    <ul>
 	        <div class="gbko">
-				
+				评论还没开始做呢
 	        </div>
 	    </ul>
     </div>

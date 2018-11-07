@@ -23,8 +23,8 @@
         <div class="menu">
             <nav class="nav" id="topnav">
                 <h1 class="logo"><a href="">杨青博客</a></h1>
-                <li><a href="">网站首页</a> </li>
-                <li><a href="">关于我</a> </li>
+                <li><a href="/">网站首页</a> </li>
+                <li><a href="/home/aboutme">关于我</a> </li>
                 @foreach ($cates as $k=>$v)
                 <li>@if ($v->cpid == 0)<a href="#">{{ $v->cname }}</a>@endif
                     <ul class="sub-nav">
@@ -120,7 +120,8 @@
         </div>
         <!--blogsbox end-->
         @show
-
+        
+        @section('right')
         <div class="sidebar">
 
             <div class="tuijian">
@@ -191,7 +192,7 @@
                 </ul>
             </div>
         </div>
-
+        @show
     </article>
     <footer>
       <p>Design by <a href="http://www.yangqq.com" target="_blank">杨青个人博客</a> <a href="">蜀ICP备11002373号-1</a></p>
