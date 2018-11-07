@@ -54,9 +54,11 @@ Route::resource('/admin/auser','Admin\AdminController' );
 
 // 前台首页
 Route::get('/','Home\HomeController@index');
-// 前台首页
+// 前台分类跳转列表页
 Route::get('/home/list/{id}','Home\HomeController@list');
-
-
+// 前台文章跳转详情页
+Route::get('/home/detail/{id}','Home\HomeController@detail');
+// 前台文章详情点赞
+Route::get('/home/like/{id}','Home\HomeController@like');
 
 

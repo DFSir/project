@@ -55,6 +55,11 @@
         <!--menu end--> 
         
     </header>
+    
+    @section('head')
+
+    @show
+
     <article>
         @section('picsbox')
         <!--banner begin-->
@@ -63,7 +68,7 @@
                 <div id="banner" class="fader">
                     @foreach ($slides as $k=>$v)
                     <li class="slide" >
-                        <a href="#" target="_blank">
+                        <a href="/home/detail/{{ $v->aid }}" target="_blank">
                             <img src="{{ $v->slide }}">
                             <span class="imginfo">{{ $v->describe }}</span>
                         </a>
@@ -98,15 +103,15 @@
         <div class="blogsbox">
             @foreach ($articles as $k=>$v)
             <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-                <h3 class="blogtitle"><a href="" target="_blank">{{ $v->title }}</a></h3>
-                <span class="blogpic"><a href="" title=""><img src="/home/images/toppic01.jpg" alt=""></a></span>
+                <h3 class="blogtitle"><a href="/home/detail/{{ $v->aid }}" target="_blank">{{ $v->title }}</a></h3>
+                <span class="blogpic"><a href="/home/detail/{{ $v->aid }}" title=""><img src="/home/images/toppic01.jpg" alt=""></a></span>
                 <div style="width: 460px;height: 110px;margin-left: 240px;overflow: hidden;">{!! $v->acontent !!}</div>
                 <div class="bloginfo">
                     <ul>
-                        <li class="author"><a href="">{{ $v->author }}</a></li>
-                        <li class="lmname"><a href="">{{ $v->catesinfo->cname }}</a></li>
-                        <li class="timer">{{ $v->updated_at }}</li>
-                        <li class="view"><span>34567</span>已阅读</li>
+                        <li class="author"><a href="/home/detail/{{ $v->aid }}">{{ $v->author }}</a></li>
+                        <li class="lmname"><a href="/home/list/{{ $v->cid }}">{{ $v->catesinfo->cname }}</a></li>
+                        <li class="timer">{{ $v->created_at }}</li>
+                        <li class="view"><span>{{ $v->click }}</span>已阅读</li>
                         <li class="like">{{ $v->like }}</li>
                     </ul>
                 </div>
@@ -121,15 +126,15 @@
             <div class="tuijian">
                 <h2 class="hometitle">推荐文章</h2>
                 <ul class="tjpic">
-                    <i><img src="/home/images/toppic01.jpg"></i>
-                    <p><a href="/">{{ $recommend[0]->title }}</a></p>
+                    <i><a href="/home/detail/{{ $recommend[0]->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                    <p><a href="/home/detail/{{ $recommend[0]->aid }}">{{ $recommend[0]->title }}</a></p>
                 </ul>
                 <ul class="sidenews">
                     @foreach ($recommend as $k=>$v)
                     @if ($k > 0)
-                    <li> <i><img src="/home/images/toppic01.jpg"></i>
-                        <p><a href="">{{ $v->title }}</a></p>
-                        <span>{{ $v->updated_at }}</span> </li>
+                    <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                        <p><a href="/home/detail/{{ $v->aid }}">{{ $v->title }}</a></p>
+                        <span>{{ $v->created_at }}</span> </li>
                     @endif
                     @endforeach
                 </ul>
@@ -139,15 +144,15 @@
             <div class="tuijian">
                 <h2 class="hometitle">点赞排行</h2>
                 <ul class="tjpic">
-                    <i><img src="/home/images/toppic01.jpg"></i>
-                    <p><a href="/">{{ $like[0]->title }}</a></p>
+                    <i><a href="/home/detail/{{ $like[0]->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                    <p><a href="/home/detail/{{ $like[0]->aid }}">{{ $like[0]->title }}</a></p>
                 </ul>
                 <ul class="sidenews">
                     @foreach ($like as $k=>$v)
                     @if ($k > 0)
-                    <li> <i><img src="/home/images/toppic02.jpg"></i>
-                        <p><a href="">{{ $v->title }}</a></p>
-                        <span>{{ $v->updated_at }}</span> </li>
+                    <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="/home/images/toppic02.jpg"></a></i>
+                        <p><a href="/home/detail/{{ $v->aid }}">{{ $v->title }}</a></p>
+                        <span>{{ $v->created_at }}</span> </li>
                     @endif
                     @endforeach
                 </ul>
