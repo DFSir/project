@@ -45,12 +45,9 @@ Route::resource('/admin/about','Admin\AboutController');
 Route::resource('/admin/slide','Admin\SlideController');
 //后台管理员资源控制器
 Route::resource('/admin/auser','Admin\AdminController' );
-
-
 //意见反馈
 Route::get('/admin/opinion/hf/{id}', 'Admin\FeedbacksController@hf');
 Route::post('/admin/opinion/state/{id}', 'Admin\FeedbacksController@state');
-
 //后台意见反馈资源控制器
 Route::resource('/admin/opinion','Admin\FeedbacksController');
 

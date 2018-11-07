@@ -4,6 +4,14 @@
 
 <article class="page-container">
 	<h1>{{ $title or '' }}</h1>
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+		<span class="l">
+		 	<a href="/admin/diary" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
+		        日记列表</a>
+		    <a href="/admin/diary/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+        		添加日记</a>
+		</span>
+	</div>
 	<form action="/admin/diary" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate">
 		{{ csrf_field() }}
 		<div class="row cl">

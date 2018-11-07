@@ -25,7 +25,7 @@ class DiaryController extends Controller
 
         $diary = Diary::where('dtitle','like','%'.$search.'%')->paginate($showCount);
 
-        return view('admin.diary.index',['diary'=>$diary, 'title'=>'日记浏览','req'=>$req]);
+        return view('admin.diary.index',['diary'=>$diary, 'title'=>'日记列表','req'=>$req]);
     }
 
     /**

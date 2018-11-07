@@ -19,6 +19,14 @@
 
 	<article class="page-container">
 		<h1>{{ $title or '' }}</h1>
+		<div class="cl pd-5 bg-1 bk-gray mt-20">
+		    <span class="l">
+		    	<a href="/admin/auser" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
+		        管理员列表</a>
+		        <a href="/admin/auser/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+        		添加管理员</a>
+		    </span>
+		</div>
 		<form action="/admin/auser" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			

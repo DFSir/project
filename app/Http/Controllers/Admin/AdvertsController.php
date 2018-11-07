@@ -44,21 +44,28 @@ class AdvertsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $advert = new Advert;
-        // 上传图片
-
-        // 获取数据
-        // $advert = new Advert;
-        $advert->name = $request->input('name');
-        $advert->url = $request->input('url');
-        // $advert->apic = $request->input('apic');
-        // dd($advert);
-        $advert->state = $request->input('state');
-
-        if ($request->hasFile('apic')) {
-            $advert->apic = '/'.$request->apic->store('uploads/'.date('Ymd'));
+    {   
+        // 广告图片上传
+        if($request -> hasFile('apic')){
+            $apic = $request -> file('apic');
+            $ext = $apic ->getClientOriginalExtension();
+            $file_name = str_random(20).time().'.'.$ext;
+            $dir_name = './uploads/'.date('Ymd',time());
+            $res = $apic -> move($dir_name,$file_name);
+            $apic_path = ltrim($dir_name.'/'.$file_name,'.');
+        }else{
+            // 默认图片
+            $apic_path = '/uploads/20181105/RMfi5nYG6RVUeqW4RyUf1541398259.jpg';
         }
+        $advert = new Advert;
+       
+        // 获取数据
+        $advert->name = $request->name;
+        $advert->url = $request->url;
+        $advert->apic = $apic_path;
+        $advert->state = $request->state;
+        
+
         if($advert -> save()){
             return redirect('/admin/advert')->with('success','添加成功');
 
@@ -89,7 +96,7 @@ class AdvertsController extends Controller
         //
         $a = Advert::where('id','=',$id)->firstOrFail();
         
-        return view('admin.advert.edit',['a'=>$a,'id'=>$id]);
+        return view('admin.advert.edit',['title'=>'广告修改','a'=>$a,'id'=>$id]);
     }
 
     /**
@@ -101,16 +108,32 @@ class AdvertsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        // 获取数据
-        $advert = Advert::where('id','=',$id)->firstOrFail();
-        $advert->url = $request->input('url');
-        $advert->state = $request->input('state');
-         if ($advert->save()) {
+
+         if($request -> hasFile('apic')){
+            $apic = $request -> file('apic');
+            $ext = $apic ->getClientOriginalExtension();
+            $file_name = str_random(20).time().'.'.$ext;
+            $dir_name = './uploads/'.date('Ymd',time());
+            $res = $apic -> move($dir_name,$file_name);
+            $apic_path = ltrim($dir_name.'/'.$file_name,'.');
+        }else {
+           $a = Advert::find($id);
+           $apic_path = $a->apic;
+        }
+
+        $advert = Advert::findOrFail($id);
+        $advert->name = $request->name;
+        $advert->url = $request->url;
+        $advert->apic = $apic_path;
+        $advert->state = $request->state;
+
+        $res = $advert->save();
+        if ($res) {
             return redirect('admin/advert')->with('success','修改成功');
         }else{
             return back()->with('error','修改失败');
         }
+
     }
 
     /**
@@ -121,8 +144,11 @@ class AdvertsController extends Controller
      */
     public function destroy($id)
     {
-        //
-        Advert::destroy($id);
-        return redirect('admin/advert');
+        $advert = Advert::find($id);
+        if ($advert->delete()) {
+        return redirect('admin/advert')->with('auccess','删除成功');
+        }else{
+            return back()->with('error','删除失败');
+        }
     }
 }

@@ -6,6 +6,14 @@
 
 	<article class="page-container">
 		<h1>{{ $title or '' }}</h1>
+		<div class="cl pd-5 bg-1 bk-gray mt-20">
+		    <span class="l">
+		    	<a href="/admin/blogroll" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
+		        友情链接列表</a>
+		        <a href="/admin/blogroll/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+        		添加友情链接</a>
+		    </span>
+		</div>
 		<form action="/admin/blogroll" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate">
 			{{ csrf_field() }}
 			

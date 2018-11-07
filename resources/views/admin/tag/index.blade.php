@@ -3,8 +3,15 @@
 
 <div class="page-container">
 	<h1>{{ $title }}</h1>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont"></i> 批量删除</a>  <a class="btn btn-primary radius" data-title="添加资讯" data-href="article-add.html" onclick="Hui_admin_tab(this)" href="/admin/tag/create"><i class="Hui-iconfont"></i> 添加资讯</a></span></div>
-
+	
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+		<span class="l">
+		 	<a href="/admin/tag" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
+			        标签列表</a>
+		    <a href="/admin/tag/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+        		添加标签</a>
+		</span>
+	</div>
 	<div class="mt-20">
 
 	<form action="/admin/tag" method="get">
@@ -27,7 +34,6 @@
 	<table class="table table-border table-bordered table-hover table-bg table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
 		<thead>
 			<tr class="text-c" role="row">
-				<th width="25"><input type="checkbox" name="" value=""></th>
 					<th width="80">ID</th>
 					<th width="100">标签名</th>
 					<th width="60">操作</th>
@@ -38,7 +44,6 @@
 		<tr class="text-c odd" role="row">
 				@foreach($tags as $k=>$v)
 				<tr class="text-c">
-					<td><input type="checkbox" value="1" name=""></td>
 					<td>{{ $v->id }}</td>
 					<td>{{ $v->name }}</td>
 					<td class="f-14">

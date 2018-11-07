@@ -84,7 +84,7 @@ class UsersController extends Controller
         //
         $a = Huser::where('uid','=',$id)->firstOrFail();
         
-        return view('admin.huser.edit',['a'=>$a,'id'=>$id]);
+        return view('admin.huser.edit',['title'=>'用户修改','a'=>$a,'id'=>$id]);
     }
 
     /**
