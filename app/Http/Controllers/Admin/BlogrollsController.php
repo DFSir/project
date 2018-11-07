@@ -49,8 +49,6 @@ class BlogrollsController extends Controller
     public function store(Request $request)
     {
        // 获取数据
-
-       // dd( $request->all());
         $blogroll = new Blogroll;
         $blogroll->name = $request->input('name');
         $blogroll->url = $request->input('url');
