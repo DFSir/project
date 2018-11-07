@@ -1,7 +1,14 @@
 @extends('admin.layout.layout')
 @section('container')
-<h1>{{ $title }}</h1>
-	
+	<h1>{{ $title }}</h1>
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+		<span class="l">
+		 	<a href="/admin/tag" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
+			        标签列表</a>
+		    <a href="/admin/tag/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+        		添加标签</a>
+		</span>
+	</div>
 	<article class="page-container">
 	<form action="/admin/tag" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate">
 		{{ csrf_field() }}

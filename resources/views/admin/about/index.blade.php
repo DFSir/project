@@ -14,7 +14,7 @@
 			<tr>
 				<td width="15%" style="text-align: center; font-size: 20px;">头像</td>
 				<td style="text-align: center; font-size: 20px;">
-					<img src="{{ $about->portrait }}" alt="" style="width: 200px;height: 200px;">
+					<img src="{{ $about->portrait }}" alt="" style="width: 80px;height: 80px;">
 				</td>
 			</tr>
 			<tr>

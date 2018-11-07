@@ -83,7 +83,7 @@ class BlogrollsController extends Controller
         //
         $a = Blogroll::where('id','=',$id)->firstOrFail();
         
-        return view('admin.blogroll.edit',['a'=>$a,'id'=>$id]);
+        return view('admin.blogroll.edit',['title'=>'友情链接修改','a'=>$a,'id'=>$id]);
     }
 
     /**

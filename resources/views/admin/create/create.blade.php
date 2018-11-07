@@ -3,6 +3,14 @@
 @section('container')
 <div class="page-container">
 	<h1>{{ $title or '' }}</h1>
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+		<span class="l">
+		 	<a href="/admin/cates" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
+		        文章类别列表</a>
+		    <a href="/admin/cates/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+        		添加文章类别</a>
+		</span>
+	</div>
 	<form class="form form-horizontal" id="form-article-add" action="/admin/cates" method="post">
 		{{ csrf_field() }}
 		<div class="row cl">

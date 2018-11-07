@@ -3,9 +3,15 @@
 
 <div class="page-container">
 	<h1>{{ $title or '' }}</h1>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> 
-		<span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont"></i> 批量删除</a></span>
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+		<span class="l">
+		 	<a href="/admin/diary" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
+		        日记列表</a>
+		    <a href="/admin/diary/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+        		添加日记</a>
+		</span>
 	</div>
+	
 	<div class="mt-20">
 
 		<form action="/admin/diary" method="get">
@@ -30,7 +36,6 @@
 		<table class="table table-border table-bordered table-hover table-bg table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
 			<thead>
 				<tr class="text-c" role="row">
-					<th width="25"><input type="checkbox" name="" value=""></th>
 					<th width="80">ID</th>
 					<th width="100">日记标题</th>
 					<th width="90">日记内容</th>
@@ -42,7 +47,6 @@
 				<tr class="text-c odd" role="row">
 					@foreach($diary as $k=>$v)
 					<tr class="text-c">
-						<td><input type="checkbox" value="1" name=""></td>
 						<td>{{ $v->did }}</td>
 						<td>{{ $v->dtitle }}</td>
 						<td>{{ $v->dcontent }}</td>

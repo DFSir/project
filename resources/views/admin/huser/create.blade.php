@@ -19,13 +19,21 @@
 
 	<article class="page-container">
 		<h1>{{ $title or '' }}</h1>
+		<div class="cl pd-5 bg-1 bk-gray mt-20">
+			<span class="l">
+			 	<a href="/admin/huser" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
+			        用户列表</a>
+			    <a href="/admin/huser/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+        		添加用户</a>
+			</span>
+		</div>
 		<form action="/admin/huser" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate">
 			{{ csrf_field() }}
 			
 				<div class="row cl">
 					<label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>用户名：</label>
 					<div class="formControls col-xs-4 col-sm-4">
-						<input type="text" class="input-text" value="" placeholder="请输入4-12位数字字母下划线组合,字母开头" id="uname" name="uname" value="{{ old('uname') }}">
+						<input type="text" class="input-text" value="" placeholder="请输入8-16位数字字母下划线组合,字母开头" id="uname" name="uname" value="{{ old('uname') }}">
 					</div>
 					<div class="col-xs-4 col-ms-4 spanll">
 						

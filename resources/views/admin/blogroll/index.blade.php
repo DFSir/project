@@ -5,12 +5,13 @@
 <div class="page-container">
   <h1>{{ $title or '' }}</h1>
   <div class="cl pd-5 bg-1 bk-gray mt-20">
-    <span class="l">
-      <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">
-        <i class="Hui-iconfont"></i>批量删除</a>
-      <a href="/admin/blogroll/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
-        <i class="Hui-iconfont"></i>添加友情链接</a></span>
-  </div>
+        <span class="l">
+          <a href="/admin/blogroll" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
+            友情链接列表</a>
+            <a href="/admin/blogroll/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+            添加友情链接</a>
+        </span>
+    </div>
   <div class="mt-20">
     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
 
@@ -36,8 +37,7 @@
       <table class="table table-border table-bordered table-hover table-bg table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
         <thead>
           <tr class="text-c" role="row">
-            <th width="25" class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 25px;">
-              <input type="checkbox" name="" value=""></th>
+            
             <th width="80" class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="descending" aria-label="ID: 升序排列" style="width: 80px;">ID</th>
             <th width="100" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="用户名: 升序排列" style="width: 100px;">友情名称</th>
             <th width="40" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label=": 升序排列" style="width: 40px;">友情URL</th>
@@ -47,8 +47,7 @@
         <tbody>
         @foreach($blogroll as $k=>$v)
           <tr class="text-c odd" role="row">
-            <td>
-              <input type="checkbox" value="1" name=""></td>
+           
             <td class="sorting_1">{{ $v->id }}</td>
             <td>
               <u style="cursor:pointer" class="text-primary">{{ $v->name }}</u></td>

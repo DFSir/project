@@ -5,12 +5,13 @@
 <div class="page-container">
   <h1>{{ $title or '' }}</h1>
   <div class="cl pd-5 bg-1 bk-gray mt-20">
-    <span class="l">
-      <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">
-        <i class="Hui-iconfont"></i>批量删除</a>
-      <a href="/admin/advert/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
-        <i class="Hui-iconfont"></i>添加广告</a></span>
-  </div>
+        <span class="l">
+          <a href="/admin/advert" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
+            广告列表</a>
+            <a href="/admin/advert/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
+            添加广告</a>
+        </span>
+    </div>
   <div class="mt-20">
     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
 
@@ -53,13 +54,17 @@
             <td class="sorting_1">{{ $v->id }}</td>
             <td>{{ $v->name }}</td>
             <td>{{ $v->url }}</td>
-            <td><img src="{{ $v->apic }}"></td>
-            <td>{{ $v->state }}</td>
+            <td><img width="80px" height="80px" src="{{ $v->apic }}"></td>
+            <td>
+              @if($v->state == '0') 禁用 
+              @else 开启 
+              @endif
+            </td>
             <td>{{ $v->created_at }}</td>
             <td>{{ $v->updated_at }}</td>
             <td class="td-manage">
               <a href="/admin/advert/{{ $v->id }}/edit" class="btn btn-warning btn btn-default btn-sm radius">修改</a>
-              <form action="/admin/advert/{{ $v->id }}" method="post" style="display: inline-block;">{{ csrf_field() }} {{ method_field('DELETE') }}
+              <form action="/admin/advert/{{$v->id}}" method="post" style="display: inline-block;">{{ csrf_field() }} {{ method_field('DELETE') }}
                 <input type="submit" value="删除" class="btn btn-danger radius"></form></td>
           </tr>
           @endforeach

@@ -149,8 +149,8 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a href="#">相册列表</a></li>
-						<li><a href="#">添加相册</a></li>
+						<li><a data-href="/admin/photo" data-title="相册列表" href="/admin/photo">相册列表</a></li>
+						<li><a data-href="/admin/photo/create" data-title="添加相册" href="/admin/photo/create">添加相册</a></li>
 					</ul>
 				</dd>
 			</dl>
