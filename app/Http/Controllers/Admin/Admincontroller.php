@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Auser;
 use Hash;
+use App\Http\Requests\AdminStoreRequest;
 
 class Admincontroller extends Controller
 {
@@ -47,7 +48,7 @@ class Admincontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminStoreRequest $request)
     {
         //处理表单提交信息
         if($request -> hasFile('portrait')){
