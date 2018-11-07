@@ -9,7 +9,7 @@
       <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">
         <i class="Hui-iconfont"></i>批量删除</a>
       <a href="/admin/auser/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
-        <i class="Hui-iconfont"></i>添加用户</a></span>
+        <i class="Hui-iconfont"></i>添加管理员</a></span>
   </div>
   <div class="mt-20">
     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
@@ -53,7 +53,7 @@
             <td>
               <u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','360','400')">{{ $v->name }}</u></td>
             <td>
-            	<img src="{{ $v->portrait }}" width="80px">
+            	<img src="{{ $v->portrait }}" width="80px" height="80px">
             </td>
             <td>{{ $v->created_at }}</td>
             <td class="td-manage">

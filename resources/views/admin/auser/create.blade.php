@@ -25,12 +25,12 @@
 				<div class="row cl">
 					<label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>管理员账号：</label>
 					<div class="formControls col-xs-4 col-sm-4">
-						<input type="text" class="input-text" value="" placeholder="请输入4-12位数字字母下划线组合,字母开头" id="name" name="name" value="{{ old('name') }}">
+						<input type="text" class="input-text" value="" placeholder="请输入8-16位用户名" id="name" name="name" value="{{ old('name') }}">
 					</div>
 					<div class="col-xs-4 col-ms-4 spanll">
-						
 					</div>
 				</div>
+
 				<div class="row cl">
 					<label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>密码：</label>
 					<div class="formControls col-xs-4 col-sm-4">
@@ -54,7 +54,7 @@
 						<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;添加&nbsp;&nbsp;">
 					</div>
 				</div>
-			
+				
 		</form>
 	</article>
 

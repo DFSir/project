@@ -194,7 +194,7 @@
 			<dl id="menu-admin">
 				<dt>
 					<i class="Hui-iconfont">&#xe63b;</i> 
-					<a data-title="收信箱" href="#" style="text-decoration:none;">收信箱</a>
+					<a data-href="/admin/opinion" data-title="收信箱" href="/admin/opinion" style="text-decoration:none;">收信箱</a>
 				</dt>
 			</dl>
 
