@@ -37,6 +37,7 @@
                 </li>
                 @endforeach
                 <li><a href="">日记</a> </li>
+                <li><a href="">相册</a> </li>
                 <li><a href="">留言</a> </li>
                 <!--search begin-->
                 <div id="search_bar" class="search_bar">
