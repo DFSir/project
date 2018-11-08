@@ -3,78 +3,63 @@
 @section('container')
 
 <div class="page-container">
-  <h1>{{ $title or '' }}</h1>
-  <div class="cl pd-5 bg-1 bk-gray mt-20">
-        <span class="l">
-          <a href="/admin/advert" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-success radius">
-            广告列表</a>
-            <a href="/admin/advert/create" onclick="member_add('添加用户','member-add.html','','510')" class="btn btn-primary radius">
-            添加广告</a>
-        </span>
-    </div>
-  <div class="mt-20">
-    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
+    <h1>{{ $title or '' }}</h1>
 
-      <form action="/admin/advert" method="get">
+    <div class="mt-20">
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
+            <form action="/admin/album" method="get">
+                <div class="dataTables_length" id="DataTables_Table_0_length">
+                    <label>显示
+                        <select name="showCount" aria-controls="DataTables_Table_0" class="select">
+                            <option value="10" @if((isset($req['showCount']) && !empty($req['showCount'])) && $req['showCount'] == 10) selected @endif>10</option>
+                            <option value="20" @if((isset($req['showCount']) && !empty($req['showCount'])) && $req['showCount'] == 20) selected @endif>20</option>
+                            <option value="30" @if((isset($req['showCount']) && !empty($req['showCount'])) && $req['showCount'] == 30) selected @endif>30</option>
+                            <option value="50" @if((isset($req['showCount']) && !empty($req['showCount'])) && $req['showCount'] == 50) selected @endif>50</option>
+                        </select>条
+                    </label>
+                    <input type="submit" class="btn btn-success radius" value="搜索">
+                </div>
+            </form>
+            <div class="text-c" style="float: right;">
+                <form action="/admin/album" method="post">
+                    {{ csrf_field() }}
+                    <input type="text" class="input-text" style="width:250px" placeholder="相册名称" id="" name="alname">
+                    <input type="submit" class="btn btn-success radius" value="添加相册">
+                </form>
+            </div>
 
-        <div class="dataTables_length" id="DataTables_Table_0_length">
-          <label>显示
-            <select name="showCount" aria-controls="DataTables_Table_0" class="select">
-              <option value="5" @if((isset($request['showCount']) && !empty($request['showCount'])) && $request['showCount'] == 5) selected @endif>5</option>
-              <option value="10" @if((isset($request['showCount']) && !empty($request['showCount'])) && $request['showCount'] == 10) selected @endif>10</option>
-              <option value="20" @if((isset($request['showCount']) && !empty($request['showCount'])) && $request['showCount'] == 20) selected @endif>20</option>
-              <option value="30" @if((isset($request['showCount']) && !empty($request['showCount'])) && $request['showCount'] == 30) selected @endif>30</option></select>条</label>
-
-        </div>
-        <div class="text-c" style="float: right;">
-            <input type="text" class="input-text" style="width:250px" placeholder="输入友情名称" id="" name="search">
-            <!-- <button type="submit" class="btn btn-success radius" id="" name="">
-                <i class="Hui-iconfont"></i>搜索</button> -->
-            <input type="submit" class="btn btn-success radius" value="搜索" value="{{ $request['search'] or '' }}">
-        </div>
-      </form>
-      <div id="DataTables_Table_0_filter" class="dataTables_filter"></div>
-      <table class="table table-border table-bordered table-hover table-bg table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
-        <thead>
-          <tr class="text-c" role="row">
-            
-            <th width="80" class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="descending" aria-label="ID: 升序排列" style="width: 80px;">ID</th>
-            <th width="100" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="广告名称: 升序排列" style="width: 100px;">广告名称</th>
-            <th width="100" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="广告URL: 升序排列" style="width: 100px;">广告URL</th>
-            <th width="100" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="广告图片: 升序排列" style="width: 100px;">广告图片</th>
-            <th width="40" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="状态: 升序排列" style="width: 40px;">状态</th>
-            <th width="130" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="加入时间: 升序排列" style="width: 130px;">添加时间</th>
-            <th width="130" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="加入时间: 升序排列" style="width: 130px;">修改时间</th>
-            <th width="100" class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 100px;">操作</th></tr>
-        </thead>
-        <tbody>
-        @foreach($advert as $k=>$v)
-          <tr class="text-c odd" role="row">
-            
-            <td class="sorting_1">{{ $v->id }}</td>
-            <td>{{ $v->name }}</td>
-            <td>{{ $v->url }}</td>
-            <td><img width="80px" height="80px" src="{{ $v->apic }}"></td>
-            <td>
-              @if($v->state == '0') 禁用 
-              @else 开启 
-              @endif
-            </td>
-            <td>{{ $v->created_at }}</td>
-            <td>{{ $v->updated_at }}</td>
-            <td class="td-manage">
-              <a href="/admin/advert/{{ $v->id }}/edit" class="btn btn-warning btn btn-default btn-sm radius">修改</a>
-              <form action="/admin/advert/{{$v->id}}" method="post" style="display: inline-block;">{{ csrf_field() }} {{ method_field('DELETE') }}
-                <input type="submit" value="删除" class="btn btn-danger radius"></form></td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
+            <div id="DataTables_Table_0_filter" class="dataTables_filter"></div>
+            <table class="table table-border table-bordered table-hover table-bg table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                <thead>
+                    <tr class="text-c" role="row">
+                        <th>ID</th>
+                        <th>相册名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($album as $k=>$v)
+                    <tr>
+                        <td>{{ $v->alid }}</td>
+                        <td>{{ $v->alname }}</td>
+                        <td>
+                            <a href="/admin/photo/{{ $v->alid }}" style="float: left;margin-right: 20px;"><button class="btn btn-success radius">相册详情</button></a>
+                            <form action="/admin/album/{{ $v->alid }}" method="post">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button type="submit" class="btn btn-danger radius" onclick="return confirm('确定要删除吗?')" style="float: left;">删除</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
       
-      <div class="page_page">
-        {!! $advert->appends($req)->render() !!}
-      </div>
+            <div class="page_page">
+                {!! $album->appends($req)->render() !!}
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+
 @endsection

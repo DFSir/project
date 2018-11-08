@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Album;
+use App\Models\Photo;
 
 class AlbumController extends Controller
 {
@@ -19,41 +20,13 @@ class AlbumController extends Controller
     {
         //
         $showCount = $request->input('showCount',10);
-        $search = $request->input('search','');
         $req = $request->all();
-        $album = Album::where('alname','like','%'.$search.'%')->paginate($showCount);
+        $album = Album::paginate($showCount);
 
         // 加载列表
-        return view('admin.album.index',['title'=>'友情链接列表','album'=>$album,'req'=>$req]);
-        return view('admin.album.index',['title'=>'相册名称']);
+        return view('admin.photo.index',['title'=>'相册列表','album'=>$album,'req'=>$req]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-      
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function xc(Request $request)
-    {
-        // 获取数据
-        $album = new Album;
-        $album->alname = $request->input('alname');
-        if($album -> save()){
-            return redirect('/admin/album')->with('success','添加成功');
-        }else{
-            return back()->with('error','添加失败'); 
-        }
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -62,41 +35,15 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        // 
+        $album = new Album;
+        $album->alname = $request->input('alname');
+        // 判断数据是否成功存入数据库
+        if($album->save()){
+            return back()->with('success','添加相册成功');
+        }else{
+            return back()->with('error','添加相册失败');
+        }
     }
 
     /**
@@ -108,7 +55,12 @@ class AlbumController extends Controller
     public function destroy($id)
     {
         //
-         Album::destroy($id);
-        return redirect('admin/album');
+        $red = Photo::where('alid','=',$id)->delete();
+        $res = Album::where('alid','=',$id)->delete();
+        if($res && $red){
+            return back()->with('success','删除相册成功');
+        }else{
+            return back()->with('error','删除相册失败');
+        }
     }
 }

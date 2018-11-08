@@ -150,7 +150,6 @@
 				<dd>
 					<ul>
 						<li><a data-href="/admin/album" data-title="相册列表" href="/admin/album">相册列表</a></li>
-						<li><a data-href="/admin/album/create" data-title="添加相册" href="/admin/album/create">添加相册</a></li>
 					</ul>
 				</dd>
 			</dl>

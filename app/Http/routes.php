@@ -50,8 +50,7 @@ Route::get('/admin/opinion/hf/{id}', 'Admin\FeedbacksController@hf');
 Route::post('/admin/opinion/state/{id}', 'Admin\FeedbacksController@state');
 // 后台意见反馈资源控制器
 Route::resource('/admin/opinion','Admin\FeedbacksController');
-// 后台创建相册控制器
-Route::post('/admin/album/xc','Admin\AlbumController@xc');
+
 // 后台相册名称资源控制器
 Route::resource('/admin/album','Admin\AlbumController');
 // 后台相片资源控制器

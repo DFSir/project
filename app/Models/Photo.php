@@ -8,4 +8,5 @@ class Photo extends Model
 {
     //
     protected $table = 'photos';
+    protected $primaryKey = 'pid';
 }
