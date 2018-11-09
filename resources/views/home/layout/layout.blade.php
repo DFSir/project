@@ -17,12 +17,12 @@
     <script src="/home/js/modernizr.js"></script>
     <![endif]-->
 </head>
-<body>
+<body style="background-image: url('/home/images/bj.jpg');">
     <header> 
         <!--menu begin-->
         <div class="menu">
             <nav class="nav" id="topnav">
-                <h1 class="logo"><a href="">杨青博客</a></h1>
+                <h1 class="logo"><img src="/home/images/666.jpg" width="150px" height="80px"></h1>
                 <li><a href="/">网站首页</a> </li>
                 <li><a href="/home/aboutme">关于我</a> </li>
                 @foreach ($cates as $k=>$v)
@@ -51,7 +51,11 @@
                     </form>
                 </div>
                 <!--search end--> 
+                <li><a href="/home/zhuce">登录/注册</a> </li>
+                
+
             </nav>
+            
         </div>
         <!--menu end--> 
         
@@ -85,7 +89,7 @@
             </div>
 
             <div class="toppic">
-                <li> <a href="" target="_blank"> <i><img src="/home/images/toppic01.jpg"></i>
+                <li> <a href="" target="_blank"> <i><img src="/home/images/toppic02.jpg"></i>
                     <h2>别让这些闹心的套路，毁了你的网页设计!</h2>
                     <span>学无止境</span> </a> </li>
                 <li> <a href="" target="_blank"> <i><img src="/home/images/zd01.jpg"></i>
@@ -182,14 +186,14 @@
 
 
             <div class="guanzhu" id="follow-us">
-                <h2 class="hometitle">关注我们 么么哒！</h2>
+                <h2 class="hometitle"> 么么哒！</h2>
+                
+                @foreach ($advert as $k=>$v)
+                <a href="https://{{ $v->url }}"><img src="{{ $v->apic }}" width="305px" height="80px" style="margin-bottom: 5px;" title="{{ $v->name }}"></a>
+                @endforeach
                 <ul>
-                    <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>杨青博客</a></li>
-                    <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span>杨青博客</a></li>
-                    <li class="qq"><a href="/" target="_blank"><span>QQ号</span>476847113</a></li>
-                    <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span>dancesmiling@qq.com</a></li>
-                    <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>yangqq_1987</a></li>
-                    <li class="wx"><img src="/home/images/wx.jpg"></li>
+                    <li class="wx"><img src="/home/images/weixin.jpg" title="想联系我们可以添加微信哦!!!" style="margin-top: 10px;"></li>
+
                 </ul>
             </div>
         </div>

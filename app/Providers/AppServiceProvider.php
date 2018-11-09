@@ -8,6 +8,7 @@ use App\Models\Articles;
 use App\Models\Slides;
 use App\Models\Tag;
 use App\Models\Blogroll;
+use App\Models\Advert;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
         $tag = Tag::all();
         // 从数据库获取友情链接数据
         $blog = Blogroll::all();
+        // 从数据库获取广告数据
+        $advert = Advert::all();
         view()->share([
             'cates'=>$cates,
             'articles'=>$articles,
@@ -40,7 +43,8 @@ class AppServiceProvider extends ServiceProvider
             'like'=>$like,
             'slides'=>$slides,
             'tag'=>$tag,
-            'blog'=>$blog
+            'blog'=>$blog,
+            'advert'=>$advert
         ]);
     }
 

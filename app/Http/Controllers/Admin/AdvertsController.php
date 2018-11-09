@@ -108,7 +108,7 @@ class AdvertsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        
          if($request -> hasFile('apic')){
             $apic = $request -> file('apic');
             $ext = $apic ->getClientOriginalExtension();
