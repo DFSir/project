@@ -54,7 +54,8 @@ Route::resource('/admin/opinion','Admin\FeedbacksController');
 Route::resource('/admin/album','Admin\AlbumController');
 // 后台相片资源控制器
 Route::resource('/admin/photo','Admin\PhotoController');
-
+// 后台查看留言
+Route::resource('/admin/message','Admin\MessageController');
 
 
 

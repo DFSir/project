@@ -1,65 +1,66 @@
 @extends('admin.layout.layout')
+<!-- 留言显示页面 -->
 @section('container')
 
 <div class="page-container">
 	<h1>{{ $title or '' }}</h1>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> 
-		<span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont"></i> 批量删除</a></span>
-	</div>
 	<div class="mt-20">
+		<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
 
-		<form action="/admin/opinion" method="get">
-			<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
-				<div class="dataTables_length" id="DataTables_Table_0_length">
-					<label>显示 
-						<select name="showCount" aria-controls="DataTables_Table_0" class="select">
-						<option value="5" @if((isset($req['showCount']) && !empty($req['showCount'])) && $req['showCount'] == 5) selected @endif >5</option>
-						<option value="10" @if((isset($req['showCount']) && !empty($req['showCount'])) && $req['showCount'] == 10) selected @endif >10</option>
-						<option value="20" @if((isset($req['showCount']) && !empty($req['showCount'])) && $req['showCount'] == 20) selected @endif >20</option>
-						<option value="30" @if((isset($req['showCount']) && !empty($req['showCount'])) && $req['showCount'] == 30) selected @endif >30</option>
-						</select> 条
-					</label>
-				</div>
-				<div class="text-c" style="float:right;">
-					<input type="text" class="input-text" style="width:250px" placeholder="关键字" id="" name="search" value="{{ $req['search'] or '' }}">
-					<input type="submit" class="btn btn-success radius" value="搜索">
-				</div>
-			</div>
-		</form>
-		<div id="DataTables_Table_0_filter" class="dataTables_filter"></div>
-		<table class="table table-border table-bordered table-hover table-bg table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
-			<thead>
-				<tr class="text-c" role="row">
-					<th width="25"><input type="checkbox" name="" value=""></th>
-					<th width="80">ID</th>
-					<th width="100">日记标题</th>
-					<th width="90">日记内容</th>
-					<th width="130">添加时间</th>
-					<th width="60">操作</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="text-c odd" role="row">
-					@foreach($feedback as $k=>$v)
-					<tr class="text-c">
+			<table class="table table-border table-bordered table-hover table-bg table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+				<thead>
+					<tr class="text-c" role="row">
+						<th width="25" class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 25px;">
+							<input type="checkbox" name="" value="">
+						</th>
+						<th width="60px">ID</th>
+						<th width="60px">用户</th>
+						<th width="1350px">留言内容</th>
+						<th width="100px">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach ($message as $k=>$v)
+					<tr class="text-c odd" role="row">
 						<td><input type="checkbox" value="1" name=""></td>
-						<td class="f-14">
-							<form action="/admin/opinion/{{ $v->did }}" method="post" style="display: inline-block;">
+						<td class="sorting_1">{{ $v->mid }}</td>
+						<td>
+							<a href="javascript:;">
+								<i class="avatar size-L radius">
+									<img alt="" src="/admin/static/h-ui/images/ucnter/avatar-default-S.gif">
+								</i>
+							</a>
+						</td>
+						<td class="text-l">
+							<div class="c-999 f-12">
+								<span class="text-primary">{{ $v->usersinfo->uname }}</span> 
+								<time>{{ $v->created_at }}</time> 
+								<span class="ml-20">13000000000</span>
+								<span class="ml-20">admin@mail.com</span>
+							</div>
+							<div class="f-12 c-999">
+								<a href="http://www.h-ui.net/Hui-4.22-comment.shtml" target="_blank">http://www.h-ui.net/Hui-4.22-comment.shtml</a>
+							</div>
+							<div>{{ $v->mcontent }}</div>
+						</td>
+						<td class="td-manage">
+							<form action="/admin/message/{{ $v->mid }}" method="post">
 								{{ csrf_field() }}
 								{{ method_field('DELETE') }}
-								<input type="submit" value="删除" class="btn btn-danger radius">
+								<button type="submit" class="btn btn-danger radius" onclick="return confirm('确定要删除吗?')">删除</button>
 							</form>
 						</td>
 					</tr>
 					@endforeach
-				</tr>
-			</tbody>
-		</table>
-		<div class="page_page">
-			{!! $feedback->appends($req)->render() !!}
+				</tbody>
+			</table>
+
+			<div>
+				{!! $message->appends($req)->render() !!}
+			</div>
+
 		</div>
 	</div>
 </div>
-
 
 @endsection

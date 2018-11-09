@@ -53,7 +53,7 @@
 							</ul>
 						</li>
 						<li id="Hui-msg" class="dropDown right dropDown_hover"> 
-							<a href="javascript:;" class="dropDown_A" title="留言"><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a>
+							<a href="/admin/message" class="dropDown_A" title="留言"><i class="Hui-iconfont" style="font-size:18px">&#xe62f;</i></a>
 						</li>
 					</ul>
 				</nav>
@@ -116,7 +116,7 @@
 
 			<dl id="menu-admin">
 				<dt>
-					<i class="Hui-iconfont">&#xe616;</i> 标签管理
+					<i class="Hui-iconfont">&#xe64b;</i> 标签管理
 					<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
@@ -129,7 +129,7 @@
 
 			<dl id="menu-admin">
 				<dt>
-					<i class="Hui-iconfont">&#xe610;</i> 日记管理
+					<i class="Hui-iconfont">&#xe623;</i> 日记管理
 					<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
@@ -164,7 +164,7 @@
 			</dl>
 			<dl id="menu-admin">
 				<dt>
-					<i class="Hui-iconfont">&#xe666;</i> 广告管理
+					<i class="Hui-iconfont">&#xe6ab;</i> 广告管理
 					<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
@@ -177,7 +177,7 @@
 
 			<dl id="menu-admin">
 				<dt>
-					<i class="Hui-iconfont">&#xe667;</i> 轮播图管理
+					<i class="Hui-iconfont">&#xe612;</i> 轮播图管理
 					<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
