@@ -73,5 +73,6 @@ Route::get('/home/detail/{id}','Home\HomeController@detail');
 Route::get('/home/like/{id}','Home\HomeController@like');
 // 前台关于我
 Route::get('/home/aboutme','Home\HomeController@aboutme');
-
+// 前台留言
+Route::get('/home/message','Home\HomeController@message');
 

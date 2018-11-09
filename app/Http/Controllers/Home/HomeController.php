@@ -85,5 +85,14 @@ class HomeController extends Controller
         return view('home.about.aboutme',['about'=>$about]);
     }
 
-
+    /**
+     * 
+     * 
+     * 
+     */
+    public function message()
+    {
+        $about = About::find(1);
+        return view('home.message.message',['about'=>$about]);
+    }
 }
