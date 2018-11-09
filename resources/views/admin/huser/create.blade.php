@@ -27,7 +27,7 @@
         		添加用户</a>
 			</span>
 		</div>
-		<form action="/admin/huser" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate">
+		<form action="/admin/huser" method="post" class="form form-horizontal" id="form-member-add" novalidate="novalidate" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			
 				<div class="row cl">
@@ -42,7 +42,16 @@
 				<div class="row cl">
 					<label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>账号：</label>
 					<div class="formControls col-xs-4 col-sm-4">
-						<input type="text" class="input-text" value="" placeholder="请输入6-8位数字" id="uaccnum" name="uaccnum" value="{{ old('uaccnum') }}">
+						<input type="text" class="input-text" value="" placeholder="请输入6-18位数字" id="uaccnum" name="uaccnum" value="{{ old('uaccnum') }}">
+					</div>
+					<div class="col-xs-4 col-ms-4 spanll">
+						
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>头像：</label>
+					<div class="formControls col-xs-4 col-sm-4">
+						<input type="file"  value="" placeholder="" id="upic" name="upic" value="">
 					</div>
 					<div class="col-xs-4 col-ms-4 spanll">
 						

@@ -10,6 +10,7 @@ use App\Models\Cates;
 use App\Models\Articles;
 use App\Models\Slides;
 use App\Models\About;
+use App\Models\Huser;
 
 class HomeController extends Controller
 {
@@ -85,8 +86,9 @@ class HomeController extends Controller
         return view('home.about.aboutme',['about'=>$about]);
     }
 
+
     /**
-     * 
+     * 留言页面
      * 
      * 
      */
@@ -95,4 +97,5 @@ class HomeController extends Controller
         $about = About::find(1);
         return view('home.message.message',['about'=>$about]);
     }
+
 }

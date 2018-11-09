@@ -26,7 +26,7 @@ class UsersStoreRequest extends Request
         // 用户验证
         return [
             'uname' => 'required|unique:homeusers|regex:/^[a-zA-Z]{1}[\w]{7,15}$/',
-            'uaccnum' => 'required|unique:homeusers|regex:/^[\d]{6,8}$/',
+            'uaccnum' => 'required|unique:homeusers|regex:/^[\d]{6,18}$/',
             'upasswd' => 'required|regex:/^[\S]{6,8}$/'
         ];
     }

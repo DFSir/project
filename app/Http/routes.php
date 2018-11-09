@@ -75,4 +75,9 @@ Route::get('/home/like/{id}','Home\HomeController@like');
 Route::get('/home/aboutme','Home\HomeController@aboutme');
 // 前台留言
 Route::get('/home/message','Home\HomeController@message');
-
+// 前台注册
+Route::get('/home/zhuce','Home\LoginController@zhuce');
+// 前台执行注册
+Route::post('/home/store','Home\LoginController@store');
+// 前台登录
+Route::get('/home/login','Home\LoginController@login');
