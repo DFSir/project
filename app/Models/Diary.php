@@ -9,4 +9,6 @@ class Diary extends Model
     //
     protected $table = 'diarys';
     protected $primaryKey = 'did';
+
+    protected $dateFormat = 'U';
 }

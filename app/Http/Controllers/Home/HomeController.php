@@ -10,6 +10,8 @@ use App\Models\Cates;
 use App\Models\Articles;
 use App\Models\Slides;
 use App\Models\About;
+use App\Models\Setting;
+use App\Models\Diary;
 
 class HomeController extends Controller
 {
@@ -20,8 +22,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //获取网站配置表
+        $setting = Setting::find(1);
+
         // 跳转到首页
-        return view('home.layout.layout');
+        return view('home.layout.layout',['setting'=>$setting]);
     }
 
 
@@ -32,13 +37,14 @@ class HomeController extends Controller
      */
     public function list($id)
     {
+        $setting = Setting::find(1);
         // 从数据库获取文章数据
         $artle = Articles::where('astate','=','11')->where('cid','=',$id)->get();
         // 从数据库获取文章分类名称
         $cname = Cates::find($id);
         $kname = Cates::find($cname->cpid);
         // 跳转到文章列表页
-        return view('home.article.list',['artle'=>$artle,'kname'=>$kname,'cname'=>$cname]);
+        return view('home.article.list',['artle'=>$artle,'kname'=>$kname,'cname'=>$cname,'setting'=>$setting]);
     }
 
 
@@ -49,6 +55,7 @@ class HomeController extends Controller
      */
     public function detail($id)
     {
+        $setting = Setting::find(1);
         // 从数据库获取文章详情数据
         $artle = Articles::find($id);
         // 从数据库获取文章分类名称
@@ -57,7 +64,7 @@ class HomeController extends Controller
         // 增加点击次数
         $click = $artle->click+1;
         Articles::where('aid','=',$id)->update(['click'=>$click]);
-        return view('home.article.detail',['artle'=>$artle,'kname'=>$kname,'cname'=>$cname]);
+        return view('home.article.detail',['artle'=>$artle,'kname'=>$kname,'cname'=>$cname,'setting'=>$setting]);
     }
 
     /**
@@ -82,8 +89,17 @@ class HomeController extends Controller
     public function aboutme()
     {
         $about = About::find(1);
-        return view('home.about.aboutme',['about'=>$about]);
+        $setting = Setting::find(1);    
+        return view('home.about.aboutme',['about'=>$about,'setting'=>$setting]);
     }
 
+
+    public function diary()
+    {
+        $diary = Diary::all();
+        $setting = Setting::find(1);
+        
+        return view('home.diary.index',['diary'=>$diary, 'setting'=>$setting]);
+    }
 
 }

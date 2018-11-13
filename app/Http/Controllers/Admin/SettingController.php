@@ -6,25 +6,21 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Feedback;
+use App\Models\Setting;
 
-class FeedbacksController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        $showCount = $request->input('showCount',5);
-        $search = $request->input('search','');
-        $req = $request->all();
+        $setting = Setting::all();
+        return view('admin.setting.index',['title'=>'网站配置', 'setting'=>$setting]);
 
-        $feedback = Feedback::where('ftitle','like','%'.$search.'%')->paginate($showCount);
-
-        return view('admin.opinion.index',['feedback'=>$feedback, 'title'=>'意见反馈', 'req'=>$req]);
     }
 
     /**
@@ -68,6 +64,8 @@ class FeedbacksController extends Controller
     public function edit($id)
     {
         //
+        $setting = Setting::find($id);
+        return view('admin.setting.edit',['title'=>'修改配置', 'setting'=>$setting]);
     }
 
     /**
@@ -80,6 +78,32 @@ class FeedbacksController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        if($request -> hasFile('logo')){
+            $logo = $request -> file('logo');
+            $ext = $logo ->getClientOriginalExtension();
+            $file_name = str_random(20).time().'.'.$ext;
+            $dir_name = './uploads/'.date('Ymd',time());
+            $res = $logo -> move($dir_name,$file_name);
+            $logo_path = ltrim($dir_name.'/'.$file_name,'.');
+        }else {
+           $a = Setting::find($id);
+           $logo_path = $a->logo;
+        }
+
+
+        $setting = Setting::findOrFail($id);
+        $setting->title = $request->title;
+        $setting->logo = $logo_path;
+        $setting->banquan = $request->banquan;
+
+        $res = $setting->save();
+        if ($res) {
+            return redirect('admin/setting')->with('success','修改成功');
+        }else{
+            return back()->with('error','修改失败');
+        }
+
     }
 
     /**
@@ -91,33 +115,5 @@ class FeedbacksController extends Controller
     public function destroy($id)
     {
         //
-        $data = Feedback::where('fid',$id)->delete();
-
-        if($data){
-            return back()->with('success','删除成功');
-        }else{
-            return back()->with('error','删除失败');
-        }
     }
-
-    //加载回复界面
-    public function hf(Request $request, $id)
-    {   
-
-        $feedback = Feedback::findOrFail($id);
-
-        return view('admin.opinion.hf',['title'=>'意见回复','feedback'=>$feedback]);
-    }
-
-    //处理回复消息
-    public function state(Request $request, $id)
-    {
-        $feedback->huifu = $request->huifu;
-        $huifu = Feedback::where('fid','=',$id)->update(['state'=>'1','huifu'=>$huifu]);
-
-        return redirect('/admin/opinion')->with('success','回复成功');
-
-
-    }
-
 }

@@ -147,4 +147,36 @@ class Admincontroller extends Controller
         Auser::destroy($id);
         return redirect('admin/auser');
     }
+
+    /**
+     * 登录页面
+     */
+    public function login()
+    {
+        return view('admin.login.index');
+    }
+
+    /**
+     * 登录操作
+     */
+    public function dologin(Request $request)
+    {
+        //获取用户数据
+        $user = Auser::where('name', $request->name)->first();
+       
+        if(!$user){
+            return back()->with('error','登录失败');
+        }
+
+        //验证密码
+        if(Hash::check($request->passwd, $user->passwd)){
+            //写入session
+            session(['name'=>$user->name, 'id'=>$user->id]);
+            return redirect('/admin/auser')->with('success','登录成功');
+        }else{
+            return back()->with('error','登录失败!');
+        }
+
+    }
+
 }

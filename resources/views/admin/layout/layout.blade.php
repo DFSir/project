@@ -211,9 +211,7 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a href="#">待定</a></li>
-						<li><a href="#">待定</a></li>
-						<li><a href="#">待定</a></li>
+						<li><a href="/admin/setting" data-title="配置" data-href="/admin/setting">配置</a></li>
 					</ul>
 				</dd>
 			</dl>
