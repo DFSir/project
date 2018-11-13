@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="gbk">
-    <title>首页_个人博客</title>
+<link rel="icon" type="/home/image/x-icon"/>
+    <title>{{ $setting->title }}</title>
     <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
     <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,9 @@
         <!--menu begin-->
         <div class="menu">
             <nav class="nav" id="topnav">
-                <h1 class="logo" style="margin: 10px auto;"><img src="/home/images/logos.jpg" width="150px" height="60px"></h1>
+
+                <h1 class="logo" style="margin: 10px auto;"><img src="{{ $setting->logo }}" width="150px" height="60px"></h1>
+
                 <li><a href="/">网站首页</a> </li>
                 <li><a href="/home/aboutme">关于我</a> </li>
                 @foreach ($cates as $k=>$v)
@@ -36,7 +39,7 @@
                     </ul>
                 </li>
                 @endforeach
-                <li><a href="">日记</a> </li>
+                <li><a href="/home/diary">日记</a> </li>
                 <li><a href="">相册</a> </li>
                 <li><a href="/home/message">留言</a> </li>
                 <!--search begin-->
@@ -200,7 +203,7 @@
         @show
     </article>
     <footer>
-      <p>Design by <a href="http://www.yangqq.com" target="_blank">杨青个人博客</a> <a href="">蜀ICP备11002373号-1</a></p>
+      <p>Design by {{ $setting->banquan }}</p>
     </footer>
     <a href="" class="cd-top">Top</a>
 </body>

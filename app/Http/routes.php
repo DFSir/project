@@ -15,6 +15,7 @@
 Route::get('/admins', function () {
     return view('/admin/layout/layout');
 });
+
 // 前台用户管理
 Route::resource('/admin/huser', 'Admin\UsersController');
 // 文章类别的资源管理器
@@ -59,6 +60,17 @@ Route::resource('/admin/message','Admin\MessageController');
 
 
 
+//后台登录
+Route::get('admin/login','Admin\AdminController@login');
+//登录操作
+Route::post('admin/login','Admin\AdminController@dologin');
+
+//网站配置路由
+Route::resource('/admin/setting','Admin\SettingController');
+
+
+
+
 
 
 
@@ -75,6 +87,7 @@ Route::get('/home/like/{id}','Home\HomeController@like');
 Route::resource('/home/comment','Home\CommentsController');
 // 前台关于我
 Route::get('/home/aboutme','Home\HomeController@aboutme');
+
 // 前台注册
 Route::get('/home/zhuce','Home\LoginController@zhuce');
 // 前台执行注册
@@ -83,3 +96,9 @@ Route::post('/home/store','Home\LoginController@store');
 Route::get('/home/login','Home\LoginController@login');
 // 前台留言
 Route::resource('/home/message','Home\MessageController');
+
+// 前台日记
+Route::get('/home/diary','Home\HomeController@diary');
+
+
+

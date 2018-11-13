@@ -12,6 +12,8 @@ use App\Models\Slides;
 use App\Models\About;
 use App\Models\Huser;
 use App\Models\Comments;
+use App\Models\Setting;
+use App\Models\Diary;
 
 class HomeController extends Controller
 {
@@ -87,6 +89,12 @@ class HomeController extends Controller
     {
         $about = About::find(1);
         return view('home.about.aboutme',['about'=>$about]);
+    }
+
+    public function diary()
+    {
+        $diary = Diary::all();        
+        return view('home.diary.index',['diary'=>$diary]);
     }
 
 }
