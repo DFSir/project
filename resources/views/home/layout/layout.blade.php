@@ -22,7 +22,7 @@
         <!--menu begin-->
         <div class="menu">
             <nav class="nav" id="topnav">
-                <h1 class="logo"><img src="/home/images/666.jpg" width="150px" height="80px"></h1>
+                <h1 class="logo" style="margin: 10px auto;"><img src="/home/images/logos.jpg" width="150px" height="60px"></h1>
                 <li><a href="/">网站首页</a> </li>
                 <li><a href="/home/aboutme">关于我</a> </li>
                 @foreach ($cates as $k=>$v)
