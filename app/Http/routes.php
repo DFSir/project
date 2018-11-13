@@ -71,13 +71,15 @@ Route::get('/home/list/{id}','Home\HomeController@list');
 Route::get('/home/detail/{id}','Home\HomeController@detail');
 // 前台文章详情点赞
 Route::get('/home/like/{id}','Home\HomeController@like');
+// 前台文章评论
+Route::resource('/home/comment','Home\CommentsController');
 // 前台关于我
 Route::get('/home/aboutme','Home\HomeController@aboutme');
-// 前台留言
-Route::get('/home/message','Home\HomeController@message');
 // 前台注册
 Route::get('/home/zhuce','Home\LoginController@zhuce');
 // 前台执行注册
 Route::post('/home/store','Home\LoginController@store');
 // 前台登录
 Route::get('/home/login','Home\LoginController@login');
+// 前台留言
+Route::resource('/home/message','Home\MessageController');

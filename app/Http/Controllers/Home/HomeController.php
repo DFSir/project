@@ -11,6 +11,7 @@ use App\Models\Articles;
 use App\Models\Slides;
 use App\Models\About;
 use App\Models\Huser;
+use App\Models\Comments;
 
 class HomeController extends Controller
 {
@@ -58,7 +59,9 @@ class HomeController extends Controller
         // 增加点击次数
         $click = $artle->click+1;
         Articles::where('aid','=',$id)->update(['click'=>$click]);
-        return view('home.article.detail',['artle'=>$artle,'kname'=>$kname,'cname'=>$cname]);
+        // 获取文章评论
+        $com = Comments::where('aid','=',$id)->orderBy('id', 'desc')->get();
+        return view('home.article.detail',['artle'=>$artle,'kname'=>$kname,'cname'=>$cname,'com'=>$com]);
     }
 
     /**
@@ -84,18 +87,6 @@ class HomeController extends Controller
     {
         $about = About::find(1);
         return view('home.about.aboutme',['about'=>$about]);
-    }
-
-
-    /**
-     * 留言页面
-     * 
-     * 
-     */
-    public function message()
-    {
-        $about = About::find(1);
-        return view('home.message.message',['about'=>$about]);
     }
 
 }

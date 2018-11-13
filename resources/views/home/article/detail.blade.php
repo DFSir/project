@@ -82,11 +82,91 @@
     <div class="news_pl">
 	    <h2>文章评论</h2>
 	    <ul>
-	        <div class="gbko">
-				评论还没开始做呢
-	        </div>
+			@foreach ($com as $k=>$v)
+	        <div style="width: 100%;clear: both;">
+		        <div style="width: 10%;height: 80px;margin:3%;background: red;display:inline-block;float: left;border-radius: 50%;">
+		            <img src="" alt="">
+		        </div>
+		        <div style="width: 80%;margin:3% 1%;display:inline-block;float: left;">
+		            <span>{{ $v->ucominfo->uname }}</span>
+		            <span style="float: right;">{{ $v->created_at }}</span>
+		            <hr>
+		            <div style="margin-top: 10px;">{{ $v->comment }}</div>
+		        </div>
+		    </div>
+		    @endforeach
+	
 	    </ul>
     </div>
   </div>
 
+@endsection
+
+
+
+@section('right')
+<div class="sidebar">
+
+    <div class="tuijian">
+        <h2 class="hometitle">推荐文章</h2>
+        <ul class="tjpic">
+            <i><a href="/home/detail/{{ $recommend[0]->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+            <p><a href="/home/detail/{{ $recommend[0]->aid }}">{{ $recommend[0]->title }}</a></p>
+        </ul>
+        <ul class="sidenews">
+            @foreach ($recommend as $k=>$v)
+            @if ($k > 0)
+            <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                <p><a href="/home/detail/{{ $v->aid }}">{{ $v->title }}</a></p>
+                <span>{{ $v->created_at }}</span> </li>
+            @endif
+            @endforeach
+        </ul>
+    </div>
+
+
+    <div class="weixin">
+        <h2 class="hometitle">评 论</h2>
+        <form action="/home/comment" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="aid" value="{{ $artle->aid }}">
+            <textarea name="comment" placeholder="说点什么..." style="width: 100%;height: 60px;resize:none;" maxlength="50" ></textarea>
+            <button type="submit" style="width: 25%;height: 30px;float: right;margin-bottom: 20px;">评 论</button>
+        </form>
+    </div>
+
+
+
+    <div class="cloud">
+        <h2 class="hometitle">标签云</h2>
+        <ul>
+            @foreach ($tag as $k=>$v)
+            <a href="">{{ $v->name }}</a> 
+            @endforeach
+        </ul>
+    </div>
+
+
+    <div class="links">
+        <h2 class="hometitle">友情链接</h2>
+        <ul>
+            @foreach ($blog as $k=>$v)
+            <li><a href="https://{{ $v->url }}" target="_blank">{{ $v->name }}</a></li>
+            @endforeach
+        </ul>
+    </div>
+
+
+    <div class="guanzhu" id="follow-us">
+        <h2 class="hometitle"> 么么哒！</h2>
+        
+        @foreach ($advert as $k=>$v)
+        <a href="https://{{ $v->url }}"><img src="{{ $v->apic }}" width="305px" height="80px" style="margin-bottom: 5px;" title="{{ $v->name }}"></a>
+        @endforeach
+        <ul>
+            <li class="wx"><img src="/home/images/weixin.jpg" title="想联系我们可以添加微信哦!!!" style="margin-top: 10px;"></li>
+
+        </ul>
+    </div>
+</div>
 @endsection

@@ -17,7 +17,7 @@
     <script src="/home/js/modernizr.js"></script>
     <![endif]-->
 </head>
-<body style="background-image: url('/home/images/bj.jpg');">
+<body>
     <header> 
         <!--menu begin-->
         <div class="menu">

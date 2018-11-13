@@ -1,5 +1,5 @@
 @extends('home.layout.layout')
-<!-- 文章列表页面 -->
+<!-- 留言页面 -->
 @section('head')
 <div class="pagebg sh" style="margin-bottom: -60px;"></div>
 @endsection
@@ -12,19 +12,22 @@
 
 @section('container')
 
-<div class="news_infos"> 
-
-    <div class="fb">
-        <ul>
-            <p class="fbtime"><span>2018-10-23</span>爱的</p>
-            <p class="fbinfo">阿萨大大</p>
-        </ul>
+<div class="news_infos">
+    @foreach ($message as $k=>$v)
+    <div style="width: 100%;clear: both;">
+        <div style="width: 10%;height: 80px;margin:3%;background: red;display:inline-block;float: left;border-radius: 50%;">
+            <img src="" alt="">
+        </div>
+        <div style="width: 80%;margin:3% 1%;display:inline-block;float: left;">
+            <span>{{ $v->usersinfo->uname }}</span>
+            <span style="float: right;">{{ $v->created_at }}</span>
+            <hr>
+            <div style="margin-top: 10px;">{{ $v->mcontent }}</div>
+        </div>
     </div>
-
-    <div class="gbox" style="width: 90%;height: 400px;margin:auto;background: #ddd;">
-        
-    </div>
+    @endforeach
 </div>
+
 
 @endsection
 
@@ -40,10 +43,12 @@
         <p class="abposition">邮箱：{{ $about->name }}</p>
     </div>
     <div class="weixin">
-        <h2 class="hometitle">微信关注</h2>
-        <ul>
-            <img src="/home/images/wx.jpg">
-        </ul>
+        <h2 class="hometitle">留 言</h2>
+        <form action="/home/message" method="post">
+            {{ csrf_field() }}
+            <textarea name="mcontent" placeholder="说点什么..." style="width: 100%;height: 60px;resize:none;" maxlength="50" ></textarea>
+            <button type="submit" style="width: 100%;height: 40px;"><h2>留 言</h2></button>
+        </form>
     </div>
 </div>
 
