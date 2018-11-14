@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Huser;
 use Hash;
+use Mail;
 class LoginController extends Controller
 {
     /**
@@ -46,19 +47,18 @@ class LoginController extends Controller
 
         ]);
 
-            $huser = new Huser;
-            $huser->uname = $request->input('uname','');
-            $huser->uaccnum = $request->input('uaccnum','');
-            $huser->upic = '/uploads/20181109/2HLKtCBIMPtqheycLdr31541748617.jpg';
-            $huser->upasswd = Hash::make($request->upasswd);
+        $huser = new Huser;
+        $huser->uname = $request->input('uname','');
+        $huser->uaccnum = $request->input('uaccnum','');
+        $huser->upic = '/uploads/20181109/2HLKtCBIMPtqheycLdr31541748617.jpg';
+        $huser->upasswd = Hash::make($request->upasswd);
   
-             if($huser ->save()){
-                    return redirect('/home/login')->with('success','添加成功');
-                }else{
-                    return back()->with('error','添加失败');
-                }
+        if($huser ->save()){
            
-
+            return redirect('/home/login')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
     }
 
     /**
@@ -67,7 +67,40 @@ class LoginController extends Controller
      */
     public function login()
     {
-        return view('home.login.login');
+        return view('home.login.login');       
+    }
+
+    /**
+     *
+     *执行登录用户
+     */
+    public function dologin(Request $request)
+    {
+        //获取数据可的数据
+        $huser = Huser::where('uaccnum',$request->uaccnum)->first();
+        
+        
+        //验证密码
+        if (Hash::check($request->upasswd,$huser->upasswd)) {
+            //存到session
+            session(['Huser' => $huser]);
+            session(['uaccnum'=>$huser->uaccnum]);
+
+            return redirect('/')->with('success','登陆成功');
+        }else{
+            return back()->with('error','登录失败');
+        }       
+    }
+
+     /**
+     *
+     *退出登录
+     */
+    public function logout(Request $request)
+    {
+        //删除session的值
+        $request->session()->flush();
+        return redirect('/home/login')->with('success','退出成功');
     }
 
 }

@@ -23,7 +23,7 @@
 
   <!-- 显示验证错误信息 end -->
   
-  <div class="container" style="width: 400px;height: 500px;" >
+  <div class="container" style="width: 500px;height: 500px;" >
     <h1 class="f1" style="width: 341px;height: 124px;text-indent: -9999px;"></h1>
     <h1 class="text-white" style="color: #fff">欢迎您注册</h1>
     <form action="/home/store" method="post">
@@ -34,6 +34,7 @@
           <div class="form-group">
             <input type="text" placeholder="账号(6-8位数字)" class="form-control rounded input-lg text-center no-border" name="uaccnum" value="">
           </div>
+          
           <div class="form-group">
              <input type="password" placeholder="登录密码" class="form-control rounded input-lg text-center no-border" name="upasswd" value="">
           </div>

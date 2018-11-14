@@ -11,6 +11,7 @@ use App\Models\Articles;
 use App\Models\Slides;
 use App\Models\About;
 use App\Models\Huser;
+use App\Models\Album;
 
 class HomeController extends Controller
 {
@@ -96,6 +97,19 @@ class HomeController extends Controller
     {
         $about = About::find(1);
         return view('home.message.message',['about'=>$about]);
+    }
+
+     /**
+     * 相册页面
+     * 
+     * 
+     */
+    public function album($id)
+    {
+        //获取数据库数据
+        $album = Album::where('alid','=',$id)->get();
+        // dd($album);
+        return view('home.album.album',['alid'=>$id]);
     }
 
 }
