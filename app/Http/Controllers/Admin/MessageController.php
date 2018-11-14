@@ -19,7 +19,7 @@ class MessageController extends Controller
     {
         // 把分页和搜索条件存储起来提交回去
         $req = $request->all();
-        $message = Messages::paginate(100);
+        $message = Messages::orderBy('mid', 'desc')->paginate(100);
         // 跳转到留言列表页
         return view('admin.message.index',['title'=>'留言游览','message'=>$message,'req'=>$req]);
     }

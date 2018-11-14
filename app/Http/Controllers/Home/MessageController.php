@@ -19,7 +19,7 @@ class MessageController extends Controller
     public function index()
     {
         $about = About::find(1);
-        $message = Messages::orderBy('mid', 'desc')->get();
+        $message = Messages::orderBy('mid', 'desc')->paginate(100);
         return view('home.message.message',['about'=>$about,'message'=>$message]);
     }
 

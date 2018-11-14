@@ -26,7 +26,7 @@
 <div class="sidebar">
     <div class="about">
         <p class="avatar"> <img src="{{ $about->portrait }}" alt=""> </p>
-        <p class="abname">{{ $about->name }}</p>
+        <p class="abname">站长：{{ $about->name }}</p>
         <p class="abposition">{{ $about->profession }}</p>
         <p class="abposition">QQ：{{ $about->qq }}</p>
         <p class="abposition">邮箱：{{ $about->name }}</p>

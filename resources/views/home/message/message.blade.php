@@ -37,7 +37,7 @@
 <div class="sidebar">
     <div class="about">
         <p class="avatar"> <img src="{{ $about->portrait }}" alt=""> </p>
-        <p class="abname">{{ $about->name }}</p>
+        <p class="abname">站长：{{ $about->name }}</p>
         <p class="abposition">{{ $about->profession }}</p>
         <p class="abposition">QQ：{{ $about->qq }}</p>
         <p class="abposition">邮箱：{{ $about->name }}</p>
@@ -46,7 +46,7 @@
         <h2 class="hometitle">留 言</h2>
         @if(empty(session('Huser')))
         <textarea name="mcontent" placeholder="说点什么..." style="width: 100%;height: 60px;resize:none;" maxlength="50" ></textarea>
-        <a href="{{ url('home/login') }}"><button type="submit" style="width: 100%;height: 40px;"><h2>登录并留言</h2></button></a>
+        <a href="{{ url('home/login') }}"><button type="submit" style="width: 100%;height: 40px;"><h2>登录后留言</h2></button></a>
         @else
         <form action="/home/message" method="post">
             {{ csrf_field() }}
