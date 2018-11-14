@@ -164,9 +164,6 @@ class Admincontroller extends Controller
         //获取用户数据
         $user = Auser::where('name', $request->name)->first();
        
-        if(!$user){
-            return back()->with('error','登录失败');
-        }
 
         //验证密码
         if(Hash::check($request->passwd, $user->passwd)){
@@ -177,6 +174,15 @@ class Admincontroller extends Controller
             return back()->with('error','登录失败!');
         }
 
+    }
+
+    /**
+     * 后台管理员退出
+     */
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        return redirect('/admin/login')->with('success','退出成功');
     }
 
 }

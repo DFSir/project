@@ -112,8 +112,8 @@ class FeedbacksController extends Controller
     //处理回复消息
     public function state(Request $request, $id)
     {
-        $feedback->huifu = $request->huifu;
-        $huifu = Feedback::where('fid','=',$id)->update(['state'=>'1','huifu'=>$huifu]);
+
+        $huifu = Feedback::where('fid','=',$id)->update(['state'=>'1','huifu'=>$request->huifu]);
 
         return redirect('/admin/opinion')->with('success','回复成功');
 

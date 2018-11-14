@@ -14,7 +14,7 @@
     <div class="timebox">
       <ul>
         @foreach($diary as $k=>$v)
-        <li><span>{{substr($v->created_at,0,10)}}</span><a href="">{{ $v->dtitle }}</a></li>
+          <li><span>{{substr($v->created_at,0,10)}}</span><a href="/">{{ $v->dcontent }}</a></li>
         @endforeach
       </ul>
       <ul id="list2">

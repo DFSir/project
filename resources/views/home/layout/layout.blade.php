@@ -204,6 +204,7 @@
     </article>
     <footer>
       <p>Design by {{ $setting->banquan }}</p>
+      <p><a href="">我有意见</a></p>
     </footer>
     <a href="" class="cd-top">Top</a>
 </body>
