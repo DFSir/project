@@ -22,6 +22,11 @@
 						<input type="text" class="input-text" value="{{ $a->uaccnum }}" placeholder="" id="uaccnum" name="uaccnum">
 					</div>
 				</div>
+				
+					<div class="col-xs-4 col-ms-4 spanll">
+						
+					</div>
+				</div>
 				<div class="row cl">
 					<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>头像：</label>
 					<div class="formControls col-xs-4 col-sm-4">

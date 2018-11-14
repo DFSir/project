@@ -14,6 +14,7 @@ use App\Models\Huser;
 use App\Models\Comments;
 use App\Models\Setting;
 use App\Models\Diary;
+use App\Models\Album;
 
 class HomeController extends Controller
 {
@@ -95,6 +96,19 @@ class HomeController extends Controller
     {
         $diary = Diary::all();        
         return view('home.diary.index',['diary'=>$diary]);
+    }
+
+     /**
+     * 相册页面
+     * 
+     * 
+     */
+    public function album($id)
+    {
+        //获取数据库数据
+        $album = Album::where('alid','=',$id)->get();
+        // dd($album);
+        return view('home.album.album',['alid'=>$id]);
     }
 
 }

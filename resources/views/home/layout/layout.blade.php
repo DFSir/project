@@ -14,9 +14,8 @@
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>
-    <!--[if lt IE 9]>
-    <script src="/home/js/modernizr.js"></script>
-    <![endif]-->
+   
+    
 </head>
 <body>
     <header> 
@@ -40,7 +39,7 @@
                 </li>
                 @endforeach
                 <li><a href="/home/diary">日记</a> </li>
-                <li><a href="">相册</a> </li>
+                <li><a href="/home/album">相册</a> </li>
                 <li><a href="/home/message">留言</a> </li>
                 <!--search begin-->
                 <div id="search_bar" class="search_bar">
@@ -54,9 +53,17 @@
                     </form>
                 </div>
                 <!--search end--> 
-                <li><a href="/home/zhuce">登录/注册</a> </li>
-                
-
+               <li>
+                    <div class="menu-hd">
+                        @if(empty(session('Huser')))
+                            <a href="{{ url('home/login') }}" target="_top" >请先登录</a>
+                            <a href="{{ url('home/zhuce') }}" target="_top">免费注册</a>
+                        @else
+                            <span><a href="" style="color: #fff;">ID：{{ session('uaccnum') }}</a></span>
+                            <a href="{{ url('home/login') }}">退出</a>
+                        @endif
+                    </div>           
+                </li>
             </nav>
             
         </div>

@@ -87,18 +87,23 @@ Route::get('/home/like/{id}','Home\HomeController@like');
 Route::resource('/home/comment','Home\CommentsController');
 // 前台关于我
 Route::get('/home/aboutme','Home\HomeController@aboutme');
-
+// 前台留言
+Route::get('/home/message','Home\HomeController@message');
+// 前台相册
+Route::get('/home/album','Home\HomeController@album');
 // 前台注册
 Route::get('/home/zhuce','Home\LoginController@zhuce');
 // 前台执行注册
 Route::post('/home/store','Home\LoginController@store');
+// 前台用户激活
+Route::get('/home/jihuo','Home\LoginController@jihuo');
 // 前台登录
 Route::get('/home/login','Home\LoginController@login');
 // 前台留言
 Route::resource('/home/message','Home\MessageController');
-
 // 前台日记
 Route::get('/home/diary','Home\HomeController@diary');
-
-
-
+// 前台用户退出
+Route::get('/home/logout','Home\LoginController@logout');
+// 前台登录
+Route::post('/home/login','Home\LoginController@dologin');

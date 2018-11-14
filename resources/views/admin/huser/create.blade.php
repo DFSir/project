@@ -48,6 +48,7 @@
 						
 					</div>
 				</div>
+				
 				<div class="row cl">
 					<label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>头像：</label>
 					<div class="formControls col-xs-4 col-sm-4">
@@ -78,60 +79,5 @@
 			
 		</form>
 	</article>
-	
-	<!-- <script type="text/javascript">
-		var isUSER = false;
-		var isNUM = false;
-		var isPASS = false;
-
-		$('#uname').focus(function(){
-			$('.spanll').eq(0).html('<font color="#ccc">请输入4-12位数字字母下划线组合,字母开头</font>');
-		}).blur(function(){
-			var user_preg = /^[a-zA-Z]{1}[\w]{7,16}$/;
-            var user_vals = $('#uname').val();
-            if(user_preg.test(user_vals)){
-                isUSER = true;
-                $('.spanll').eq(0).html('<font color="#0f0">用户名格式正确</font>');
-            }else{
-                isUSER = false;
-                $('.spanll').eq(0).html('<font color="#f00">用户名格式错误</font>');
-            }
-		});
-		$('#uaccnum').focus(function(){
-			$('.spanll').eq(1).html('<font color="#ccc">请输入6到8位数字</font>');
-		}).blur(function(){
-			var user_preg = /^[\d]{6,8}$/;
-            var user_vals = $('#uaccnum').val();
-            if(user_preg.test(user_vals)){
-                isNUM = true;
-                $('.spanll').eq(1).html('<font color="#0f0">账号格式正确</font>');
-            }else{
-                isNUM = false;
-                $('.spanll').eq(1).html('<font color="#f00">账号格式错误</font>');
-            }
-		});
-		$('#upasswd').focus(function(){
-			$('.spanll').eq(2).html('<font color="#ccc">请输入6到8位字母数字下划线</font>');
-		}).blur(function(){
-			var user_preg = /^[\w]{6,8}$/;
-            var user_vals = $('#upasswd').val();
-            if(user_preg.test(user_vals)){
-                isPASS = true;
-                $('.spanll').eq(2).html('<font color="#0f0">账号格式正确</font>');
-            }else{
-                isPASS = false;
-                $('.spanll').eq(2).html('<font color="#f00">账号格式错误</font>');
-            }
-		});
-
-
-		$('form').submit(function(){
-            if(isUSER && isNUM && isPASS){
-                return true;
-            }
-            return false;
-        });
-	</script>
- -->
 
 @endsection
