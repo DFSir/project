@@ -15,8 +15,8 @@
 <div class="news_infos">
     @foreach ($message as $k=>$v)
     <div style="width: 100%;clear: both;">
-        <div style="width: 10%;height: 80px;margin:3%;background: red;display:inline-block;float: left;border-radius: 50%;">
-            <img src="" alt="">
+        <div style="width: 10%;height: 80px;margin:3%;display:inline-block;float: left;border-radius: 50%;">
+            <img src="{{ $v->usersinfo->upic }}" alt="" style="width: 100%;border-radius: 50%;">
         </div>
         <div style="width: 80%;margin:3% 1%;display:inline-block;float: left;">
             <span>{{ $v->usersinfo->uname }}</span>
@@ -44,11 +44,17 @@
     </div>
     <div class="weixin">
         <h2 class="hometitle">留 言</h2>
+        @if(empty(session('Huser')))
+        <textarea name="mcontent" placeholder="说点什么..." style="width: 100%;height: 60px;resize:none;" maxlength="50" ></textarea>
+        <a href="{{ url('home/login') }}"><button type="submit" style="width: 100%;height: 40px;"><h2>登录并留言</h2></button></a>
+        @else
         <form action="/home/message" method="post">
             {{ csrf_field() }}
+            <input type="hidden" name="uid" value="{{ session('Huser')->uid }}">
             <textarea name="mcontent" placeholder="说点什么..." style="width: 100%;height: 60px;resize:none;" maxlength="50" ></textarea>
             <button type="submit" style="width: 100%;height: 40px;"><h2>留 言</h2></button>
         </form>
+        @endif
     </div>
 </div>
 

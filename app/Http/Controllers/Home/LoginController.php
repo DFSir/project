@@ -29,16 +29,16 @@ class LoginController extends Controller
     {
 
             $this->validate($request, [
-            'uname' => 'required|unique:homeusers|regex:/^[a-zA-Z]{1}[\w]{7,15}$/',
-            'uaccnum' => 'required|regex:/^[\d]{6,18}$/',
-            'upasswd' => 'required|regex:/^[\w]{6,18}$/',
+            'uname' => 'required|regex:/^.{2,20}$/',
+            'uaccnum' => 'required|unique:homeusers|regex:/^[A-Za-z0-9]{6,18}$/',
+            'upasswd' => 'required|regex:/^[A-Za-z0-9]{6,18}$/',
             'repassword' => 'required|same:upasswd',
 
         ],[
             'uname.required' => '用户名必填',
             'uname.regex' => '用户名格式错误',
-            'uname.unique' => '用户名已存在',
             'uaccnum.regex' => '账号格式错误',
+            'uaccnum.unique' => '账号已存在',
             'upasswd.required' => '密码必填',
             'upasswd.regex' => '密码格式错误',
             'repassword.required' => '确认密码必填',
@@ -100,7 +100,7 @@ class LoginController extends Controller
     {
         //删除session的值
         $request->session()->flush();
-        return redirect('/home/login')->with('success','退出成功');
+        return back();
     }
 
 }

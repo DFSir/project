@@ -42,7 +42,7 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $message = new Messages;
-        $message->uid = 1;
+        $message->uid = $request->input('uid');
         $message->mcontent = $request->input('mcontent');
         // 判断数据是否存储成功
         if($message->save()){

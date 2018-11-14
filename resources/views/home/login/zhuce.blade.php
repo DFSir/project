@@ -29,14 +29,14 @@
     <form action="/home/store" method="post">
       {{ csrf_field() }}
           <div class="form-group">
-            <input placeholder="用户名(字母开头8-16位)" class="form-control rounded input-lg text-center no-border" name="uname" value="">
+            <input placeholder="用户名(中文、英文、数字包括下划线2-20位)" class="form-control rounded input-lg text-center no-border" name="uname" value="">
           </div>
           <div class="form-group">
-            <input type="text" placeholder="账号(6-8位数字)" class="form-control rounded input-lg text-center no-border" name="uaccnum" value="">
+            <input type="text" placeholder="账号(6-18位数字、字母)" class="form-control rounded input-lg text-center no-border" name="uaccnum" value="">
           </div>
           
           <div class="form-group">
-             <input type="password" placeholder="登录密码" class="form-control rounded input-lg text-center no-border" name="upasswd" value="">
+             <input type="password" placeholder="登录密码(6-18位数字、字母)" class="form-control rounded input-lg text-center no-border" name="upasswd" value="">
           </div>
            <div class="form-group">
              <input type="password" placeholder="确认登录密码" class="form-control rounded input-lg text-center no-border" name="repassword" value="">
