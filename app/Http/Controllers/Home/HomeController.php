@@ -96,7 +96,7 @@ class HomeController extends Controller
 
     public function diary()
     {
-        $diary = Diary::all();        
+        $diary = Diary::all();       
         return view('home.diary.index',['diary'=>$diary]);
     }
 
