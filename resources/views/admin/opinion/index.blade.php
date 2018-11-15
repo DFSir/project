@@ -28,7 +28,6 @@
 			<thead>
 				<tr class="text-c" role="row">
 					<th width="80">ID</th>
-					<th width="100">意见标题</th>
 					<th width="90">意见内容</th>
 					<th width="90">发信人</th>
 					<th width="90">状态</th>
@@ -42,7 +41,6 @@
 					@foreach($feedback as $k=>$v)
 					<tr class="text-c">
 						<td>{{$v->fid}}</td>
-						<td>{{$v->ftitle}}</td>
 						<td>{{$v->fcontent}}</td>
 						<td>{{$v->huserfeedbacks->uname}}</td>
 						@if ($v->state == 0)

@@ -29,6 +29,16 @@
 		</div>
 
 		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>状态:</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<ul class="mws-form-list inline">
+                        <li><input type="radio" name="kg" value="1" id="s1" @if($setting->kg == 1) checked @endif > <label for="s1">开启网站</label></li>
+                        <li><input type="radio" name="kg" value="0" id="s2" @if($setting->kg == 0) checked @endif > <label for="s2">关闭网站</label></li>
+                    </ul>
+			</div>
+		</div>
+
+		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
 			</div>

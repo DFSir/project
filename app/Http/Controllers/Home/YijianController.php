@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Setting;
+use App\Models\Feedback;
 
-class SettingController extends Controller
+class YijianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,6 @@ class SettingController extends Controller
     public function index()
     {
         //
-        $setting = Setting::all();
-        return view('admin.setting.index',['title'=>'网站配置', 'setting'=>$setting]);
 
     }
 
@@ -31,6 +29,8 @@ class SettingController extends Controller
     public function create()
     {
         //
+
+        return view('home.yijian.create');
     }
 
     /**
@@ -41,7 +41,16 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //意见添加到数据库
+        $fedd = new Feedback;
+        $fedd->senderid = $request->uid;
+        $fedd->fcontent = $request->fcontent;
+
+        if($fedd -> save()){
+            return redirect('/')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
     }
 
     /**
@@ -64,8 +73,6 @@ class SettingController extends Controller
     public function edit($id)
     {
         //
-        $setting = Setting::find($id);
-        return view('admin.setting.edit',['title'=>'修改配置', 'setting'=>$setting]);
     }
 
     /**
@@ -78,33 +85,6 @@ class SettingController extends Controller
     public function update(Request $request, $id)
     {
         //
-
-        if($request -> hasFile('logo')){
-            $logo = $request -> file('logo');
-            $ext = $logo ->getClientOriginalExtension();
-            $file_name = str_random(20).time().'.'.$ext;
-            $dir_name = './uploads/'.date('Ymd',time());
-            $res = $logo -> move($dir_name,$file_name);
-            $logo_path = ltrim($dir_name.'/'.$file_name,'.');
-        }else {
-           $a = Setting::find($id);
-           $logo_path = $a->logo;
-        }
-
-
-        $setting = Setting::findOrFail($id);
-        $setting->title = $request->title;
-        $setting->logo = $logo_path;
-        $setting->banquan = $request->banquan;
-        $setting->kg = $request->kg;
-
-        $res = $setting->save();
-        if ($res) {
-            return redirect('admin/setting')->with('success','修改成功');
-        }else{
-            return back()->with('error','修改失败');
-        }
-
     }
 
     /**

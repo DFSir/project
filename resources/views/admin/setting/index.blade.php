@@ -21,6 +21,7 @@
             <th width="100" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="用户名: 升序排列" style="width: 100px;">网站标题</th>
             <th width="40" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label=": 升序排列" style="width: 40px;">LOGO</th>
             <th width="130" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="加入时间: 升序排列" style="width: 130px;">版权</th>
+            <th width="130" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="加入时间: 升序排列" style="width: 130px;">状态</th>
             <th width="100" class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 100px;">操作</th></tr>
         </thead>
         <tbody>
@@ -29,9 +30,16 @@
             <td>{{$v->id}}</td>
             <td>{{$v->title}}</td>
             <td>
-              <img src="{{$v->logo}}" width='80px' height='80px'>
+              <img src="{{$v->logo}}" width='50px' height='50px'>
             </td>
             <td>{{$v->banquan}}</td>
+            <td>
+              @if ($v->kg==1)
+              开启
+              @else
+              关闭
+              @endif
+            </td>
             <td><a href="/admin/setting/{{$v->id}}/edit" class="btn btn-warning btn btn-default btn-sm radius">修改</a></td>
             @endforeach
           </tr>

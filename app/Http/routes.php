@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Setting;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -82,7 +83,13 @@ Route::group(['middleware'=>'admin'],function(){
 
 
 // 前台首页
-Route::get('/','Home\HomeController@index');
+$setting = Setting::find(1);
+if($setting['kg'] ==1 ){
+	Route::get('/','Home\HomeController@index');
+}else{
+	Route::get('/','Home\HomeController@modify');
+}
+
 // 前台分类跳转列表页
 Route::get('/home/list/{id}','Home\HomeController@list');
 // 前台文章跳转详情页
@@ -117,4 +124,6 @@ Route::get('/home/diary','Home\HomeController@diary');
 Route::get('/home/logout','Home\LoginController@logout');
 // 前台个人中心
 Route::resource('/home/geren','Home\DetailController');
+//前台意见反馈
+Route::resource('/home/yijian','Home\YijianController');
 
