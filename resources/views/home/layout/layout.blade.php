@@ -59,8 +59,9 @@
                             <a href="{{ url('home/login') }}" target="_top" >请先登录</a>
                             <a href="{{ url('home/zhuce') }}" target="_top">免费注册</a>
                         @else
-                            <span><a href="" style="color: #fff;">ID：{{ session('uaccnum') }}</a></span>
-                            <a href="{{ url('home/login') }}">退出</a>
+                            <span><a href="/home/geren/{{ session('Huser')->uid }}" style="color: #fff;">ID：{{ session('uaccnum') }}</a></span>
+                            <a href="{{ url('home/logout') }}">退出</a>
+                            
                         @endif
                     </div>           
                 </li>

@@ -106,9 +106,10 @@ class HomeController extends Controller
     public function album($id)
     {
         //获取数据库数据
-        $album = Album::where('alid','=',$id)->get();
+        // $album = Album::where('alid','=',$id)->get();
         // dd($album);
-        return view('home.album.album',['alid'=>$id]);
+        // return view('home.album.album');
+        echo "string";
     }
 
 }

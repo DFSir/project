@@ -49,24 +49,11 @@ class UsersController extends Controller
      */
     public function store(UsersStoreRequest $request)
     {
-         // 头像上传
-        if($request -> hasFile('upic')){
-            $upic = $request -> file('upic');
-            $ext = $upic ->getClientOriginalExtension();
-            $file_name = str_random(20).time().'.'.$ext;
-            $dir_name = './uploads/'.date('Ymd',time());
-            $res = $upic -> move($dir_name,$file_name);
-            $upic_path = ltrim($dir_name.'/'.$file_name,'.');
-           
-        }else{
-            // 默认图片
-            $upic_path = '/uploads/20181105/RMfi5nYG6RVUeqW4RyUf1541398259.jpg';
-        }
+       
         // 获取数据
         $huser = new Huser;
         $huser->uname = $request->input('uname');
         $huser->uaccnum = $request->input('uaccnum');
-        $huser->upic = $upic_path;
         $huser->upasswd = Hash::make($request->input('upasswd'));
         if ($huser->save()) {
             return redirect('admin/huser')->with('success','添加成功');
@@ -109,23 +96,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        if($request -> hasFile('upic')){
-            $upic = $request -> file('upic');
-            $ext = $upic ->getClientOriginalExtension();
-            $file_name = str_random(20).time().'.'.$ext;
-            $dir_name = './uploads/'.date('Ymd',time());
-            $res = $upic -> move($dir_name,$file_name);
-            $upic_path = ltrim($dir_name.'/'.$file_name,'.');
-        }else {
-           $a = Huser::find($id);
-           $upic_path = $a->upic;
-        }
+       
          // 获取数据
         $huser = Huser::where('uid','=',$id)->firstOrFail();
         $huser->uname = $request->input('uname');
         $huser->uaccnum = $request->input('uaccnum');
-        $huser->upic = $upic_path;
          if ($huser->save()) {
             return redirect('admin/huser')->with('success','修改成功');
         }else{
