@@ -81,7 +81,6 @@ Route::group(['middleware'=>'admin'],function(){
 
 
 
-
 // 前台首页
 Route::get('/','Home\HomeController@index');
 // 前台分类跳转列表页
@@ -110,8 +109,12 @@ Route::get('/home/jihuo','Home\LoginController@jihuo');
 Route::get('/home/login','Home\LoginController@login');
 // 前台登录
 Route::post('/home/dologin','Home\LoginController@dologin');
+// 前台留言
+Route::resource('/home/message','Home\MessageController');
 // 前台日记
 Route::get('/home/diary','Home\HomeController@diary');
 // 前台用户退出
 Route::get('/home/logout','Home\LoginController@logout');
+// 前台个人中心
+Route::resource('/home/geren','Home\DetailController');
 

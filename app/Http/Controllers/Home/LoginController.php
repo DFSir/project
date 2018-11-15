@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Huser;
+use App\Models\Detail;
 use Hash;
 use Mail;
 class LoginController extends Controller
@@ -50,11 +51,15 @@ class LoginController extends Controller
         $huser = new Huser;
         $huser->uname = $request->input('uname','');
         $huser->uaccnum = $request->input('uaccnum','');
-        $huser->upic = '/uploads/20181109/2HLKtCBIMPtqheycLdr31541748617.jpg';
         $huser->upasswd = Hash::make($request->upasswd);
-  
-        if($huser ->save()){
-           
+        $res1 = $huser->save();
+        $id = $huser->uid;
+        $detail = new Detail;
+        $detail->uid = $id;
+        $detail->photo = '/uploads/20181105/Tx2xIC7znYWXIL3KqZQY1541389322.jpg';
+        $res2 = $detail->save();
+        if($res1 && $res2){
+
             return redirect('/home/login')->with('success','添加成功');
         }else{
             return back()->with('error','添加失败');
@@ -76,14 +81,14 @@ class LoginController extends Controller
      */
     public function dologin(Request $request)
     {
+
         //获取数据可的数据
-        $huser = Huser::where('uaccnum',$request->uaccnum)->first();
-        
-        
+        $huser = Huser::where('uaccnum',$request->uaccnum)->first();        
         //验证密码
         if (Hash::check($request->upasswd,$huser->upasswd)) {
             //存到session
             session(['Huser' => $huser]);
+ 
             session(['uaccnum'=>$huser->uaccnum]);
 
             return redirect('/')->with('success','登陆成功');
