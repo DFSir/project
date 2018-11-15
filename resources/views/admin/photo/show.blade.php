@@ -15,7 +15,7 @@
                     <input type="submit" class="btn btn-success radius" value="添加图片" style="float: left;">
                 </form>
             </div>
-            <a href="/admin/album" class="btn btn-primary radius" style="margin-left: 100px;">文章类别列表</a>
+            <a href="/admin/album" class="btn btn-primary radius" style="margin-left: 100px;">相册列表</a>
             <br>
             <hr>
             <div id="DataTables_Table_0_filter" class="dataTables_filter"></div>
