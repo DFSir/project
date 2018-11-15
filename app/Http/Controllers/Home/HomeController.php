@@ -109,8 +109,13 @@ class HomeController extends Controller
     {
         //获取数据库数据
         $album = Album::where('alid','=',$id)->get();
-        // dd($album);
+        
         return view('home.album.album',['alid'=>$id]);
+    }
+
+    public function modify()
+    {
+        return view('home.modify');
     }
 
 }
