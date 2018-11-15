@@ -96,6 +96,7 @@ class SettingController extends Controller
         $setting->title = $request->title;
         $setting->logo = $logo_path;
         $setting->banquan = $request->banquan;
+        $setting->kg = $request->kg;
 
         $res = $setting->save();
         if ($res) {

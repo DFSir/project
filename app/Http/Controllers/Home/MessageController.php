@@ -19,7 +19,7 @@ class MessageController extends Controller
     public function index()
     {
         $about = About::find(1);
-        $message = Messages::orderBy('mid', 'desc')->get();
+        $message = Messages::orderBy('mid', 'desc')->paginate(100);
         return view('home.message.message',['about'=>$about,'message'=>$message]);
     }
 
@@ -42,7 +42,7 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $message = new Messages;
-        $message->uid = 1;
+        $message->uid = $request->input('uid');
         $message->mcontent = $request->input('mcontent');
         // 判断数据是否存储成功
         if($message->save()){

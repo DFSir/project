@@ -56,12 +56,10 @@
                <li>
                     <div class="menu-hd">
                         @if(empty(session('Huser')))
-                            <a href="{{ url('home/login') }}" target="_top" >请先登录</a>
-                            <a href="{{ url('home/zhuce') }}" target="_top">免费注册</a>
+                            <a href="{{ url('home/login') }}" target="_top" >登录/注册</a>
                         @else
                             <span><a href="/home/geren/{{ session('Huser')->uid }}" style="color: #fff;">ID：{{ session('uaccnum') }}</a></span>
                             <a href="{{ url('home/logout') }}">退出</a>
-                            
                         @endif
                     </div>           
                 </li>
@@ -212,6 +210,7 @@
     </article>
     <footer>
       <p>Design by {{ $setting->banquan }}</p>
+      <p><a href="/home/yijian/create">我有意见</a></p>
     </footer>
     <a href="" class="cd-top">Top</a>
 </body>

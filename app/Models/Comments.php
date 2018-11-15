@@ -17,4 +17,10 @@ class Comments extends Model
     {
         return $this->hasOne('App\Models\Huser','uid','uid');
     }
+
+    // 与用户表建立一对一联系
+    public function hucominfo()
+    {
+        return $this->hasOne('App\Models\Detail','uid','uid');
+    }
 }

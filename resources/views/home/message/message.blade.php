@@ -15,8 +15,8 @@
 <div class="news_infos">
     @foreach ($message as $k=>$v)
     <div style="width: 100%;clear: both;">
-        <div style="width: 10%;height: 80px;margin:3%;background: red;display:inline-block;float: left;border-radius: 50%;">
-            <img src="" alt="">
+        <div style="width: 10%;height: 80px;margin:3%;display:inline-block;float: left;border-radius: 50%;">
+            <img src="{{ $v->husersinfo->photo }}" alt="" style="width: 100%;border-radius: 50%;">
         </div>
         <div style="width: 80%;margin:3% 1%;display:inline-block;float: left;">
             <span>{{ $v->usersinfo->uname }}</span>
@@ -37,18 +37,24 @@
 <div class="sidebar">
     <div class="about">
         <p class="avatar"> <img src="{{ $about->portrait }}" alt=""> </p>
-        <p class="abname">{{ $about->name }}</p>
+        <p class="abname">站长：{{ $about->name }}</p>
         <p class="abposition">{{ $about->profession }}</p>
         <p class="abposition">QQ：{{ $about->qq }}</p>
         <p class="abposition">邮箱：{{ $about->name }}</p>
     </div>
     <div class="weixin">
         <h2 class="hometitle">留 言</h2>
+        @if(empty(session('Huser')))
+        <textarea name="mcontent" placeholder="说点什么..." style="width: 100%;height: 60px;resize:none;" maxlength="50" ></textarea>
+        <a href="{{ url('home/login') }}"><button type="submit" style="width: 100%;height: 40px;"><h2>登录后留言</h2></button></a>
+        @else
         <form action="/home/message" method="post">
             {{ csrf_field() }}
+            <input type="hidden" name="uid" value="{{ session('Huser')->uid }}">
             <textarea name="mcontent" placeholder="说点什么..." style="width: 100%;height: 60px;resize:none;" maxlength="50" ></textarea>
             <button type="submit" style="width: 100%;height: 40px;"><h2>留 言</h2></button>
         </form>
+        @endif
     </div>
 </div>
 

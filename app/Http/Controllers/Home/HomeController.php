@@ -8,13 +8,15 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Cates;
 use App\Models\Articles;
-use App\Models\Slides;
-use App\Models\About;
-use App\Models\Huser;
-use App\Models\Comments;
-use App\Models\Setting;
 use App\Models\Diary;
 use App\Models\Album;
+use App\Models\Comments;
+use App\Models\About;
+
+use App\Models\Slides;
+use App\Models\Huser;
+use App\Models\Setting;
+
 
 class HomeController extends Controller
 {
@@ -63,8 +65,8 @@ class HomeController extends Controller
         $click = $artle->click+1;
         Articles::where('aid','=',$id)->update(['click'=>$click]);
         // 获取文章评论
-        $com = Comments::where('aid','=',$id)->orderBy('id', 'desc')->get();
-        return view('home.article.detail',['artle'=>$artle,'kname'=>$kname,'cname'=>$cname,'com'=>$com]);
+        $comment = Comments::where('aid','=',$id)->orderBy('id', 'desc')->get();
+        return view('home.article.detail',['artle'=>$artle,'kname'=>$kname,'cname'=>$cname,'comment'=>$comment]);
     }
 
     /**
@@ -94,7 +96,7 @@ class HomeController extends Controller
 
     public function diary()
     {
-        $diary = Diary::all();        
+        $diary = Diary::all();       
         return view('home.diary.index',['diary'=>$diary]);
     }
 
@@ -105,11 +107,12 @@ class HomeController extends Controller
      */
     public function album($id)
     {
-        //获取数据库数据
-        // $album = Album::where('alid','=',$id)->get();
-        // dd($album);
-        // return view('home.album.album');
-        echo "string";
+
+    }
+
+    public function modify()
+    {
+        return view('home.modify');
     }
 
 }

@@ -40,7 +40,7 @@ class CommentsController extends Controller
     {
         //
         $comment = new Comments;
-        $comment->uid = 1;
+        $comment->uid = $request->input('uid');
         $comment->aid = $request->input('aid');
         $comment->comment = $request->input('comment');
         // 判断数据是否存储成功
