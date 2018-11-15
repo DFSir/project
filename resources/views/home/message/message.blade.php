@@ -16,7 +16,7 @@
     @foreach ($message as $k=>$v)
     <div style="width: 100%;clear: both;">
         <div style="width: 10%;height: 80px;margin:3%;display:inline-block;float: left;border-radius: 50%;">
-            <img src="{{ $v->usersinfo->upic }}" alt="" style="width: 100%;border-radius: 50%;">
+            <img src="{{ $v->husersinfo->photo }}" alt="" style="width: 100%;border-radius: 50%;">
         </div>
         <div style="width: 80%;margin:3% 1%;display:inline-block;float: left;">
             <span>{{ $v->usersinfo->uname }}</span>
