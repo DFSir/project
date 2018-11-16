@@ -29,7 +29,8 @@
           </button>
            <div class="text-center" style="color:red;"><small></small></div>
           <div class="line line-dashed"></div>
-          <p class="text-muted text-center"><small class="c-white">还没有账号？</small></p>
+          <p class="text-muted text-center"><small class="c-white">还没有账号？</small>
+          <small class="c-white"><a href="/home/newpass">忘记密码？</a></small></p>
           <a href="/home/zhuce" class="btn btn-lg btn-info btn-block rounded">创建一个新账号</a>
         </form>
   </div>

@@ -8,7 +8,16 @@
 @section('picsbox')
 <h1 class="t_nav"><span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span><a href="/" class="n1">网站首页</a><a href="/" class="n2">个人中心</a></h1>
 @endsection
-
+@if (count($errors) > 0)
+        <hr>
+        <div class="hint " style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">     
+            <p style="margin-left: 50px;font-size: 20px;color: #555;">
+                @foreach ($errors->all() as $error)
+                    <i class="Hui-iconfont">&#xe631;</i>{{ $error }}
+                @endforeach
+            </p>
+        </div>
+@endif
 
 @section('container')
 <div class="news_infos">
@@ -38,10 +47,8 @@
        
         <button></button>
         <input type="submit" name="" value="提交" style="width:60px;height: 30px;background: #ccc;margin-left: 200px;font-size: 16px;border: 0px;border-radius: 6px;margin-bottom: 20px;">
-
-
-
    </form>
+
 </div>
 @endsection
 

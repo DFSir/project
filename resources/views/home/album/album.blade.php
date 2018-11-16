@@ -30,5 +30,5 @@
 
 @section('right')
 
-@endsection
 
+@endsection

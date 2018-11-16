@@ -110,6 +110,14 @@ Route::get('/home/jihuo','Home\LoginController@jihuo');
 Route::get('/home/login','Home\LoginController@login');
 // 前台登录
 Route::post('/home/dologin','Home\LoginController@dologin');
+// 前台登录忘记密码
+Route::get('/home/newpass','Home\LoginController@newpass');
+// 前台忘记修改密码
+Route::get('/home/xiupass','Home\LoginController@xiupass');
+// 执行修改密码
+Route::get('/home/gaipass','Home\LoginController@gaipass');
+// 前台留言
+Route::resource('/home/message','Home\MessageController');
 // 前台日记
 Route::get('/home/diary','Home\HomeController@diary');
 // 前台用户退出
