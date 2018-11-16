@@ -91,6 +91,7 @@ class DetailController extends Controller
            $photo_path = $a->photo;
         }
 
+        
         $uname = $request->input('uname');
         $sex = $request->input('sex');
         $phone = $request->input('phone');

@@ -10,6 +10,7 @@ use App\Models\Huser;
 use App\Models\Detail;
 use Hash;
 use Mail;
+use DB;
 class LoginController extends Controller
 {
     /**
@@ -107,5 +108,38 @@ class LoginController extends Controller
         $request->session()->flush();
         return back();
     }
+
+     /**
+     *
+     *忘记密码
+     */
+    public function newpass(Request $request)
+    {
+        return view('home.login.newpass');
+    }
+
+    //修改忘记的密码
+    public function xiupass(Request $request)
+    {
+        $aa = $request->uaccnum;
+        $mima = Huser::where('uaccnum','=',$aa)->get();       
+        return view('home.login.xiupass',['mima'=>$mima]);
+    }
+
+    //执行修改密码
+    public function gaipass(Request $request)
+    {
+        $data = $request -> except('_token');
+        $aa = $request->uaccnum;
+        $data = Huser::where('uaccnum','=',$aa)->first();
+        $data->upasswd = Hash::make($request->input('passwd',''));
+
+        if($data->save()){
+            return redirect('/home/login')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
+    }
+
 
 }

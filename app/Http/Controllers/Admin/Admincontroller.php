@@ -169,7 +169,7 @@ class Admincontroller extends Controller
         if(Hash::check($request->passwd, $user->passwd)){
             //写入session
             session(['name'=>$user->name, 'id'=>$user->id]);
-            return redirect('/admin/auser')->with('success','登录成功');
+            return view('admin.layout.layout');
         }else{
             return back()->with('error','登录失败!');
         }

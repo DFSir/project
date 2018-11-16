@@ -17,7 +17,7 @@
   @foreach($photo as $k=>$v)
     <li> 
       <div class="shareli">
-           <img src="{{ $v->picture }}" width="150px" height="150px"> 
+           <img src="{{ $v->picture }}" width="300px" height="300px"> 
       </div> 
     </li>
   @endforeach
