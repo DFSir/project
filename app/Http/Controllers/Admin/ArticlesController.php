@@ -62,13 +62,25 @@ class ArticlesController extends Controller
             'title' => 'required',
             'tag_id' => 'required',
             'author' => 'required',
-            'acontent' => 'required'
+            'acontent' => 'required',
+            'photo' => 'required'
         ],[
             'title.required' => '文章名称不能为空哦~',
             'tag_id.required' => '最少选择一个标签哟~(oﾟvﾟ)ノ',
             'author.required' => '作者是必填项啊~(￣┰￣*)',
-            'acontent.required' => '文章怎么能没有内容呀!(ノ｀Д)ノ'
+            'acontent.required' => '文章怎么能没有内容呀!(ノ｀Д)ノ',
+            'photo.required' => '不能没有文章图片啊~=-='
         ]);
+        //处理表单提交信息
+        if($request -> hasFile('photo')){
+            $photo = $request -> file('photo');
+            $ext = $photo ->getClientOriginalExtension();
+            $file_name = str_random(20).time().'.'.$ext;
+            $dir_name = './uploads/photo/'.date('Ymd',time());
+            $res = $photo -> move($dir_name,$file_name);
+            $photo_path = ltrim($dir_name.'/'.$file_name,'.');
+        }
+
         // 把提交过来的数据放进数据库
         $article = new Articles;
         $article->cid = $request->input('cid');
@@ -76,6 +88,7 @@ class ArticlesController extends Controller
         $article->title = $request->input('title');
         $article->author = $request->input('author');
         $article->acontent = $request->input('acontent');
+        $article->photo = $photo_path;
         // 判断数据是否存储成功
         if($article->save()){
             //处理标签
@@ -195,6 +208,18 @@ class ArticlesController extends Controller
         $title = $request->input('title');
         $author = $request->input('author');
         $acontent = $request->input('acontent');
+
+        //处理表单提交信息
+        if($request -> hasFile('photo')){
+            $photo = $request -> file('photo');
+            $ext = $photo ->getClientOriginalExtension();
+            $file_name = str_random(20).time().'.'.$ext;
+            $dir_name = './uploads/photo/'.date('Ymd',time());
+            $res = $photo -> move($dir_name,$file_name);
+            $photo_path = ltrim($dir_name.'/'.$file_name,'.');
+            // 把提交过来的数据放进指定数据表
+            $res = Articles::where('aid','=',$id)->update(['photo'=>$photo_path]);
+        }
 
         // 把提交过来的数据放进指定数据表
         $res = Articles::where('aid','=',$id)->update(['cid'=>$cid,'title'=>$title,'author'=>$author,'acontent'=>$acontent]);

@@ -10,10 +10,7 @@
 			<table class="table table-border table-bordered table-hover table-bg table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
 				<thead>
 					<tr class="text-c" role="row">
-						<th width="25" class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 25px;">
-							<input type="checkbox" name="" value="">
-						</th>
-						<th width="60px">ID</th>
+						<th width="60px">楼层</th>
 						<th width="60px">用户</th>
 						<th width="1350px">留言内容</th>
 						<th width="100px">操作</th>
@@ -22,12 +19,11 @@
 				<tbody>
 					@foreach ($message as $k=>$v)
 					<tr class="text-c odd" role="row">
-						<td><input type="checkbox" value="1" name=""></td>
-						<td class="sorting_1">{{ $v->mid }}</td>
+						<td class="sorting_1">{{ $v->mid }}层</td>
 						<td>
 							<a href="javascript:;">
 								<i class="avatar size-L radius">
-									<img alt="" src="/admin/static/h-ui/images/ucnter/avatar-default-S.gif">
+									<img alt="" src="{{ $v->husersinfo->photo or '/admin/static/h-ui/images/ucnter/avatar-default-S.gif' }}">
 								</i>
 							</a>
 						</td>

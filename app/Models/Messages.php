@@ -16,7 +16,7 @@ class Messages extends Model
         return $this->hasOne('App\Models\Huser','uid','uid');
    	}
 
-   	// 与用户表建立一对一联系
+   	// 与用户详情表建立一对一联系
    	public function husersinfo()
    	{
         return $this->hasOne('App\Models\Detail','uid','uid');

@@ -15,7 +15,7 @@
 
 <article class="page-container" style="">
 	<h1>{{ $title or '' }}</h1>
-	<form class="form form-horizontal" id="form-article-add" novalidate="novalidate" action="/admin/articles/{{ $article->aid }}" method="post">
+	<form class="form form-horizontal" id="form-article-add" novalidate="novalidate" action="/admin/articles/{{ $article->aid }}" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		{{ method_field('PUT') }}
 		<div class="row cl">
@@ -47,6 +47,14 @@
 			<label class="form-label col-xs-4 col-sm-2">文章作者：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="{{ $article->author }}" placeholder="" id="author" name="author">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">文章图片：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="file" name="photo">
+				<img src="{{ $article->photo }}" alt="">
 			</div>
 		</div>
 

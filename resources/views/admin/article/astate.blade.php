@@ -16,6 +16,10 @@
 				<td style="text-align: center; font-size: 20px;">{{ $article->title}}</td>
 			</tr>
 			<tr>
+				<td>文章大图</td>
+				<td><img src="{{ $article->photo}}" alt="" style="width: 415px;height: 155px;"></td>
+			</tr>
+			<tr>
 				<td>上传时间</td>
 				<td>{{ $article->created_at}}</td>
 			</tr>

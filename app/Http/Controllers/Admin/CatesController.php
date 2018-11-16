@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Cates;
+use App\Models\Articles;
 use DB;
 
 class CatesController extends Controller
@@ -153,6 +154,12 @@ class CatesController extends Controller
         foreach ($cates as $k => $v) {
             if($v->cpid == $id){
                 return back()->with('error','该类下面有子分类不能删除');
+            }
+        }
+        $articles = Articles::select('cid')->get();
+        foreach ($articles as $ka => $va) {
+            if ($va->cid == $id) {
+                return back()->with('error','该类下面有文章不能删除');
             }
         }
         // 删除指定的类别

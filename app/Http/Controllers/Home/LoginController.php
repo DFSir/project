@@ -53,7 +53,7 @@ class LoginController extends Controller
         $id = $huser->uid;
         $detail = new Detail;
         $detail->uid = $id;
-        $detail->photo = '/uploads/20181105/Tx2xIC7znYWXIL3KqZQY1541389322.jpg';
+        $detail->photo = '/admin/static/h-ui/images/ucnter/avatar-default-S.gif';
         $res2 = $detail->save();
         if($res1 && $res2){
 

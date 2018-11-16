@@ -198,6 +198,14 @@
 					<a data-href="/admin/about" data-title="关于我" href="/admin/about" style="text-decoration:none;">关于我</a>
 				</dt>
 			</dl>
+
+			<dl id="menu-admin">
+				<dt>
+					<i class="Hui-iconfont">&#xe62f;</i> 
+					<a data-href="/admin/message" data-title="留言区" href="/admin/message" style="text-decoration:none;">留言区管理</a>
+				</dt>
+			</dl>
+
 			<dl id="menu-admin">
 				<dt>
 					<i class="Hui-iconfont">&#xe62e;</i> 系统管理

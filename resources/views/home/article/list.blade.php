@@ -16,7 +16,7 @@
     @foreach ($artle as $k=>$v)
     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
         <h3 class="blogtitle"><a href="/home/detail/{{ $v->aid }}" target="_blank">{{ $v->title }}</a></h3>
-        <span class="blogpic"><a href="/home/detail/{{ $v->aid }}" title=""><img src="/home/images/toppic01.jpg" alt=""></a></span>
+        <span class="blogpic"><a href="/home/detail/{{ $v->aid }}" title=""><img src="{{ $v->photo }}" alt="" style="width: 305px;height: 178px;"></a></span>
         <div style="width: 460px;height: 110px;margin-left: 240px;overflow: hidden;">{!! $v->acontent !!}</div>
         <div class="bloginfo">
             <ul>

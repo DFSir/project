@@ -16,10 +16,10 @@
 <article class="page-container" style="">
 	<h1>{{ $title or '' }}</h1>
 	<a href="/admin/articles" style="margin-left: 20px;"><button class="btn btn-success radius" style="width: 120px;">文章列表</button></a>
-	<form class="form form-horizontal" id="form-article-add" novalidate="novalidate" action="/admin/articles" method="post">
+	<form class="form form-horizontal" id="form-article-add" novalidate="novalidate" action="/admin/articles" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章类型：</label>
+			<label class="form-label col-xs-4 col-sm-2">文章类型：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
 					<select name="cid" id="" class="select">
@@ -36,15 +36,16 @@
 				</span>
 			</div>
 		</div>
+
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
+			<label class="form-label col-xs-4 col-sm-2">文章标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="" placeholder="" id="articletitle" name="title">
 			</div>
 		</div>
 
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标签：</label>
+			<label class="form-label col-xs-4 col-sm-2">文章标签：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				@foreach($tags as $k => $v)
 				<label style="font-size: 14px;font-weight: normal;margin-right: 10px;"><input type="checkbox" name="tag_id[]" value="{{$v->id}}">{{$v->name}}</label>
@@ -57,6 +58,13 @@
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="hidden" value="0" name="uid">
 				<input type="text" class="input-text" value="" placeholder="" id="author" name="author">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">文章图片：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="file" name="photo">
 			</div>
 		</div>
 

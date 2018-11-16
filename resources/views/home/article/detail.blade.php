@@ -113,13 +113,13 @@
         <div class="tuijian">
             <h2 class="hometitle">推荐文章</h2>
             <ul class="tjpic">
-                <i><a href="/home/detail/{{ $recommend[0]->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                <i><a href="/home/detail/{{ $recommend[0]->aid }}"><img src="{{ $recommend[0]->photo }}"></a></i>
                 <p><a href="/home/detail/{{ $recommend[0]->aid }}">{{ $recommend[0]->title }}</a></p>
             </ul>
             <ul class="sidenews">
                 @foreach ($recommend as $k=>$v)
                 @if ($k > 0)
-                <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="{{ $v->photo }}"></a></i>
                     <p><a href="/home/detail/{{ $v->aid }}">{{ $v->title }}</a></p>
                     <span>{{ $v->created_at }}</span> </li>
                 @endif

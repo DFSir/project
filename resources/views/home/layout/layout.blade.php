@@ -118,7 +118,7 @@
             @foreach ($articles as $k=>$v)
             <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
                 <h3 class="blogtitle"><a href="/home/detail/{{ $v->aid }}" target="_blank">{{ $v->title }}</a></h3>
-                <span class="blogpic"><a href="/home/detail/{{ $v->aid }}" title=""><img src="/home/images/toppic01.jpg" alt=""></a></span>
+                <span class="blogpic"><a href="/home/detail/{{ $v->aid }}" title=""><img src="{{ $v->photo }}" alt="" style="width: 214px;height: 125px;"></a></span>
                 <div style="width: 460px;height: 110px;margin-left: 240px;overflow: hidden;">{!! $v->acontent !!}</div>
                 <div class="bloginfo">
                     <ul>
@@ -141,13 +141,13 @@
             <div class="tuijian">
                 <h2 class="hometitle">推荐文章</h2>
                 <ul class="tjpic">
-                    <i><a href="/home/detail/{{ $recommend[0]->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                    <i><a href="/home/detail/{{ $recommend[0]->aid }}"><img src="{{ $recommend[0]->photo }}" style="width: 305px;height: 178px;"></a></i>
                     <p><a href="/home/detail/{{ $recommend[0]->aid }}">{{ $recommend[0]->title }}</a></p>
                 </ul>
                 <ul class="sidenews">
                     @foreach ($recommend as $k=>$v)
                     @if ($k > 0)
-                    <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                    <li> <i><a href="/home/detail/{{ $v->aid }}" style="width: 130px;"><img src="{{ $v->photo }}" style="width: 130px;height: 75px;"></a></i>
                         <p><a href="/home/detail/{{ $v->aid }}">{{ $v->title }}</a></p>
                         <span>{{ $v->created_at }}</span> </li>
                     @endif
@@ -159,13 +159,13 @@
             <div class="tuijian">
                 <h2 class="hometitle">点赞排行</h2>
                 <ul class="tjpic">
-                    <i><a href="/home/detail/{{ $like[0]->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                    <i><a href="/home/detail/{{ $like[0]->aid }}"><img src="{{ $like[0]->photo }}" style="width: 305px;height: 178px;"></a></i>
                     <p><a href="/home/detail/{{ $like[0]->aid }}">{{ $like[0]->title }}</a></p>
                 </ul>
                 <ul class="sidenews">
                     @foreach ($like as $k=>$v)
                     @if ($k > 0)
-                    <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="/home/images/toppic02.jpg"></a></i>
+                    <li> <i><a href="/home/detail/{{ $v->aid }}" style="width: 130px;"><img src="{{ $v->photo }}" style="width: 130px;height: 75px;"></a></i>
                         <p><a href="/home/detail/{{ $v->aid }}">{{ $v->title }}</a></p>
                         <span>{{ $v->created_at }}</span> </li>
                     @endif
