@@ -46,6 +46,13 @@ class DiaryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'dtitle' => 'required',
+            'dcontent' => 'required'
+        ],[
+            'dtitle.required' => '标题不能为空',
+            'dcontent.required' => '内容不能为空'
+        ]);
         //
         $diary = new Diary;
         $diary->dtitle = $request->dtitle;
@@ -91,6 +98,13 @@ class DiaryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'dtitle' => 'required',
+            'dcontent' => 'required'
+        ],[
+            'dtitle.required' => '标题不能为空',
+            'dcontent.required' => '内容不能为空'
+        ]);
         //
         $diary = Diary::where('did','=',$id)->firstOrFail();
         $diary->dtitle = $request->dtitle;
