@@ -163,7 +163,10 @@ class Admincontroller extends Controller
     {
         //获取用户数据
         $user = Auser::where('name', $request->name)->first();
-       
+        
+        if(!$user){
+            return back()->with('error','登录失败!');
+        }
 
         //验证密码
         if(Hash::check($request->passwd,$user->passwd)){
