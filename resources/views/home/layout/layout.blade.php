@@ -98,10 +98,10 @@
             </div>
 
             <div class="toppic">
-                <li> <a href="" target="_blank"> <i><img src="/home/images/toppic02.jpg"></i>
+                <li> <a href="" target="_blank"> <i><img src="/home/images/toppic04.jpg"></i>
                     <h2>别让这些闹心的套路，毁了你的网页设计!</h2>
                     <span>学无止境</span> </a> </li>
-                <li> <a href="" target="_blank"> <i><img src="/home/images/zd01.jpg"></i>
+                <li> <a href="" target="_blank"> <i><img src="/home/images/zd04.jpg"></i>
                     <h2>个人博客，属于我的小世界！</h2>
                     <span>学无止境</span> </a> </li>
             </div>
@@ -118,7 +118,7 @@
             @foreach ($articles as $k=>$v)
             <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
                 <h3 class="blogtitle"><a href="/home/detail/{{ $v->aid }}" target="_blank">{{ $v->title }}</a></h3>
-                <span class="blogpic"><a href="/home/detail/{{ $v->aid }}" title=""><img src="/home/images/toppic01.jpg" alt=""></a></span>
+                <span class="blogpic"><a href="/home/detail/{{ $v->aid }}" title=""><img src="/home/images/toppic03.jpg" alt=""></a></span>
                 <div style="width: 460px;height: 110px;margin-left: 240px;overflow: hidden;">{!! $v->acontent !!}</div>
                 <div class="bloginfo">
                     <ul>
@@ -141,13 +141,13 @@
             <div class="tuijian">
                 <h2 class="hometitle">推荐文章</h2>
                 <ul class="tjpic">
-                    <i><a href="/home/detail/{{ $recommend[0]->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                    <i><a href="/home/detail/{{ $recommend[0]->aid }}"><img src="/home/images/toppic04.jpg"></a></i>
                     <p><a href="/home/detail/{{ $recommend[0]->aid }}">{{ $recommend[0]->title }}</a></p>
                 </ul>
                 <ul class="sidenews">
                     @foreach ($recommend as $k=>$v)
                     @if ($k > 0)
-                    <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                    <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="/home/images/toppic03.jpg"></a></i>
                         <p><a href="/home/detail/{{ $v->aid }}">{{ $v->title }}</a></p>
                         <span>{{ $v->created_at }}</span> </li>
                     @endif
@@ -159,13 +159,13 @@
             <div class="tuijian">
                 <h2 class="hometitle">点赞排行</h2>
                 <ul class="tjpic">
-                    <i><a href="/home/detail/{{ $like[0]->aid }}"><img src="/home/images/toppic01.jpg"></a></i>
+                    <i><a href="/home/detail/{{ $like[0]->aid }}"><img src="/home/images/toppic03.jpg"></a></i>
                     <p><a href="/home/detail/{{ $like[0]->aid }}">{{ $like[0]->title }}</a></p>
                 </ul>
                 <ul class="sidenews">
                     @foreach ($like as $k=>$v)
                     @if ($k > 0)
-                    <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="/home/images/toppic02.jpg"></a></i>
+                    <li> <i><a href="/home/detail/{{ $v->aid }}"><img src="/home/images/toppic04.jpg"></a></i>
                         <p><a href="/home/detail/{{ $v->aid }}">{{ $v->title }}</a></p>
                         <span>{{ $v->created_at }}</span> </li>
                     @endif

@@ -100,15 +100,7 @@ class HomeController extends Controller
         return view('home.diary.index',['diary'=>$diary]);
     }
 
-     /**
-     * 相册页面
-     * 
-     * 
-     */
-    public function album($id)
-    {
-
-    }
+    
 
     public function modify()
     {

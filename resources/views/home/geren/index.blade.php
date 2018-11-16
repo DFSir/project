@@ -64,7 +64,7 @@
     <div class="weixin">
         <h2 class="hometitle">微信关注</h2>
         <ul>
-            <img src="/home/images/wx.jpg">
+            <img src="/home/images/weixin.jpg">
         </ul>
     </div>
 </div>
