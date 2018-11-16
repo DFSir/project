@@ -28,5 +28,7 @@
 
 @endsection
 
+@section('right')
 
+@endsection
 
