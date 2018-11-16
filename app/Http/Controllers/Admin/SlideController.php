@@ -46,6 +46,13 @@ class SlideController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'slide' => 'required',
+            'describe' => 'required'
+        ],[
+            'slide.required' => '轮播图是必须要有图片呀!(╯▔皿▔)╯',
+            'describe.required' => '轮播图怎么能没有标题呢╰（‵□′）╯~'
+        ]);
         //处理表单提交信息
         if($request -> hasFile('slide')){
             $slide = $request -> file('slide');
@@ -102,6 +109,11 @@ class SlideController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'describe' => 'required'
+        ],[
+            'describe.required' => '别以为在这里就可以把标题改没啊(╯‵□′)╯炸弹！•••*～●~'
+        ]);
         // 
         $describe = $request->input('describe');
         if ($request->hasFile('slide')){

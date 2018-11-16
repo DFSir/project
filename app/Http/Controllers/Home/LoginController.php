@@ -29,12 +29,11 @@ class LoginController extends Controller
     public function store(Request $request)
     {
 
-            $this->validate($request, [
+        $this->validate($request, [
             'uname' => 'required|regex:/^.{2,20}$/',
             'uaccnum' => 'required|unique:homeusers|regex:/^[A-Za-z0-9]{6,18}$/',
             'upasswd' => 'required|regex:/^[A-Za-z0-9]{6,18}$/',
             'repassword' => 'required|same:upasswd',
-
         ],[
             'uname.required' => '用户名必填',
             'uname.regex' => '用户名格式错误',
@@ -44,8 +43,6 @@ class LoginController extends Controller
             'upasswd.regex' => '密码格式错误',
             'repassword.required' => '确认密码必填',
             'repassword.same' => '两次密码不一致',
-           
-
         ]);
 
         $huser = new Huser;

@@ -2,6 +2,18 @@
 <!-- 关于我修改页面 -->
 @section('container')
 
+<!-- 显示提示消息 -->
+@if(count($errors) > 0)
+	<div class="hint" style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">	
+		<p style="margin-left: 50px;font-size: 20px;color: #555;">
+			@foreach ($errors->all() as $error)
+			<i class="Hui-iconfont">&#xe631;</i>&nbsp&nbsp&nbsp{{ $error }}
+			@endforeach
+		</p>
+	</div>
+@endif
+
+
 <div class="page-container">
 	<h1>{{ $title or '' }}</h1>
 	<form action="/admin/about/{{ $about->id }}" method="post" enctype="multipart/form-data">
@@ -18,7 +30,7 @@
 					<td width="15%" style="text-align: center; font-size: 20px;">头像</td>
 					<td style="text-align: center; font-size: 20px;">
 						<input type="file" name="portrait">
-						<img src="{{ $about->portrait }}" alt="">
+						<img src="{{ $about->portrait or ''}}" alt="">
 					</td>
 				</tr>
 				<tr>

@@ -166,10 +166,10 @@ class Admincontroller extends Controller
        
 
         //验证密码
-        if(Hash::check($request->passwd, $user->passwd)){
+        if(Hash::check($request->passwd,$user->passwd)){
             //写入session
             session(['name'=>$user->name, 'id'=>$user->id]);
-            return redirect('/admin/auser')->with('success','登录成功');
+            return redirect('/admin/layout/layout')->with('success','登录成功');
         }else{
             return back()->with('error','登录失败!');
         }

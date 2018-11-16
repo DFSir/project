@@ -11,14 +11,14 @@
   <!-- 显示验证错误信息 start -->
   @if (count($errors) > 0)
     <hr>
-      <div class="hint " style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">
-      
-          <p style="margin-left: 50px;font-size: 20px;color: #555;">
-              @foreach ($errors->all() as $error)
-                  <i class="Hui-iconfont">&#xe631;</i>{{ $error }}
-              @endforeach
-          </p>
-      </div>
+        <div class="hint " style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">
+          
+            <p style="margin-left: 50px;font-size: 20px;color: #555;">
+                @foreach ($errors->all() as $error)
+                    <i class="Hui-iconfont">&#xe631;</i>{{ $error }}
+                @endforeach
+            </p>
+        </div>
   @endif
 
   <!-- 显示验证错误信息 end -->

@@ -49,6 +49,11 @@ class CatesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'cname' => 'required',
+        ],[
+            'cname.required' => '类别名称不能为空哦~',
+        ]);
         // 获取类别的所有名称
         $cate = Cates::all();
         $cname = $request->input('cname');
@@ -112,6 +117,11 @@ class CatesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'cname' => 'required',
+        ],[
+            'cname.required' => '类别名称不能为空哦~',
+        ]);
         // 获取提交过来的类别名称
         $cname = $request->input('cname');
         $cate = Cates::all();

@@ -43,8 +43,8 @@
                 <li><a href="/home/message">留言</a> </li>
                 <!--search begin-->
                 <div id="search_bar" class="search_bar">
-                    <form  id="searchform" action="" method="post" name="">
-                        <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">
+                    <form  id="searchform" action="/home/seek" method="get">
+                        <input class="input" placeholder="想搜点什么呢..." type="text" name="title" id="keyboard">
                         <input type="hidden" name="show" value="title" />
                         <input type="hidden" name="tempid" value="1" />
                         <input type="hidden" name="tbname" value="news">
@@ -53,13 +53,13 @@
                     </form>
                 </div>
                 <!--search end--> 
-               <li>
+                <li>
                     <div class="menu-hd">
                         @if(empty(session('Huser')))
-                            <a href="{{ url('home/login') }}" target="_top" >登录/注册</a>
+                            <a href="{{ url('/home/login') }}" target="_top" >登录/注册</a>
                         @else
-                            <span><a href="/home/geren/{{ session('Huser')->uid }}" style="color: #fff;">ID：{{ session('uaccnum') }}</a></span>
-                            <a href="{{ url('home/logout') }}">退出</a>
+                            <a href="/home/geren/{{ session('Huser')->uid }}" style="color: #fff;">{{ session('uaccnum') }}</a>
+                            <a href="{{ url('/home/logout') }}">退出</a>
                         @endif
                     </div>           
                 </li>

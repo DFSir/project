@@ -23,38 +23,6 @@ class AboutController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -76,7 +44,15 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $this->validate($request, [
+            'name' => 'required',
+            'profession' => 'required',
+            'aboutme' => 'required',
+        ],[
+            'name.required' => '难道你没有名字吗w(ﾟДﾟ)w~',
+            'profession.required' => '没有职业不知道填站长啊╰（‵□′）╯~',
+            'aboutme.required' => '字体是隐形的吗,我怎么看不见啊ㄟ( ▔, ▔ )ㄏ~',
+        ]);
         //处理表单提交信息
         if($request -> hasFile('portrait')){
             $portrait = $request -> file('portrait');

@@ -2,6 +2,18 @@
 <!-- 轮播图修改页面 -->
 @section('container')
 
+<!-- 显示提示消息 -->
+@if(count($errors) > 0)
+	<div class="hint" style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">	
+		<p style="margin-left: 50px;font-size: 20px;color: #555;">
+			@foreach ($errors->all() as $error)
+			<i class="Hui-iconfont">&#xe631;</i>&nbsp&nbsp&nbsp{{ $error }}
+			@endforeach
+		</p>
+	</div>
+@endif
+
+
 <article class="page-container" style="">
 	<h1>{{ $title or '' }}</h1>
 	<a href="/admin/slide" style="margin-left: 20px;"><button class="btn btn-success radius" style="width: 120px;">轮播图列表</button></a>

@@ -1,6 +1,17 @@
 @extends('admin.layout.layout')
 <!-- 文章类别添加页面 -->
 @section('container')
+
+<!-- 显示提示消息 -->
+@if(count($errors) > 0)
+	<div class="hint" style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">
+		@foreach ($errors->all() as $error)
+		<p style="margin-left: 50px;font-size: 20px;color: #555;"><i class="Hui-iconfont">&#xe631;</i>&nbsp&nbsp&nbsp{{ $error }}</p>
+		@endforeach
+	</div>
+@endif
+
+
 <div class="page-container">
 	<h1>{{ $title or '' }}</h1>
 	<div class="cl pd-5 bg-1 bk-gray mt-20">
@@ -46,10 +57,6 @@
 		</div>
 	</form>
 	<br>
-	<div class="row cl">
-		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-			<a href="/admin/cates"><button class="btn btn-secondary radius" type="button" >类别列表</button></a>
-		</div>
-	</div>
+
 </div>
 @endsection

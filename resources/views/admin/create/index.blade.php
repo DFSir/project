@@ -1,6 +1,12 @@
 @extends('admin.layout.layout')
 <!-- 文章类别列表页面 -->
 @section('container')
+<!-- 显示提示消息 -->
+@if(session('error'))
+	<div class="hint" style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">
+		<p style="margin-left: 50px;font-size: 20px;color: #555;"><i class="Hui-iconfont">&#xe631;</i>&nbsp&nbsp&nbsp{{session('error')}}</p>
+	</div>
+@endif
 
 <div class="page-container">
 	<h1>{{ $title or '' }}</h1>

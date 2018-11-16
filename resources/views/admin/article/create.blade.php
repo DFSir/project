@@ -2,6 +2,17 @@
 <!-- 文章详情添加页面 -->
 @section('container')
 
+<!-- 显示提示消息 -->
+@if(count($errors) > 0)
+	<div class="hint" style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">	
+		<p style="margin-left: 50px;font-size: 20px;color: #555;">
+			@foreach ($errors->all() as $error)
+			<i class="Hui-iconfont">&#xe631;</i>&nbsp&nbsp&nbsp{{ $error }}
+			@endforeach
+		</p>
+	</div>
+@endif
+
 <article class="page-container" style="">
 	<h1>{{ $title or '' }}</h1>
 	<a href="/admin/articles" style="margin-left: 20px;"><button class="btn btn-success radius" style="width: 120px;">文章列表</button></a>
@@ -25,6 +36,12 @@
 				</span>
 			</div>
 		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="articletitle" name="title">
+			</div>
+		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标签：</label>
@@ -32,13 +49,6 @@
 				@foreach($tags as $k => $v)
 				<label style="font-size: 14px;font-weight: normal;margin-right: 10px;"><input type="checkbox" name="tag_id[]" value="{{$v->id}}">{{$v->name}}</label>
 				@endforeach
-			</div>
-		</div>
-
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="articletitle" name="title">
 			</div>
 		</div>
 

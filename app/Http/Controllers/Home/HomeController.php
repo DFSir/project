@@ -13,9 +13,6 @@ use App\Models\Album;
 use App\Models\Comments;
 use App\Models\About;
 
-use App\Models\Slides;
-use App\Models\Huser;
-use App\Models\Setting;
 
 
 class HomeController extends Controller
@@ -46,6 +43,21 @@ class HomeController extends Controller
         $kname = Cates::find($cname->cpid);
         // 跳转到文章列表页
         return view('home.article.list',['artle'=>$artle,'kname'=>$kname,'cname'=>$cname]);
+    }
+
+    /**
+     * 文章搜索页
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function seek(Request $request)
+    {
+        // 文章标题搜索条件
+        $title = $request->input('title','');
+        // 从数据库获取文章数据
+        $artle = Articles::where('astate','=','11')->where('title','like','%'.$title.'%')->get();
+
+        return view('home.article.seek',['artle'=>$artle]);
     }
 
 
@@ -100,15 +112,7 @@ class HomeController extends Controller
         return view('home.diary.index',['diary'=>$diary]);
     }
 
-     /**
-     * 相册页面
-     * 
-     * 
-     */
-    public function album($id)
-    {
 
-    }
 
     public function modify()
     {

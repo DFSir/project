@@ -2,6 +2,15 @@
 <!-- 文章类别修改页面 -->
 @section('container')
 
+<!-- 显示提示消息 -->
+@if(count($errors) > 0)
+	<div class="hint" style="width: 80%;height: 50px;margin: 10px auto;background: #f2dede;line-height: 50px;border-radius: 30px;">
+		@foreach ($errors->all() as $error)
+		<p style="margin-left: 50px;font-size: 20px;color: #555;"><i class="Hui-iconfont">&#xe631;</i>&nbsp&nbsp&nbsp{{ $error }}</p>
+		@endforeach
+	</div>
+@endif
+
 <div class="page-container">
 	<h1>{{ $title or '' }}</h1>
 	<form class="form form-horizontal" id="form-article-add" action="/admin/cates/{{ $cate->cid }}" method="post">

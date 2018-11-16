@@ -58,6 +58,17 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'tag_id' => 'required',
+            'author' => 'required',
+            'acontent' => 'required'
+        ],[
+            'title.required' => '文章名称不能为空哦~',
+            'tag_id.required' => '最少选择一个标签哟~(oﾟvﾟ)ノ',
+            'author.required' => '作者是必填项啊~(￣┰￣*)',
+            'acontent.required' => '文章怎么能没有内容呀!(ノ｀Д)ノ'
+        ]);
         // 把提交过来的数据放进数据库
         $article = new Articles;
         $article->cid = $request->input('cid');
@@ -167,6 +178,18 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'tag_id' => 'required',
+            'author' => 'required',
+            'acontent' => 'required'
+        ],[
+            'title.required' => '文章名称不能修改为空哦~',
+            'tag_id.required' => '最少选择一个标签哟~(oﾟvﾟ)ノ',
+            'author.required' => '作者是必填项啊~(￣┰￣*)',
+            'acontent.required' => '文章怎么能没有内容呀!(ノ｀Д)ノ'
+        ]);
+
         // 把获取的数据放进数据库
         $cid = $request->input('cid');
         $title = $request->input('title');
@@ -178,10 +201,10 @@ class ArticlesController extends Controller
         if($res){
             $article = Articles::find($id);
 
-             try{
+            try{
                 $res = $article->tags()->sync($request->tag_id);
             }catch(\Exception $e){
-                return back()->with('error','添加文章失败');
+                return back()->with('error','修改文章失败');
             }
 
             return view('admin.article.show',['title'=>'文章详情','article'=>$article])->with('success','修改成功');
