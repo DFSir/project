@@ -14,8 +14,7 @@
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>
-   
-    
+
 </head>
 <body>
     <header> 
