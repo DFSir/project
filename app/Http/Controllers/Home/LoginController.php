@@ -83,7 +83,12 @@ class LoginController extends Controller
     {
 
         //获取数据可的数据
-        $huser = Huser::where('uaccnum',$request->uaccnum)->first();        
+        $huser = Huser::where('uaccnum',$request->uaccnum)->first(); 
+
+        if(!$huser){
+            return back()->with('error','登录失败');
+        }
+
         //验证密码
         if (Hash::check($request->upasswd,$huser->upasswd)) {
             //存到session
