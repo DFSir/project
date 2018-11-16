@@ -108,7 +108,7 @@ Route::get('/home/message','Home\HomeController@message');
 // 前台留言
 Route::resource('/home/message','Home\MessageController');
 // 前台相册
-Route::get('/home/album','Home\HomeController@album');
+Route::resource('/home/album','Home\AlbumController');
 // 前台注册
 Route::get('/home/zhuce','Home\LoginController@zhuce');
 // 前台执行注册

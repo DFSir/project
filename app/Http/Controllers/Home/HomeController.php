@@ -112,8 +112,6 @@ class HomeController extends Controller
         return view('home.diary.index',['diary'=>$diary]);
     }
 
-
-
     public function modify()
     {
         return view('home.modify');

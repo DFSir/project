@@ -65,7 +65,6 @@ class DetailController extends Controller
     public function edit($id)
     {
         //
-        // echo 'aaa';
         $huser = Huser::find($id);
         return view('home.geren.edit',['huser'=>$huser]);
     }
