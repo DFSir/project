@@ -48,7 +48,13 @@ class TagController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $this->validate($request, [
+            'name' => 'required|unique:tags'
+        ],[
+            'name.required' => '标签不能为空',
+            'name.unique' => '标签已存在'
+        ]);
         //
         $tags = new Tag;
         $tags->name = $request->name;
@@ -92,7 +98,13 @@ class TagController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
+        $this->validate($request, [
+            'name' => 'required|unique:tags'
+        ],[
+            'name.required' => '标签不能为空',
+            'name.unique' => '标签已存在'
+        ]);
         //
         $tags = Tag::firstOrFail();
         $tags->name = $request->name;

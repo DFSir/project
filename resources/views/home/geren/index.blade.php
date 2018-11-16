@@ -26,7 +26,7 @@
          <span> @if ($user->huserinfo->sex == 'w') 女
                 @elseif ($user->huserinfo->sex == 'm') 男
                 @else  保密
-                @endif
+                @endif  
 
         </span>
          <br><br>
@@ -64,7 +64,7 @@
     <div class="weixin">
         <h2 class="hometitle">微信关注</h2>
         <ul>
-            <img src="/home/images/weixin.jpg">
+            <img src="/home/images/wx.jpg">
         </ul>
     </div>
 </div>

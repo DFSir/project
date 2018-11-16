@@ -26,7 +26,7 @@
 <input type="hidden" id="TenantId" name="TenantId" value="" />
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal" action="/admin/dologin" method="post">
+    <form class="form form-horizontal" action="/admin/login" method="post">
       {{ csrf_field() }}
       <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
