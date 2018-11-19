@@ -188,4 +188,12 @@ class Admincontroller extends Controller
         return redirect('/admin/login')->with('success','退出成功');
     }
 
+    /**
+     * 后台首页
+     */
+    public function admins()
+    {
+        return view('admin.layout.layout');
+    }
+
 }

@@ -12,7 +12,7 @@ use App\Models\Articles;
 class SlideController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 显示轮播图页面
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,12 +25,13 @@ class SlideController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 显示添加轮播图页面
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
+        // 获取轮播图已有的文章id
         $aid = Slides::select('aid')->get();
         // 获取文章详情的标题数据
         $articles = Articles::where('astate','=','11')->select('aid','title')->get();
@@ -46,6 +47,7 @@ class SlideController extends Controller
      */
     public function store(Request $request)
     {
+        // 将获取到的数据做判断
         $this->validate($request, [
             'slide' => 'required',
             'describe' => 'required'
@@ -53,7 +55,7 @@ class SlideController extends Controller
             'slide.required' => '轮播图是必须要有图片呀!(╯▔皿▔)╯',
             'describe.required' => '轮播图怎么能没有标题呢╰（‵□′）╯~'
         ]);
-        //处理表单提交信息
+        // 处理表单提交信息
         if($request -> hasFile('slide')){
             $slide = $request -> file('slide');
             $ext = $slide ->getClientOriginalExtension();
@@ -76,18 +78,7 @@ class SlideController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * 显示轮播图修改页面
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -101,7 +92,7 @@ class SlideController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 把获取到的数据更新到数据库
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -109,13 +100,15 @@ class SlideController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // 获取到的数据做判断
         $this->validate($request, [
             'describe' => 'required'
         ],[
             'describe.required' => '别以为在这里就可以把标题改没啊(╯‵□′)╯炸弹！•••*～●~'
         ]);
-        // 
+        // 获取提交过来的数据
         $describe = $request->input('describe');
+        // 处理表单提交信息
         if ($request->hasFile('slide')){
             $slide = $request -> file('slide');
             $ext = $slide ->getClientOriginalExtension();
@@ -138,7 +131,7 @@ class SlideController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 删除指定的轮播图
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

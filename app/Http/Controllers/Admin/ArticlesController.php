@@ -58,6 +58,7 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
+        // 给提交过来的数据做判断
         $this->validate($request, [
             'title' => 'required',
             'tag_id' => 'required',
@@ -112,7 +113,9 @@ class ArticlesController extends Controller
      */
     public function astate($id)
     {
+        // 获取全部标签数据
         $tags = Tag::all();
+        // 获取指定的文章详情
         $article = Articles::find($id);
         return view('admin.article.astate',['title'=>'文章审核','article'=>$article,'tags'=>$tags]);
     }
@@ -125,6 +128,7 @@ class ArticlesController extends Controller
      */
     public function audit($id)
     {
+        // 根据指定id过审文章
         $article = Articles::where('aid','=',$id)->update(['astate'=>'11']);
         return back()->with('success','文章已过审');
     }
@@ -137,6 +141,7 @@ class ArticlesController extends Controller
      */
     public function switchup($id)
     {
+        // 修改文章的推荐状态 上架
         $article = Articles::where('aid','=',$id)->update(['state'=>'1']);
         return back();
     }
@@ -149,6 +154,7 @@ class ArticlesController extends Controller
      */
     public function switchdown($id)
     {
+        // 修改文章的推荐状态 下架
         $article = Articles::where('aid','=',$id)->update(['state'=>'0']);
         return back();
     }
@@ -174,6 +180,7 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
+        // 获取全部的标签
         $tags = Tag::all();
         // 获取指定id的文章数据
         $article = Articles::find($id);
@@ -191,6 +198,7 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // 给提交过来的数据做判断
         $this->validate($request, [
             'title' => 'required',
             'tag_id' => 'required',
@@ -199,17 +207,17 @@ class ArticlesController extends Controller
         ],[
             'title.required' => '文章名称不能修改为空哦~',
             'tag_id.required' => '最少选择一个标签哟~(oﾟvﾟ)ノ',
-            'author.required' => '作者是必填项啊~(￣┰￣*)',
+            'author.required' => '作者是必填项啊~',
             'acontent.required' => '文章怎么能没有内容呀!(ノ｀Д)ノ'
         ]);
 
-        // 把获取的数据放进数据库
+        // 把获取的数据拿到
         $cid = $request->input('cid');
         $title = $request->input('title');
         $author = $request->input('author');
         $acontent = $request->input('acontent');
 
-        //处理表单提交信息
+        // 处理表单提交信息
         if($request -> hasFile('photo')){
             $photo = $request -> file('photo');
             $ext = $photo ->getClientOriginalExtension();
@@ -224,8 +232,9 @@ class ArticlesController extends Controller
         // 把提交过来的数据放进指定数据表
         $res = Articles::where('aid','=',$id)->update(['cid'=>$cid,'title'=>$title,'author'=>$author,'acontent'=>$acontent]);
         if($res){
+            // 获取指定id的文章详情
             $article = Articles::find($id);
-
+            // 修改文章的标签
             try{
                 $res = $article->tags()->sync($request->tag_id);
             }catch(\Exception $e){

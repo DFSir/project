@@ -54,7 +54,7 @@
 			<label class="form-label col-xs-4 col-sm-2">文章图片：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="file" name="photo">
-				<img src="{{ $article->photo }}" alt="">
+				<img src="{{ $article->photo }}" alt="" style="width: 530;height: 300px;">
 			</div>
 		</div>
 

@@ -1,5 +1,5 @@
 @extends('home.layout.layout')
-<!-- 关于我页面 -->
+<!-- 相册页面 -->
 @section('head')
 <div class="pagebg sh" style="margin-bottom: -60px;"></div>
 @endsection

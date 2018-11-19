@@ -19,8 +19,9 @@ class CatesController extends Controller
      */
     public function index(Request $request)
     {
-        // 根据条件搜索及获取分页
+        // 根据条件获取分页
         $showCount = $request->input('showCount',10);
+        // 根据条件搜索
         $search = $request->input('search','');
         // 把分页和搜索条件存储起来提交回去
         $req = $request->all();
@@ -50,6 +51,7 @@ class CatesController extends Controller
      */
     public function store(Request $request)
     {
+        // 把拿到的数据做判断
         $this->validate($request, [
             'cname' => 'required',
         ],[
@@ -57,6 +59,7 @@ class CatesController extends Controller
         ]);
         // 获取类别的所有名称
         $cate = Cates::all();
+        // 获取拿到的类别名称
         $cname = $request->input('cname');
         // 判断提交过来的类别名称是否和已有类别名称重复
         foreach($cate as $k=>$v){
@@ -86,17 +89,6 @@ class CatesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * 显示指定id的类别
      *
      * @param  int  $id
@@ -118,6 +110,7 @@ class CatesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // 把拿到的数据做判断
         $this->validate($request, [
             'cname' => 'required',
         ],[
@@ -149,14 +142,17 @@ class CatesController extends Controller
      */
     public function destroy($id)
     {
-        // 判断指定的类别下是否有子类,有就不能删除
+        // 获取全部类别
         $cates = Cates::all();
+        // 判断指定的类别下是否有子类,有就不能删除
         foreach ($cates as $k => $v) {
             if($v->cpid == $id){
                 return back()->with('error','该类下面有子分类不能删除');
             }
         }
+        // 获取文章所在的全部类别
         $articles = Articles::select('cid')->get();
+        // 判读指定的类别下是否有文章,有就不能删除
         foreach ($articles as $ka => $va) {
             if ($va->cid == $id) {
                 return back()->with('error','该类下面有文章不能删除');
