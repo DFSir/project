@@ -1,5 +1,5 @@
 @extends('home.layout.layout')
-<!-- 关于我页面 -->
+<!-- 个人信息修改页面 -->
 @section('head')
 <div class="pagebg sh" style="margin-bottom: -60px;"></div>
 @endsection
@@ -9,9 +9,8 @@
 <h1 class="t_nav"><span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span><a href="/" class="n1">网站首页</a><a href="/" class="n2">个人中心</a></h1>
 @endsection
 
+
 @section('container')
-
-
 
 <div class="infosbox">
     <div class="newsview">

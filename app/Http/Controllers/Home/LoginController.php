@@ -23,16 +23,16 @@ class LoginController extends Controller
     }
     /**
      * 
-     *
+     * 执行注册
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
+        // 验证信息
         $this->validate($request, [
             'uname' => 'required|regex:/^.{2,20}$/',
-            'uaccnum' => 'required|unique:homeusers|regex:/^[A-Za-z0-9]{6,18}$/',
+            'uaccnum' => 'required|unique:homeusers|regex:/^[0-9]{6,18}$/',
             'upasswd' => 'required|regex:/^[A-Za-z0-9]{6,18}$/',
             'repassword' => 'required|same:upasswd',
         ],[
@@ -80,11 +80,11 @@ class LoginController extends Controller
     public function dologin(Request $request)
     {
 
-        //获取数据可的数据
+        //获取数据
         $huser = Huser::where('uaccnum',$request->uaccnum)->first(); 
 
         if(!$huser){
-            return back()->with('error','登录失败');
+            return back()->with('error','账号错误');
         }
 
         //验证密码
@@ -96,7 +96,7 @@ class LoginController extends Controller
 
             return redirect('/')->with('success','登陆成功');
         }else{
-            return back()->with('error','登录失败');
+            return back()->with('error','账号密码错误');
         }       
     }
 

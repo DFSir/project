@@ -23,40 +23,10 @@ class SettingController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * 修改网站配置
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -69,7 +39,7 @@ class SettingController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 执行修改
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -107,14 +77,5 @@ class SettingController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

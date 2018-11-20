@@ -11,40 +11,10 @@ use App\Models\Detail;
 
 class DetailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-  
-    }
+    
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
+     * 显示个人中心页面
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -57,7 +27,7 @@ class DetailController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 显示修改个人中心页面
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -70,7 +40,7 @@ class DetailController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 执行修改
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -101,7 +71,7 @@ class DetailController extends Controller
            $photo_path = $a->photo;
         }
 
-        
+        //获取数据
         $uname = $request->input('uname');
         $sex = $request->input('sex');
         $phone = $request->input('phone');
@@ -112,21 +82,12 @@ class DetailController extends Controller
         $res2 = Detail::where('uid','=',$id)->update(['sex'=>$sex,'phone'=>$phone,'email'=>$email,'photo'=>$photo_path]);
 
         if ($res1 && $res2) {
-            return $this->show($id);
+            return $this->show($id)->with('success','修改成功');
         }else{
             return back()->with('error','修改失败');
         }
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
 }

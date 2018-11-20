@@ -60,7 +60,7 @@
             	<div class="shang_tit">
             		<p>感谢您的支持，我会继续努力的!</p>
             	</div>
-            	<div class="shang_payimg"> <img src="/home/images/alipayimg.jpg" alt="扫码支持" title="扫一扫"> </div>
+            	<div class="shang_payimg"> <img src="/home/images/alipayimg.png" alt="扫码支持" title="扫一扫"> </div>
             	<div class="pay_explain">扫码打赏，你说多少就多少</div>
             	<div class="shang_payselect">
               		<div class="pay_item checked" data-id="alipay"> 
@@ -75,7 +75,7 @@
     			    	$(".pay_item").click(function(){
     			    		$(this).addClass('checked').siblings('.pay_item').removeClass('checked');
     			    		var dataid=$(this).attr('data-id');
-    			    		$(".shang_payimg img").attr("src","/home/images/"+dataid+"img.jpg");
+    			    		$(".shang_payimg img").attr("src","/home/images/"+dataid+"img.png");
     			    		$("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
     			    	});
     			    });

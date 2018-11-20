@@ -42,7 +42,7 @@
             <th width="100" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="广告名称: 升序排列" style="width: 100px;">广告名称</th>
             <th width="100" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="广告URL: 升序排列" style="width: 100px;">广告URL</th>
             <th width="100" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="广告图片: 升序排列" style="width: 100px;">广告图片</th>
-            <th width="40" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="状态: 升序排列" style="width: 40px;">状态</th>
+            
             <th width="130" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="加入时间: 升序排列" style="width: 130px;">添加时间</th>
             <th width="130" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="加入时间: 升序排列" style="width: 130px;">修改时间</th>
             <th width="100" class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 100px;">操作</th></tr>
@@ -55,11 +55,7 @@
             <td>{{ $v->name }}</td>
             <td>{{ $v->url }}</td>
             <td><img width="80px" height="80px" src="{{ $v->apic }}"></td>
-            <td>
-              @if($v->state == '0') 禁用 
-              @else 开启 
-              @endif
-            </td>
+            
             <td>{{ $v->created_at }}</td>
             <td>{{ $v->updated_at }}</td>
             <td class="td-manage">

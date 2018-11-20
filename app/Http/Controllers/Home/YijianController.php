@@ -20,12 +20,12 @@ class YijianController extends Controller
     {
         //
         $data = Feedback::where('state','=',1)->get();
-
+        // 发表意见页面
         return view('home.yijian.create',['data'=>$data]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 执行添加
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

@@ -81,9 +81,6 @@ class AboutController extends Controller
         }else{
             return back()->with('error','修改失败');
         }
-
-
     }
-
 
 }
