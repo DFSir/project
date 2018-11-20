@@ -97,11 +97,11 @@
             </div>
 
             <div class="toppic">
-                <li> <a href="" target="_blank"> <i><img src="/home/images/toppic04.jpg"></i>
-                    <h2>别让这些闹心的套路，毁了你的网页设计!</h2>
+                <li> <a href="/home/detail/{{ $like[0]->aid }}" target="_blank"> <i><img src="{{ $like[0]->photo }}"></i>
+                    <h2>{{ $like[0]->title }}</h2>
                     <span>学无止境</span> </a> </li>
-                <li> <a href="" target="_blank"> <i><img src="/home/images/zd04.jpg"></i>
-                    <h2>个人博客，属于我的小世界！</h2>
+                <li> <a href="/home/detail/{{ $like[1]->aid }}" target="_blank"> <i><img src="{{ $like[1]->photo }}"></i>
+                    <h2>{{ $like[1]->title }}</h2>
                     <span>学无止境</span> </a> </li>
             </div>
         </div>
