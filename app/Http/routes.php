@@ -89,6 +89,8 @@ if($setting['kg'] ==1 ){
 	
 // 前台分类跳转列表页
 Route::get('/home/list/{id}','Home\HomeController@list');
+// 前台分类跳转列表页
+Route::get('/home/seek','Home\HomeController@seek');
 // 前台文章跳转详情页
 Route::get('/home/detail/{id}','Home\HomeController@detail');
 // 前台文章详情点赞
