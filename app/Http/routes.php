@@ -13,11 +13,11 @@ use App\Models\Setting;
 */
 
 // 登录后台
-//后台登录
+// 后台登录
 Route::get('/admin/login','Admin\AdminController@login');
-//登录操作
+// 登录操作
 Route::post('/admin/login','Admin\AdminController@dologin');
-//后台退出
+// 后台退出
 Route::get('/admin/logout','Admin\AdminController@logout');
 
 Route::group(['middleware'=>'admin'],function(){
