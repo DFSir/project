@@ -77,17 +77,6 @@ class Admincontroller extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -193,7 +182,54 @@ class Admincontroller extends Controller
      */
     public function admins()
     {
-        return view('admin.layout.layout');
+        // 获取服务器ip地址
+        $ip = GetHostByName($_SERVER['SERVER_NAME']);
+        // 获取服务器解译引擎
+        $exp = $_SERVER['SERVER_SOFTWARE'];
+        // 获取服务器域名
+        $domain = $_SERVER["HTTP_HOST"];
+        // 获取服务器语言
+        $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        // 获取服务器Web端口
+        $port = $_SERVER['SERVER_PORT'];
+        // 获取服务器系统目录
+        $cata = $_SERVER['SystemRoot'];
+        // 获取服务器版本
+        $phpname = php_uname('s').php_uname('r');
+        // 获取服务器操作系统
+        $phpuname = php_uname();
+        // 获取php版本
+        $php = PHP_VERSION;
+        // 获取php安装路径
+        $phpinc = DEFAULT_INCLUDE_PATH;
+        // 获取php运行方式
+        $phpsapi = php_sapi_name();
+        // 获取服务器当前时间
+        $time = date("Y-m-d H:i:s");
+        // 获取最大上传限制
+        $cfg = get_cfg_var ("upload_max_filesize")?get_cfg_var ("upload_max_filesize"):"不允许";
+        // 获取最大上传时间
+        $max = get_cfg_var("max_execution_time")."秒 ";
+        // 脚本运行占用最大内存
+        $limit = get_cfg_var ("memory_limit")?get_cfg_var("memory_limit"):"无";
+
+        return view('admin.layout.layout',[
+            'ip'=>$ip,
+            'exp'=>$exp,
+            'domain'=>$domain,
+            'lang'=>$lang,
+            'port'=>$port,
+            'cata'=>$cata,
+            'php'=>$php,
+            'phpname'=>$phpname,
+            'phpuname'=>$phpuname,
+            'phpinc'=>$phpinc,
+            'phpsapi'=>$phpsapi,
+            'time'=>$time,
+            'cfg'=>$cfg,
+            'max'=>$max,
+            'limit'=>$limit
+        ]);
     }
 
 }

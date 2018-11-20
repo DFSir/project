@@ -240,7 +240,7 @@
 		@section('container')
 			
 		<div class="page-container">
-			<p class="f-20 text-success">欢迎使用H-ui.admin <span class="f-14">v3.1</span>后台模版！</p>
+			<p class="f-20 text-success">服务器基本信息<span class="f-14"></span></p>
 			<table class="table table-border table-bordered table-bg mt-20">
 				<thead>
 					<tr>
@@ -249,24 +249,64 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th width="30%">服务器计算机名</th>
-						<td><span id="lbServerName">http://127.0.0.1/</span></td>
+						<th width="30%">服务器IP地址 </th>
+						<td>{{ $ip }}</td>
 					</tr>
 					<tr>
-						<td>服务器IP地址</td>
-						<td>192.168.1.1</td>
+						<td>服务器解译引擎 </td>
+						<td>{{ $exp }}</td>
 					</tr>
 					<tr>
-						<td>服务器域名</td>
-						<td>www.boke.com</td>
+						<td>服务器域名 </td>
+						<td>{{ $domain }}</td>
 					</tr>
 					<tr>
 						<td>服务器端口 </td>
-						<td>80</td>
+						<td>{{ $port }}</td>
 					</tr>
 					<tr>
 						<td>服务器的语言种类 </td>
-						<td>Chinese (People's Republic of China)</td>
+						<td>{{ $lang }}</td>
+					</tr>
+					<tr>
+						<td>服务器系统目录 </td>
+						<td>{{ $cata }}</td>
+					</tr>
+					<tr>
+						<td>服务器版本 </td>
+						<td>{{ $phpname }}</td>
+					</tr>
+					<tr>
+						<td>服务器操作系统 </td>
+						<td>{{ $phpuname }}</td>
+					</tr>
+					<tr>
+						<td>PHP版本 </td>
+						<td>{{ $php }}</td>
+					</tr>
+					<tr>
+						<td>PHP安装路径 </td>
+						<td>{{ $phpinc }}</td>
+					</tr>
+					<tr>
+						<td>PHP运行方式 </td>
+						<td>{{ $phpsapi }}</td>
+					</tr>
+					<tr>
+						<td>服务器当前时间</td>
+						<td>{{ $time }}</td>
+					</tr>
+					<tr>
+						<td>最大上传限制</td>
+						<td>{{ $cfg }}</td>
+					</tr>
+					<tr>
+						<td>最大上传时间</td>
+						<td>{{ $max }}</td>
+					</tr>
+					<tr>
+						<td>脚本运行占用最大内存</td>
+						<td>{{ $limit }}</td>
 					</tr>
 				</tbody>
 			</table>
