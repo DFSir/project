@@ -57,7 +57,7 @@
                         @if(empty(session('Huser')))
                             <a href="{{ url('/home/login') }}" target="_top" >登录/注册</a>
                         @else
-                            <a href="/home/geren/{{ session('Huser')->uid }}" style="color: #fff;">{{ session('uaccnum') }}</a>
+                            <a href="/home/geren/{{ session('Huser')->uid }}" style="color: #fff;">{{ session('Huser')->uname }}</a>
                             <a href="{{ url('/home/logout') }}">退出</a>
                         @endif
                     </div>           

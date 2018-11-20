@@ -47,6 +47,11 @@
           	<p class="dasbox">
           		<a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏本站</a>
           	</p>
+            @if (session('Huser')->uid == $artle->uid)
+            <p class="dasbox">
+                <a href="/home/articles/{{ $artle->aid }}/edit"> 修改文章 </a>
+            </p>
+            @endif
         	<div class="hide_box"></div>
     		<div class="shang_box"> 
     			<a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">关闭</a>

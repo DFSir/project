@@ -213,7 +213,7 @@ class Admincontroller extends Controller
         // 脚本运行占用最大内存
         $limit = get_cfg_var ("memory_limit")?get_cfg_var("memory_limit"):"无";
 
-        return view('admin.layout.layout',[
+        return view('admin.layout.index',[
             'ip'=>$ip,
             'exp'=>$exp,
             'domain'=>$domain,

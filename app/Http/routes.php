@@ -14,11 +14,11 @@ use App\Models\Setting;
 
 // 登录后台
 //后台登录
-Route::get('admin/login','Admin\AdminController@login');
+Route::get('/admin/login','Admin\AdminController@login');
 //登录操作
-Route::post('admin/login','Admin\AdminController@dologin');
+Route::post('/admin/login','Admin\AdminController@dologin');
 //后台退出
-Route::get('admin/logout','Admin\AdminController@logout');
+Route::get('/admin/logout','Admin\AdminController@logout');
 
 Route::group(['middleware'=>'admin'],function(){
 	Route::get('/admins','Admin\AdminController@admins');
@@ -123,10 +123,11 @@ Route::resource('/home/message','Home\MessageController');
 Route::get('/home/diary','Home\HomeController@diary');
 // 前台用户退出
 Route::get('/home/logout','Home\LoginController@logout');
-//前台意见反馈
+// 前台意见反馈
 Route::resource('/home/yijian','Home\YijianController');
-//个人中心
+// 个人中心
 Route::resource('/home/geren','Home\DetailController');
-
 // 前台相册
 Route::resource('/home/album','Home\AlbumController');
+// 前台用户添加文章
+Route::resource('/home/articles', 'Home\ArticlesController');
