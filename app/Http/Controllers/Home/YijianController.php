@@ -28,13 +28,13 @@ class YijianController extends Controller
      */
     public function create()
     {
-        //
+        // 发表意见页面
 
         return view('home.yijian.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 执行添加
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

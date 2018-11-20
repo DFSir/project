@@ -12,7 +12,7 @@ use App\Models\Photo;
 class AlbumController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 显示相册页面
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +28,7 @@ class AlbumController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 执行添加
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -47,7 +47,7 @@ class AlbumController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 删除相册
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
