@@ -37,9 +37,11 @@
             }
         </style>
     </head>
-    <body>
-       
-        <img src="/imgs/1.jpg" width="100%" height="100%">
+    <body >
+        <div style="margin:20px auto;width: 660px;">
+            <iframe scrolling='no' frameborder='0' src='http://yibo.iyiyun.com/Home/Distribute/ad404/key/1348147' width='654' height='470' style='display:block;'></iframe>
+        </div>
+        
             
     </body>
 </html>
