@@ -177,7 +177,7 @@
                 <h2 class="hometitle">标签云</h2>
                 <ul>
                     @foreach ($tag as $k=>$v)
-                    <a href="">{{ $v->name }}</a> 
+                    <a href="/home/tags/{{ $v->id }}">{{ $v->name }}</a> 
                     @endforeach
                 </ul>
             </div>

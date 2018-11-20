@@ -101,7 +101,7 @@ Route::get('/home/message','Home\HomeController@message');
 // 前台留言
 Route::resource('/home/message','Home\MessageController');
 // 前台相册
-Route::get('/home/album','Home\HomeController@album');
+Route::resource('/home/album','Home\AlbumController');
 // 前台注册
 Route::get('/home/zhuce','Home\LoginController@zhuce');
 // 前台执行注册
@@ -120,5 +120,7 @@ Route::get('/home/logout','Home\LoginController@logout');
 Route::resource('/home/yijian','Home\YijianController');
 //个人中心
 Route::resource('/home/geren','Home\DetailController');
+//标签搜索页面
+Route::get('/home/tags/{id}','Home\HomeController@tags');
 
 
