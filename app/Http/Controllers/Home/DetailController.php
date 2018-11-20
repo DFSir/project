@@ -78,7 +78,17 @@ class DetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 给提交过来的数据做判断
+        $this->validate($request, [
+            'uname' => 'required',
+            'phone' => 'regex:/^1[34578]\d{9}$/',
+            'email' => 'regex:/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/'
+        ],[
+            'uname.required' => '用户名不能为空哦~',
+            'phone.regex' => '手机号格式错误',
+            'email.regex' => '邮箱格式错误'
+        ]);
+        // 
         if($request -> hasFile('photo')){
             $photo = $request -> file('photo');
             $ext = $photo ->getClientOriginalExtension();

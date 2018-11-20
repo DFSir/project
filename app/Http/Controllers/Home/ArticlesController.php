@@ -141,7 +141,7 @@ class ArticlesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 修改文章
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id

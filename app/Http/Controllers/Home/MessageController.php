@@ -12,25 +12,28 @@ use App\Models\About;
 class MessageController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 跳转到留言页面
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        // 获取关于我的数据
         $about = About::find(1);
+        // 获取留言数据
         $message = Messages::orderBy('mid', 'desc')->paginate(100);
         return view('home.message.message',['about'=>$about,'message'=>$message]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 前台用户添加留言
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        // 添加用户留言
         $message = new Messages;
         $message->uid = $request->input('uid');
         $message->mcontent = $request->input('mcontent');
