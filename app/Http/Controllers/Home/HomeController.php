@@ -12,6 +12,7 @@ use App\Models\Diary;
 use App\Models\Album;
 use App\Models\Comments;
 use App\Models\About;
+use App\Models\Tag;
 
 
 
@@ -115,6 +116,21 @@ class HomeController extends Controller
     public function modify()
     {
         return view('home.modify');
+    }
+
+    public function tags(Request $request, $id)
+    {
+         //判读标签ID是否传递
+        if(!empty($request->id)){
+            $tag = Tag::findOrFail($request->id);
+            $articles = $tag->articles()->paginate(10);
+        }
+
+        $tags = Tag::find($id);
+
+        return view('home.article.tags',['articles'=>$articles,'tags'=>$tags]);
+
+
     }
 
 }

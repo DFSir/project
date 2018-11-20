@@ -29,8 +29,9 @@ class YijianController extends Controller
     public function create()
     {
         //
+        $data = Feedback::where('state','=',1)->get();
 
-        return view('home.yijian.create');
+        return view('home.yijian.create',['data'=>$data]);
     }
 
     /**
