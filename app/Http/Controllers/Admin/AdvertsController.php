@@ -63,7 +63,6 @@ class AdvertsController extends Controller
         $advert->name = $request->name;
         $advert->url = $request->url;
         $advert->apic = $apic_path;
-        $advert->state = $request->state;
         
 
         if($advert -> save()){
@@ -116,7 +115,6 @@ class AdvertsController extends Controller
         $advert->name = $request->name;
         $advert->url = $request->url;
         $advert->apic = $apic_path;
-        $advert->state = $request->state;
 
         $res = $advert->save();
         if ($res) {

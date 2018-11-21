@@ -74,12 +74,7 @@
         <p class="abposition">手机号：{{ $huser->huserinfo->phone }}</p>
         <p class="abposition"> 邮  箱 ：{{ $huser->huserinfo->email }}</p>
     </div>
-    <div class="weixin">
-        <h2 class="hometitle">微信关注</h2>
-        <ul>
-            <img src="/home/images/weixin.jpg">
-        </ul>
-    </div>
+
 </div>
 
 @endsection

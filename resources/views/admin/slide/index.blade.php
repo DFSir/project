@@ -12,7 +12,7 @@
 		<thead>
 			<tr class="text-c">
 				<th>链接文章</th>
-				<th width="760px">图片</th>
+				<th >图片</th>
 				<th>描述</th>
 				<th width="240px;">操作</th>
 			</tr>
@@ -22,7 +22,7 @@
 			<tr class="text-c">
 				<td>{{ $v->articleinfo->title }}</td>
 				<td>
-					<img src="{{ $v->slide }}" alt="{{ $v->describe }}" style="width: 500px;height: 300px;">
+					<img src="{{ $v->slide }}" alt="{{ $v->describe }}" style="width: 350px;height: 170px;">
 				</td>
 				<td>{{ $v->describe }}</td>
 				<td class="f-14">

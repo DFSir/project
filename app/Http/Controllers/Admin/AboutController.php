@@ -62,9 +62,7 @@ class AboutController extends Controller
             $dir_name = './uploads/'.date('Ymd',time());
             $res = $portrait -> move($dir_name,$file_name);
             $portrait_path = ltrim($dir_name.'/'.$file_name,'.');
-        }else{
-            // 如果没有提交的图片,给默认图片
-            $portrait_path = '/uploads/20181105/Tx2xIC7znYWXIL3KqZQY1541389322.jpg';
+            $res1 = About::where('id','=',$id)->update(['portrait'=>$portrait_path]);
         }
 
         // 获取表单提交来的数据
@@ -75,7 +73,7 @@ class AboutController extends Controller
         $aboutme = $request->input('aboutme');
         
         // 把获取得到的数据更新到数据库
-        $res = About::where('id','=',$id)->update(['name'=>$name,'portrait'=>$portrait_path,'profession'=>$profession,'qq'=>$qq,'email'=>$email,'aboutme'=>$aboutme]);
+        $res = About::where('id','=',$id)->update(['name'=>$name,'profession'=>$profession,'qq'=>$qq,'email'=>$email,'aboutme'=>$aboutme]);
         if ($res) {
             return redirect('admin/about')->with('success','修改成功');
         }else{

@@ -84,7 +84,7 @@ class LoginController extends Controller
         $huser = Huser::where('uaccnum',$request->uaccnum)->first(); 
 
         if(!$huser){
-            return back()->with('error','账号错误');
+            return back()->with('error','账号不存在');
         }
 
         //验证密码

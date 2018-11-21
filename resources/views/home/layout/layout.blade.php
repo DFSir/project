@@ -191,15 +191,12 @@
 
 
             <div class="guanzhu" id="follow-us">
-                <h2 class="hometitle"> 么么哒！</h2>
+                <h2 class="hometitle"> 广告赞助！</h2>
                 
                 @foreach ($advert as $k=>$v)
                 <a href="https://{{ $v->url }}"><img src="{{ $v->apic }}" width="305px" height="80px" style="margin-bottom: 5px;" title="{{ $v->name }}"></a>
                 @endforeach
-                <ul>
-                    <li class="wx"><img src="/home/images/weixin.jpg" title="想联系我们可以添加微信哦!!!" style="margin-top: 10px;"></li>
-
-                </ul>
+                
             </div>
         </div>
         @show

@@ -68,7 +68,7 @@
 				<td>
 					@if ($article->astate == 10)
 					<a href="/admin/articles/audit/{{ $article->aid }}"><button class="btn btn-success radius">过审</button></a>
-					<a href=""><button class="btn btn-danger radius">驳回</button></a>
+					<a href="/admin/articles"><button class="btn btn-danger radius">驳回</button></a>
 					@else
 					<a href="/admin/articles"><button class="btn btn-success radius">返回列表页</button></a>
 					@endif

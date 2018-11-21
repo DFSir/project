@@ -17,7 +17,7 @@
    @foreach($album as $k=>$v)
     <li> 
       <div class="shareli">
-            <a href="/home/album/{{$v->alid}}" target="_blank"> <i><img src="images/text01.jpg"></i>
+            <a href="/home/album/{{$v->alid}}" target="_blank"> <i><img src="/home/images/navbg.png"></i>
               <h2><b>{{ $v->alname }}</b></h2>
             </a> 
          </div> 

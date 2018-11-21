@@ -102,11 +102,6 @@
         <a href="/home/articles"><button type="submit" style="width: 48%;height: 40px;"><h2>我的文章</h2></button></a>
         <a href="/home/articles/create"><button type="submit" style="width: 48%;height: 40px;"><h2>上传文章</h2></button></a>
     </div>
-    <div class="weixin">
-        <h2 class="hometitle">微信关注</h2>
-        <ul>
-            <img src="/home/images/wx.jpg">
-        </ul>
-    </div>
+
 </div>
 @endsection

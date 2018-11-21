@@ -13,7 +13,7 @@
 
 </head>
 <body style="background: url('/home/images/bj.jpg') no-repeat;background-size: 100% ;">
-  </script>
+
      <!-- 读取提示信息开始 -->
     @if (session('success'))
         <script type="text/javascript">

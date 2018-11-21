@@ -13,9 +13,12 @@
 @section('container')
 
 <div class="news_infos">
-    <ul>
-        {!! $about->aboutme !!}
-    </ul>
+    <div class="newsview" style="margin-bottom: 30px;">
+        <h3 class="news_title">关于我</h3>
+        <div class="bloginfo">
+            {!! $about->aboutme !!}
+        </div>
+    </div>
 </div>
 
 @endsection

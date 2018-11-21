@@ -15,9 +15,9 @@
 <div>
   <ul>
   @foreach($photo as $k=>$v)
-    <li> 
+    <li style="float: left;margin-bottom: 30px;"> 
       <div class="shareli">
-           <img src="{{ $v->picture }}"> 
+           <a href="{{ $v->picture }}"><img src="{{ $v->picture }}" width="300px" height="300px"> </a>
       </div> 
     </li>
   @endforeach

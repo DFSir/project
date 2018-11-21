@@ -31,11 +31,11 @@
 							<div class="c-999 f-12">
 								<span class="text-primary">{{ $v->usersinfo->uname }}</span> 
 								<time>{{ $v->created_at }}</time> 
-								<span class="ml-20">13000000000</span>
-								<span class="ml-20">admin@mail.com</span>
+								<span class="ml-20">{{ $v->husersinfo->phone or '' }}</span>
+								<span class="ml-20">{{ $v->husersinfo->email or '' }}</span>
 							</div>
 							<div class="f-12 c-999">
-								<a href="http://www.h-ui.net/Hui-4.22-comment.shtml" target="_blank">http://www.h-ui.net/Hui-4.22-comment.shtml</a>
+								<a href="http://www.h-ui.net/Hui-4.22-comment.shtml" target="_blank"></a>
 							</div>
 							<div>{{ $v->mcontent }}</div>
 						</td>

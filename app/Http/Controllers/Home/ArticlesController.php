@@ -208,8 +208,6 @@ class ArticlesController extends Controller
     {
         // 删除指定的文章
         $res = Articles::where('aid','=',$id)->delete();
-        // 删除文章下的评论
-        $res1 = Comments::where('aid','=',$id)->delete();
         if($res){
             return back()->with('success','删除文章成功');
         }else{
