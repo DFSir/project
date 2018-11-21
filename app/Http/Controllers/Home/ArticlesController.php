@@ -25,7 +25,7 @@ class ArticlesController extends Controller
         $uid = session('Huser')->uid;
         $user = Huser::find($uid);
         // 从数据库获取文章数据
-        $artle = Articles::where('uid','=',$uid)->get();
+        $artle = Articles::where('uid','=',$uid)->orderBy('aid','desc')->get();
         // 跳转到文章列表页
         return view('home.article.index',['artle'=>$artle,'user'=>$user]);
     }
@@ -97,7 +97,7 @@ class ArticlesController extends Controller
                 return back()->with('error','添加文章失败');
             }
 
-            return back()->with('success','添加文章成功');
+            return $this->index()->with('success','添加文章成功');
         }else{
             return back()->with('error','添加文章失败');
         }
@@ -208,6 +208,8 @@ class ArticlesController extends Controller
     {
         // 删除指定的文章
         $res = Articles::where('aid','=',$id)->delete();
+        // 删除文章下的评论
+        $res1 = Comments::where('aid','=',$id)->delete();
         if($res){
             return back()->with('success','删除文章成功');
         }else{

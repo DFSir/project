@@ -32,7 +32,7 @@ class ArticlesController extends Controller
         // 把分页和搜索条件存储起来提交回去
         $req = $request->all();
         // 从数据库拿出数据并且每页显示10条
-        $articles = Articles::where('title','like','%'.$search.'%')->where('author','like','%'.$author.'%')->where('astate','like','%'.$astate.'%')->paginate($showCount );
+        $articles = Articles::where('title','like','%'.$search.'%')->where('author','like','%'.$author.'%')->where('astate','like','%'.$astate.'%')->orderBy('aid','desc')->paginate($showCount );
         return view('admin.article.index',['articles'=>$articles,'req'=>$req,'title'=>'文章列表']);
     }
 
@@ -258,6 +258,8 @@ class ArticlesController extends Controller
     {
         // 删除指定的文章
         $res = Articles::where('aid','=',$id)->delete();
+        // 删除文章下的评论
+        $res1 = Comments::where('aid','=',$id)->delete();
         if($res){
             return back()->with('success','删除文章成功');
         }else{
