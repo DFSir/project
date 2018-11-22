@@ -94,11 +94,11 @@
             </div>
 
             <div class="toppic">
+                <li> <a href="/home/detail/{{ $recommend[0]->aid }}" target="_blank"> <i><img src="{{ $recommend[0]->photo }}"></i>
+                    <h2>{{ $recommend[0]->title }}</h2>
+                    <span>学无止境</span> </a> </li>
                 <li> <a href="/home/detail/{{ $like[0]->aid }}" target="_blank"> <i><img src="{{ $like[0]->photo }}"></i>
                     <h2>{{ $like[0]->title }}</h2>
-                    <span>学无止境</span> </a> </li>
-                <li> <a href="/home/detail/{{ $like[1]->aid }}" target="_blank"> <i><img src="{{ $like[1]->photo }}"></i>
-                    <h2>{{ $like[1]->title }}</h2>
                     <span>学无止境</span> </a> </li>
             </div>
         </div>
