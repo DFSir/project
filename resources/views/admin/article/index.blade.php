@@ -32,7 +32,6 @@
 			<table class="table table-border table-bordered table-hover table-bg table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
 				<thead>
 					<tr class="text-c" role="row">
-						<th>ID</th>
 						<th>文章类别</th>
 						<th>文章名称</th>
 						<th>发布人</th>
@@ -41,13 +40,12 @@
 						<th>点赞次数</th>
 						<th>审核状态</th>
 						<th>推荐位状态</th>
-						<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 175px;">操作</th>
+						<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 190px;">操作</th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach ($articles as $k=>$v)
 					<tr class="text-c odd" role="row">
-						<td>{{ $v->aid }}</td>
 						<td>{{ $v->catesinfo->cname }}</td>
 						<td>{{ $v->title}}</td>
 						@if ($v->uid == 0)

@@ -100,7 +100,7 @@ class ArticlesController extends Controller
                 return back()->with('error','添加文章失败');
             }
 
-            return view('home.article.index')->with('success','添加文章成功');
+            return back()->with('success','添加文章成功');
         }else{
             return back()->with('error','添加文章失败');
         }
